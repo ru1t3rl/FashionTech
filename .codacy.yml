@@ -5,6 +5,7 @@ engines:
     base_sub_dir: "Assets/Scripts"
     exclude_paths:
       - 'Assets/Scripts/SimpleCameraController.cs'
+      - 'Assets/SteamVR/**'
 exclude_paths:
   - '.github/workflows/**'
   - '.vscode/**'
