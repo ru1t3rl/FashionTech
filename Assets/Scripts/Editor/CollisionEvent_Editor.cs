@@ -14,15 +14,5 @@ public class CollisionEvent_Editor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-
-        /*
-        if (events == null)
-            events = (ColliderEvent)target;
-
-        if (onTrigger)
-        {
-            EditorGUILayout.ObjectField(events.onCollisionEnter, typeof(UnityEvent));
-        }
-        */
     }
 }

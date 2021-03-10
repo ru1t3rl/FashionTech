@@ -10,11 +10,14 @@ namespace VRolijk.Portals
     {
         [Header("Main Settings")]
         public Portal linkedPortal;
-        public MeshRenderer screen;
-        public float teleportOffset = 1f;
-        public int recursionLimit = 1;
+        
+        [SerializeField] MeshRenderer screen;
 
-        public LayerMask travellerLayer;
+        [SerializeField] float teleportOffset = 1f;
+        public float TeleportOffset => teleportOffset;
+        [SerializeField] int recursionLimit = 1;
+
+        [SerializeField] LayerMask travellerLayer;
 
         Camera playerCam, portalCam;
         RenderTexture viewTexture;
@@ -110,9 +113,9 @@ namespace VRolijk.Portals
             Vector3 direction = new Vector3(linkedPortal.portalCam.transform.forward.x, 0, linkedPortal.portalCam.transform.forward.z);
 
             if (traveller.name.ToLower() != "headcollider")
-                traveller.transform.position = linkedPortal.transform.position + direction * linkedPortal.teleportOffset;
+                traveller.transform.position = linkedPortal.transform.position + direction * linkedPortal.TeleportOffset;
             else
-                traveller.transform.parent.parent.parent.parent.position = linkedPortal.transform.position + direction * linkedPortal.teleportOffset;
+                traveller.transform.parent.parent.parent.parent.position = linkedPortal.transform.position + direction * linkedPortal.TeleportOffset;
         }
 
         public void OnTriggerEnter(Collider other)

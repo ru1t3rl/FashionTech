@@ -10,6 +10,7 @@ public class ColliderEvent : MonoBehaviour
     public UnityEvent<Collider> onTriggerEnter;
     public UnityEvent<Collider> onTriggerStay;
     public UnityEvent<Collider> onTriggerExit;
+    
 
     [Header("OnCollision")]
     public UnityEvent<Collision> onCollisionEnter;
