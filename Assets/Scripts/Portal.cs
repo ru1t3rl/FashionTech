@@ -18,6 +18,10 @@ namespace VRolijk.Portals
         [SerializeField] int recursionLimit = 1;
 
         [SerializeField] LayerMask travellerLayer;
+        [SerializeField] float cameraOffset = 1.5f;
+
+        [SerializeField] bool useCustomViewTextureSize = true;
+        [SerializeField] Vector2Int viewTextureSize = new Vector2Int(512, 512);
 
         Camera playerCam, portalCam;
         RenderTexture viewTexture;
@@ -61,11 +65,20 @@ namespace VRolijk.Portals
                 }
 
                 // Calculate position and orientation
+                /*
                 int renderOrderIndex = recursionLimit - i - 1;
                 renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y, portalCam.transform.position.z);
                 renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
+                */
+
+                localToWorldMatrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * localToWorldMatrix;
+                int renderOrderIndex = recursionLimit - i - 1;
+                //renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
+                renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y/cameraOffset, portalCam.transform.position.z);
+                renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
 
                 portalCam.transform.SetPositionAndRotation(renderPositions[renderOrderIndex], renderRotations[renderOrderIndex]);
+                //portalCam.transform.position = new Vector3(0, portalCam.transform.localPosition.y, 0);
                 startIndex = renderOrderIndex;
             }
 
@@ -97,13 +110,16 @@ namespace VRolijk.Portals
                     viewTexture.Release();
                 }
 
-                viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
+                if(!useCustomViewTextureSize)
+                    viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
+                else
+                    viewTexture = new RenderTexture(viewTextureSize.x, viewTextureSize.y, 0);
 
                 //Render the view from the portal camera to the view texture
                 portalCam.targetTexture = viewTexture;
 
                 //Display the view texture on the screen of the linked portal;
-                linkedPortal.SetTexture("_BaseTexture", viewTexture);
+                linkedPortal.SetTexture("_BaseMap", viewTexture);
             }
         }
 

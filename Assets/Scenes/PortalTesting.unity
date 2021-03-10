@@ -128,7 +128,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 125964, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
   m_PrefabInstance: {fileID: 241629855}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &10487430
+--- !u!114 &10487435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -774,6 +774,10 @@ PrefabInstance:
       propertyPath: linkedPortal
       value: 
       objectReference: {fileID: 1370181021}
+    - target: {fileID: 7405491645013211660, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: useCustomViewTextureSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7405491645013211661, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -816,6 +820,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405491645013211661, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405491645779288289, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405491645779288289, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405491645779288289, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405491645779288289, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405491645779288289, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
