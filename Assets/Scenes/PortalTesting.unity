@@ -14,9 +14,9 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+  m_FogMode: 2
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ee4d17e9123885b40ba9e53fced735a9, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9c4d1429a4b70b343bd4334c5b151451, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 964631971}
   m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -693,11 +693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cba178a47797b44b94fcac454d26817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSystemTime: 1
+  useSystemTime: 0
   updateInterval: 1000
-  timeIncrement: 10
-  hours: 15
-  minutes: 43
+  timeIncrement: 100
+  hours: 5
+  minutes: 47
   sun: {fileID: 964631971}
   moon: {fileID: 1623181102}
   sunRiseTime: {x: 7, y: 6}
@@ -1522,7 +1522,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964631970}
-  m_LocalRotation: {x: -0.33451787, y: 0.3725889, z: -0.85319096, w: -0.14608411}
+  m_LocalRotation: {x: -0.22184648, y: 0.4852603, z: 0.12878807, w: 0.8358949}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2095,7 +2095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1623181102
 Light:
   m_ObjectHideFlags: 0
@@ -2165,7 +2165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623181101}
-  m_LocalRotation: {x: -0.37258875, y: 0.33451793, z: 0.14608409, w: 0.85319096}
+  m_LocalRotation: {x: -0.4852603, y: 0.22184655, z: -0.8358949, w: -0.12878811}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2277,7 +2277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 301fcef0dda16094088ead72f3c0671a, type: 2}
+  - {fileID: 2100000, guid: d2bbbd01c5b7a6b4bb5a1316f21fc1ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2542,7 +2542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405491645013211661, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.3160795
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 7405491645013211661, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: m_LocalRotation.w
