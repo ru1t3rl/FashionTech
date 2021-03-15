@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering.HighDefinition;
 
 namespace VRolijk.Portals
 {
@@ -89,7 +89,8 @@ namespace VRolijk.Portals
             for (int i = startIndex; i < recursionLimit; i++)
             {
                 portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
-                UniversalRenderPipeline.RenderSingleCamera(context, portalCam);
+                
+                portalCam.Render();
 
                 if (i == startIndex)
                 {
