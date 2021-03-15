@@ -32,12 +32,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_295c03ce23b14bf6a791f32e635c39de:
+        m_Texture: {fileID: 2800000, guid: 42dd9c71768970646823e0da61b56b61, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_994581a17b2b44dc9394cf571b52a002:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b1a77fd840443bf438e0191942c47530, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_d368cc49f6b74cba92b47df0fdd7037c:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7772b0b1797c82b49a56642a78518883, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -101,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4116d3075ed048f68d14fc8446cbde0c: 786.83
+    - Vector1_4116d3075ed048f68d14fc8446cbde0c: 200
     - Vector1_b94dfb57feb2471c90d10f71be9d4510: 0
     - _AlphaClip: 0
     - _Blend: 0
@@ -118,10 +122,11 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NormalStrength: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
-    - _Radius: 0
+    - _Radius: -0.1
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -131,7 +136,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_8dccd1064b56445d8736b5f6fbdf6984: {r: 1, g: 0, b: 0, a: 0}
+    - Color_8dccd1064b56445d8736b5f6fbdf6984: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_188ef49f4e534f17bdddfd64936ce23b: {r: 20, g: 20, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
