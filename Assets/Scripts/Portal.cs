@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
@@ -20,6 +21,7 @@ namespace VRolijk.Portals
         [SerializeField] LayerMask travellerLayer;
         [SerializeField] float cameraOffset = 1.5f;
 
+        [SerializeField] RenderTexture targetRenderTexture;
         [SerializeField] bool useCustomViewTextureSize = true;
         [SerializeField] Vector2Int viewTextureSize = new Vector2Int(512, 512);
 
@@ -40,7 +42,7 @@ namespace VRolijk.Portals
 
         // Called just before player camera is rendered
         public void Render(ScriptableRenderContext context, Camera cam)
-        {            
+        {      
             if (!CameraUtility.VisibleFromCamera(linkedPortal.screen, playerCam))
             {
                 return;
@@ -65,12 +67,6 @@ namespace VRolijk.Portals
                 }
 
                 // Calculate position and orientation
-                /*
-                int renderOrderIndex = recursionLimit - i - 1;
-                renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y, portalCam.transform.position.z);
-                renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
-                */
-
                 localToWorldMatrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * localToWorldMatrix;
                 int renderOrderIndex = recursionLimit - i - 1;
                 //renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
@@ -88,7 +84,7 @@ namespace VRolijk.Portals
 
             for (int i = startIndex; i < recursionLimit; i++)
             {
-                portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
+                portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);                   
 
                 if (i == startIndex)
                 {
@@ -102,24 +98,30 @@ namespace VRolijk.Portals
 
         void CreateViewTexture()
         {
-            if (viewTexture == null || viewTexture.width != Screen.width || viewTexture.height != Screen.height)
+            if (targetRenderTexture == null || 
+                (!useCustomViewTextureSize && (targetRenderTexture.width != Screen.width || targetRenderTexture.height != Screen.height)) ||
+                (useCustomViewTextureSize && (targetRenderTexture.width != viewTextureSize.x || targetRenderTexture.height != viewTextureSize.y)))
             {
-                if (viewTexture != null)
+                
+                if (targetRenderTexture != null)
                 {
-                    viewTexture.Release();
+                    targetRenderTexture.Release();
                 }
 
                 if(!useCustomViewTextureSize)
-                    viewTexture = new RenderTexture(Screen.width, Screen.height, 0);
+                    targetRenderTexture = new RenderTexture(Screen.width, Screen.height, 32);
                 else
-                    viewTexture = new RenderTexture(viewTextureSize.x, viewTextureSize.y, 0);
+                    targetRenderTexture = new RenderTexture(viewTextureSize.x, viewTextureSize.y, 32);
 
-                //Render the view from the portal camera to the view texture
-                portalCam.targetTexture = viewTexture;
-
-                //Display the view texture on the screen of the linked portal;
-                linkedPortal.SetTexture("_BaseMap", viewTexture);
+                targetRenderTexture.graphicsFormat = GraphicsFormat.R10G10B10_XRSRGBPack32;
+                targetRenderTexture.Create();                
             }
+
+            //Render the view from the portal camera to the view texture
+            portalCam.targetTexture = targetRenderTexture;
+
+            //Display the view texture on the screen of the linked portal;
+            linkedPortal.SetTexture("_BaseMap", targetRenderTexture);
         }
 
         #region Traveling
