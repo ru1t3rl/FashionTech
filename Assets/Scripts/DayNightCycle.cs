@@ -25,9 +25,8 @@ namespace VRolijk.Lighting
         [SerializeField] [Range(0, 60)] int minutes = 0;
         int seconds;
         [SerializeField] Light sun;
-        GameObject sunPivot;
         [SerializeField] Light moon;
-        GameObject moonPivot;
+        [SerializeField] GameObject pivot;
 
         [Tooltip("X: Hour | Y: Minut")]
         [SerializeField] Vector2Int sunRiseTime, sunSetTime;
@@ -47,18 +46,24 @@ namespace VRolijk.Lighting
             timer.Start();
 
             // Calculate the totalTime as a float x.xf where decimals are minutes
-            dayDuration = (sunSetTime.x - sunRiseTime.x) + ((sunSetTime.y - sunRiseTime.y ) / 60);
+            dayDuration = (sunSetTime.x - sunRiseTime.x) + ((sunSetTime.y - sunRiseTime.y) / 60);
 
             SetupSunNMoon();
         }
 
         void SetupSunNMoon()
         {
-            sun.gameObject.transform.rotation = Quaternion.Euler(sunXRotation.x, sunYRotation.x, 0);
+            if (pivot == null)
+            {
+                sun.gameObject.transform.rotation = Quaternion.Euler(sunXRotation.x, sunYRotation.x, 0);
 
-
-            moon.gameObject.transform.rotation = sun.gameObject.transform.rotation;
-            moon.transform.Rotate(180, 180, 0);
+                moon.gameObject.transform.rotation = sun.gameObject.transform.rotation;
+                moon.transform.Rotate(180, 180, 0);
+            }
+            else
+            {
+                pivot.transform.rotation = Quaternion.Euler(sunXRotation.x, sunYRotation.x, 0);
+            }
         }
 
         private void Update()
@@ -67,21 +72,19 @@ namespace VRolijk.Lighting
             {
                 SetSunRotation();
 
-                if(hours >= sunRiseTime.x && hours <= sunSetTime.x && !isDay)
+                if (hours >= sunRiseTime.x && hours <= sunSetTime.x && !isDay)
                 {
-                    RenderSettings.sun = sun;
                     isDay = true;
-                } 
-                else if (hours < sunRiseTime.x && hours > sunSetTime.x && isDay)
+                    RenderSettings.sun = sun;
+                }
+                else if (hours < sunRiseTime.x || hours > sunSetTime.x && isDay)
                 {
-                    RenderSettings.sun = moon;
                     isDay = false;
+                    RenderSettings.sun = moon;
                 }
 
                 moon.gameObject.SetActive(!isDay);
                 sun.gameObject.SetActive(isDay);
-
-                Debug.Log($"<b>[DayNight]</b> Time: [{hours}:{minutes}] IsDay: {isDay} ");
             }
         }
 
@@ -124,7 +127,6 @@ namespace VRolijk.Lighting
 
             // The percentage of time elapsed during day time
             elapsedDayTime = dayDuration - ((sunSetTime.x + (sunSetTime.y / 60f)) - currentTime);
-            //elapsedDayTime = (currentTime - (sunRiseTime.x + (sunRiseTime.y / 60f)));
         }
 
         /// <summary>
@@ -141,22 +143,32 @@ namespace VRolijk.Lighting
 
         public void SetSunRotation()
         {
-            Vector3 rotation = new Vector3(sunXRotation.x + elapsedDayTime / dayDuration * (sunXRotation.y - sunXRotation.x),
-                                               sunYRotation.x + elapsedDayTime / dayDuration * (sunYRotation.y - sunYRotation.x),
-                                               0);
-           
+            Vector3 rotation = new Vector3(
+                sunXRotation.x + elapsedDayTime / dayDuration * (sunXRotation.y - sunXRotation.x),
+                sunYRotation.x + elapsedDayTime / dayDuration * (sunYRotation.y - sunYRotation.x),
+                0);
+
             if (rotation.x > 180)
             {
-                rotation.x = -180 + rotation.x - 180;
+                rotation.x = rotation.x - 360;
             }
-            if(rotation.y > 180)
+            if (rotation.y > 180)
             {
-                rotation.y = -180 + rotation.y - 180;
+                rotation.y = rotation.y - 360;
             }
 
-            //sun.transform.rotation.ler
-            sun.transform.DORotate(new Vector3(rotation.x, rotation.y, 0), updateInterval/100);
-            moon.transform.DORotate(new Vector3(rotation.x + 180, rotation.y + 180, 0), updateInterval/100);
+            if (pivot == null)
+            {
+                sun.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0);
+                //sun.transform.DORotate(new Vector3(rotation.x, rotation.y, 0), updateInterval / 100);
+                moon.transform.rotation = Quaternion.Euler(rotation.x + 180, rotation.y +180, 0);
+                //moon.transform.DORotate(new Vector3(rotation.x + 180, rotation.y + 180, 0), updateInterval / 100);
+            }
+            else
+            {
+                pivot.transform.DORotate(new Vector3(rotation.x, rotation.y, 0), updateInterval / 100);
+            }
+
             //moon.transform.rotation = Quaternion.Euler(rotation.x + 180, rotation.y + 180, 0);
         }
 
