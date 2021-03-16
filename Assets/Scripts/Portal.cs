@@ -89,8 +89,6 @@ namespace VRolijk.Portals
             for (int i = startIndex; i < recursionLimit; i++)
             {
                 portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
-                
-                portalCam.Render();
 
                 if (i == startIndex)
                 {
