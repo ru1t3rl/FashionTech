@@ -81,7 +81,7 @@ namespace VRolijk.Lighting
                 moon.gameObject.SetActive(!isDay);
                 sun.gameObject.SetActive(isDay);
 
-                Debug.Log($"<b>[DayNight]</b> IsDay: {isDay} ");
+                Debug.Log($"<b>[DayNight]</b> Time: [{hours}:{minutes}] IsDay: {isDay} ");
             }
         }
 
