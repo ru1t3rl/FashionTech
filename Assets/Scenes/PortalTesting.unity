@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 964631971}
-  m_IndirectSpecularColor: {r: 772.8684, g: 532.3789, b: 514.0947, a: 1}
+  m_IndirectSpecularColor: {r: 557.5509, g: 371.8662, b: 315.104, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -918,16 +918,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cba178a47797b44b94fcac454d26817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSystemTime: 1
+  useSystemTime: 0
   updateInterval: 1000
-  timeIncrement: 2000
-  hours: 14
-  minutes: 57
+  timeIncrement: 0
+  hours: 0
+  minutes: 0
   sun: {fileID: 964631971}
   moon: {fileID: 1623181102}
   pivot: {fileID: 0}
-  sunRiseTime: {x: 7, y: 6}
-  sunSetTime: {x: 18, y: 36}
+  sunRiseTime: {x: 0, y: 0}
+  sunSetTime: {x: 12, y: 0}
   sunYRotation: {x: 90, y: 270}
   sunXRotation: {x: 0, y: 180}
 --- !u!4 &259520096
@@ -1356,7 +1356,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575220685}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1896,7 +1896,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964631970}
-  m_LocalRotation: {x: -0.4318179, y: -0.43181777, z: 0.7520582, w: -0.24794173}
+  m_LocalRotation: {x: -0.33101285, y: -0.33101285, z: 0.8747406, w: -0.12525943}
   m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3035,7 +3035,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623181101}
-  m_LocalRotation: {x: 0.43181768, y: 0.4318179, z: 0.24794167, w: -0.7520584}
+  m_LocalRotation: {x: 0.33101282, y: 0.33101282, z: 0.1252594, w: -0.8747406}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

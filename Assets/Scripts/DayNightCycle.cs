@@ -8,7 +8,6 @@ using UnityEngine.Windows.Speech;
 
 namespace VRolijk.Lighting
 {
-    [ExecuteAlways]
     public class DayNightCycle : MonoBehaviour
     {
         [SerializeField] bool useSystemTime;
@@ -70,21 +69,25 @@ namespace VRolijk.Lighting
         {
             if (moveLights)
             {
-                SetSunRotation();
-
-                if (hours >= sunRiseTime.x && hours <= sunSetTime.x && !isDay)
+                if (minutes >= sunRiseTime.y && minutes <= sunSetTime.y && !isDay)                    
                 {
-                    isDay = true;
-                    RenderSettings.sun = sun;
+                    if (hours >= sunRiseTime.x && hours <= sunSetTime.x)
+                    {
+                        isDay = true;
+                    }
                 }
-                else if (hours < sunRiseTime.x || hours > sunSetTime.x && isDay)
+                else if (minutes < sunRiseTime.y || minutes > sunSetTime.y && isDay)
                 {
-                    isDay = false;
-                    RenderSettings.sun = moon;
+                    if (hours < sunRiseTime.x || hours > sunSetTime.x)
+                    {
+                        isDay = false;
+                    }
                 }
 
                 moon.gameObject.SetActive(!isDay);
                 sun.gameObject.SetActive(isDay);
+
+                SetSunRotation();
             }
         }
 
@@ -148,20 +151,11 @@ namespace VRolijk.Lighting
                 sunYRotation.x + elapsedDayTime / dayDuration * (sunYRotation.y - sunYRotation.x),
                 0);
 
-            if (rotation.x > 180)
-            {
-                rotation.x = rotation.x - 360;
-            }
-            if (rotation.y > 180)
-            {
-                rotation.y = rotation.y - 360;
-            }
-
             if (pivot == null)
             {
                 sun.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0);
                 //sun.transform.DORotate(new Vector3(rotation.x, rotation.y, 0), updateInterval / 100);
-                moon.transform.rotation = Quaternion.Euler(rotation.x + 180, rotation.y +180, 0);
+                moon.transform.rotation = Quaternion.Euler(rotation.x + 180, rotation.y + 180, 0);
                 //moon.transform.DORotate(new Vector3(rotation.x + 180, rotation.y + 180, 0), updateInterval / 100);
             }
             else
