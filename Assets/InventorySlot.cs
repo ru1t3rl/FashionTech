@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour
     public Material fullMaterial;
 
     public GameObject container;
+    public Vector3 scale;
 
     private GameObject storedObject = null;
     private FixedJoint joint = null;
@@ -18,6 +19,7 @@ public class InventorySlot : MonoBehaviour
     void Start()
     {
         SetContainerEmpty();
+        scale = transform.localScale;
     }
 
     void Awake()
@@ -63,6 +65,22 @@ public class InventorySlot : MonoBehaviour
     public bool GetAvailability()
     {
         return isAvailable;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (storedObject)
+        {
+            //storedObject.GetComponent<Storeable>().EnableCollisions(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (storedObject)
+        {
+            //storedObject.GetComponent<Storeable>().EnableCollisions(false);
+        }
     }
 
 
