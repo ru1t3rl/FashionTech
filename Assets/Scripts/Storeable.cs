@@ -22,8 +22,7 @@ public class Storeable : MonoBehaviour
 
     public void Store()
     {
-        print("storing storeable");
-
+        EnableCollisions(false);
         if (container && container.GetAvailability())
         {
             isAvailable = false;
@@ -34,10 +33,9 @@ public class Storeable : MonoBehaviour
 
     public void PickUp()
     {
-        print("picking storeable");
-
         if (container)
         {
+            EnableCollisions(true);
             container.Detatch();
             this.transform.localScale = defaultScale;
             isAvailable = true;
@@ -56,9 +54,6 @@ public class Storeable : MonoBehaviour
 
     public void EnableCollisions(bool enable)
     {
-        
             objectCollider.enabled = enable;
-        
-
     }
 }

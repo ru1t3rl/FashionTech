@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Material emptyMaterial;
-    public Material fullMaterial;
+    [SerializeField]
+    private Material emptyMaterial;
+    [SerializeField]
+    private Material fullMaterial;
 
     public GameObject container;
     public Vector3 scale;
@@ -69,18 +72,26 @@ public class InventorySlot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (storedObject)
+        if (storedObject && IsHand(other))
         {
-            //storedObject.GetComponent<Storeable>().EnableCollisions(true);
+            storedObject.GetComponent<Storeable>().EnableCollisions(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (storedObject)
+        if (storedObject && IsHand(other))
         {
-            //storedObject.GetComponent<Storeable>().EnableCollisions(false);
+            storedObject.GetComponent<Storeable>().EnableCollisions(false);
         }
+    }
+
+    public bool IsHand(Collider other)
+    {
+        if (other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.GetComponent<HandCollider>())
+            return true;
+        else
+            return false;
     }
 
 
