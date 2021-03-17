@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.PostProcessing;
+using UnityEngine.Rendering.HighDefinition;
+
 
 
 public class temperatureChanger : MonoBehaviour
@@ -14,6 +15,7 @@ public class temperatureChanger : MonoBehaviour
     public float minTemperature = -100;
 
     private Volume temperatureManager;
+    private WhiteBalance _whiteBalance;
     private GameObject head;
     private GameObject leftHand;
     private GameObject rightHand;
@@ -22,28 +24,29 @@ public class temperatureChanger : MonoBehaviour
     void Awake()
     {
         temperatureManager = GameObject.Find("TemperatureManager").GetComponent<Volume>();
-        head = GameObject.Find("A");
-        leftHand = GameObject.Find("B");
-        rightHand = GameObject.Find("C");
+        temperatureManager.profile.TryGet(out _whiteBalance);
+        print(_whiteBalance);
+        SetTemperature(temperature);
+        head = GameObject.Find("VRCamera");
+        leftHand = GameObject.Find("LeftHand");
+        rightHand = GameObject.Find("RightHand");
     }
 
     // Update is called once per frame
     void Update()
     {
         float distance = (float)System.Math.Round(CheckNearestDistance(),2);
-        print(Remap(distance,0.1f,1f,-100f,100f)); //5
         if (distance < maxRadius)
         {
-            temperature =  Remap(distance, minRadius, maxRadius, minTemperature, maxTemperature);
-        } else
-        {
-            temperature = maxTemperature;
+            SetTemperature(Remap(distance, minRadius, maxRadius, minTemperature, maxTemperature));
         }
+        
     }
 
     public void SetTemperature(float value)
     {
-        temperatureManager.profile.
+        temperature = value;
+        _whiteBalance.temperature.value = temperature;
     }
 
     public static float Remap(float value, float from1, float to1, float from2, float to2)
