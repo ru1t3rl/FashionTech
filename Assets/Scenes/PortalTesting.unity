@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 964631971}
-  m_IndirectSpecularColor: {r: 557.5509, g: 371.8662, b: 315.104, a: 1}
+  m_IndirectSpecularColor: {r: 1080.7314, g: 989.14233, b: 1095.7937, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -921,7 +921,7 @@ MonoBehaviour:
   useSystemTime: 0
   updateInterval: 1000
   timeIncrement: 0
-  hours: 0
+  hours: 4
   minutes: 0
   sun: {fileID: 964631971}
   moon: {fileID: 1623181102}
@@ -2965,7 +2965,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1623181102
 Light:
   m_ObjectHideFlags: 0
@@ -2977,14 +2977,14 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.5653702, g: 0.7354486, b: 0.990566, a: 1}
+  m_Color: {r: 0.7971698, g: 0.87904626, b: 1, a: 1}
   m_Intensity: 2000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

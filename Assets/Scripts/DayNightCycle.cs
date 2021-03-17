@@ -61,6 +61,11 @@ namespace VRolijk.Lighting
             }
             else
             {
+                sun.gameObject.transform.rotation = Quaternion.Euler(sunXRotation.x, sunYRotation.x, 0);
+
+                moon.gameObject.transform.rotation = sun.gameObject.transform.rotation;
+                moon.transform.Rotate(180, 180, 0);
+
                 pivot.transform.rotation = Quaternion.Euler(sunXRotation.x, sunYRotation.x, 0);
             }
         }
@@ -69,23 +74,36 @@ namespace VRolijk.Lighting
         {
             if (moveLights)
             {
-                if (minutes >= sunRiseTime.y && minutes <= sunSetTime.y && !isDay)                    
+                if (hours >= sunRiseTime.x && hours <= sunSetTime.x && !isDay)                    
                 {
-                    if (hours >= sunRiseTime.x && hours <= sunSetTime.x)
+                   // if (minutes >= sunRiseTime.y && minutes <= sunSetTime.y)
                     {
                         isDay = true;
+                        RenderSettings.sun = sun;
                     }
                 }
-                else if (minutes < sunRiseTime.y || minutes > sunSetTime.y && isDay)
+                else if (hours < sunRiseTime.x || hours > sunSetTime.x && isDay)
                 {
-                    if (hours < sunRiseTime.x || hours > sunSetTime.x)
+                   // if (minutes < sunRiseTime.y || minutes > sunSetTime.y)
                     {
                         isDay = false;
+                        RenderSettings.sun = moon;
                     }
                 }
 
-                moon.gameObject.SetActive(!isDay);
-                sun.gameObject.SetActive(isDay);
+                if ((hours == sunRiseTime.x || hours == sunRiseTime.x - 1 || hours == sunRiseTime.x + 1) ||
+                   (hours == sunSetTime.x || hours == sunSetTime.x - 1 || hours == sunSetTime.x + 1))
+                {
+                    moon.gameObject.SetActive(true);
+                    moon.SetLightDirty();
+                    sun.gameObject.SetActive(true);
+                    sun.SetLightDirty();
+                }
+                else
+                {
+                    moon.gameObject.SetActive(!isDay);
+                    sun.gameObject.SetActive(isDay);
+                }
 
                 SetSunRotation();
             }
@@ -108,7 +126,7 @@ namespace VRolijk.Lighting
                 seconds %= 60;
                 minutes %= 60;
 
-                if (hours >= 25)
+                if (hours >= 24)
                 {
                     hours %= 24;
                 }
