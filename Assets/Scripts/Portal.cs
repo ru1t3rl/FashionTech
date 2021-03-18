@@ -75,7 +75,7 @@ namespace VRolijk.Portals
                 int renderOrderIndex = recursionLimit - i - 1;
                 //renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
                 renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y/cameraOffset, portalCam.transform.position.z);
-                renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
+                renderRotations[renderOrderIndex] = portalCam.transform.rotation;
 
                 portalCam.transform.SetPositionAndRotation(renderPositions[renderOrderIndex], renderRotations[renderOrderIndex]);
                 //portalCam.transform.position = new Vector3(0, portalCam.transform.localPosition.y, 0);
