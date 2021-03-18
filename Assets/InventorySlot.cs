@@ -86,12 +86,17 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
+    //all collision is based on the fingers or other objects within the hand, wich allways have a handcolider grandparent
     public bool IsHand(Collider other)
     {
         if (other.transform.parent && other.transform.parent.parent && other.transform.parent.parent.GetComponent<HandCollider>())
+        {
             return true;
+        }
         else
+        {
             return false;
+        }
     }
 
 
