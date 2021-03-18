@@ -21,12 +21,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Portal
-  m_Shader: {fileID: -6465566751694194690, guid: d4e82bef2915aac4da8b782b126079a2, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2d66f693b3995ec49b230ec28df24e35, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2225
+  m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -135,7 +135,7 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _RefractionPower: 0.02
+    - _RefractionPower: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
     - _Smoothness: 0
