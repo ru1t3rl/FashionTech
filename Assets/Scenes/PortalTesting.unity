@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cba178a47797b44b94fcac454d26817, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSystemTime: 0
+  useSystemTime: 1
   updateInterval: 1000
   timeIncrement: 0
   hours: 4
@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 7405491645013211660, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: screen
+      value: 
+      objectReference: {fileID: 993437394}
     - target: {fileID: 7405491645013211660, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: linkedPortal
       value: 
@@ -2155,6 +2159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4720f1444002304cb62810866390ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &993437394 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7405491644853842479, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+  m_PrefabInstance: {fileID: 385296726}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &997976647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,6 +2640,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
+--- !u!23 &1418611041 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7405491644853842479, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+  m_PrefabInstance: {fileID: 7405491644231448465}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1446359253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1623181102
 Light:
   m_ObjectHideFlags: 0
@@ -3564,6 +3578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal
       objectReference: {fileID: 0}
+    - target: {fileID: 7405491645013211660, guid: 5424b6586f05158429626d5490c53be9, type: 3}
+      propertyPath: screen
+      value: 
+      objectReference: {fileID: 1418611041}
     - target: {fileID: 7405491645013211660, guid: 5424b6586f05158429626d5490c53be9, type: 3}
       propertyPath: linkedPortal
       value: 
