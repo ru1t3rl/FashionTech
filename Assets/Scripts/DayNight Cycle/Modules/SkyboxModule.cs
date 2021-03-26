@@ -6,12 +6,12 @@ namespace VRolijk.DayNight.Module
 {
     public class SkyboxModule : DNModuleBase
     {
-        [SerializeField] Gradient skyColor, horizonColor;
+        [SerializeField] Gradient skyColor, groundColor;
 
         public override void UpdateModule(float intensity)
         {
             RenderSettings.skybox.SetColor("_SkyTint", skyColor.Evaluate(intensity));
-            RenderSettings.skybox.SetColor("_GroundColor", horizonColor.Evaluate(intensity));
+            RenderSettings.skybox.SetColor("_GroundColor", groundColor.Evaluate(intensity));
         }
     }
 }

@@ -29,8 +29,6 @@ namespace VRolijk.DayNight
         [Header("Sun Light")]
         [SerializeField] Transform dailyRotation;
         [SerializeField] Light sun;
-        [SerializeField] Gradient sunColor;
-        [SerializeField] float baseIntensity = .75f, intensityVariation = 1;
         float intensity;
 
         [Header("Seasonal")]
@@ -50,7 +48,6 @@ namespace VRolijk.DayNight
 
             AdjustSunRotation();
             UpdateIntensity();
-            AdjustColor();
 
             UpdateModules();
         }
@@ -91,13 +88,6 @@ namespace VRolijk.DayNight
         {
             intensity = Vector3.Dot(sun.transform.forward, Vector3.down);
             intensity = Mathf.Clamp01(intensity);
-
-            sun.intensity = intensity * intensityVariation + baseIntensity;
-        }
-
-        void AdjustColor()
-        {
-            sun.color = sunColor.Evaluate(intensity);
         }
 
         public void AddModule(DNModuleBase module)

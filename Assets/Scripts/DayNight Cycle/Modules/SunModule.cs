@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace VRolijk.DayNight.Module
 {
-    public class MoonModule : DNModuleBase
+    public class SunModule : DNModuleBase
     {
-        [SerializeField] Light moon;
-        [SerializeField] Gradient moonColor;
+        [SerializeField] Light sun;
+        [SerializeField] Gradient sunColor;
         [SerializeField] float baseIntensity, intensityVariation;
         [SerializeField] float minActiveIntensity;
         [SerializeField, Range(0f, 5f)] float atmosphereThickness;
@@ -16,22 +16,21 @@ namespace VRolijk.DayNight.Module
 
         public override void UpdateModule(float intensity)
         {
-            moon.color = moonColor.Evaluate(1 - intensity);
-            moon.intensity = baseIntensity + intensity * intensityVariation;
+            sun.color = sunColor.Evaluate(1 - intensity);
+            sun.intensity = baseIntensity + intensity * intensityVariation;
 
-            if (1 - intensity >= minActiveIntensity)
+            if (intensity >= minActiveIntensity)
             {
-                moon.gameObject.SetActive(true);
+                sun.gameObject.SetActive(true);
+                RenderSettings.sun = sun;
 
                 RenderSettings.skybox.SetFloat("_AtmosphereThickness", atmosphereThickness);
                 RenderSettings.skybox.SetFloat("_SunSize", diskSize);
                 RenderSettings.skybox.SetFloat("_SunSizeConvergence", convergence);
-
-                RenderSettings.sun = moon;
             }
-            else if (moon.gameObject.activeSelf)
+            else if (sun.gameObject.activeSelf)
             {
-                moon.gameObject.SetActive(false);
+                sun.gameObject.SetActive(false);
             }
         }
     }
