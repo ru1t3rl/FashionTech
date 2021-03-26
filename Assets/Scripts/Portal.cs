@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 
 namespace VRolijk.Portals
@@ -9,16 +9,15 @@ namespace VRolijk.Portals
     public class Portal : MonoBehaviour
     {
         [Header("Main Settings")]
+        [SerializeField] MeshRenderer screen;
         public Portal linkedPortal;
         [SerializeField] RenderTexture targetRenderTexture;
         [SerializeField] bool useCustomViewTextureSize = true;
         [SerializeField] Vector2Int viewTextureSize = new Vector2Int(512, 512);
 
-        [SerializeField] MeshRenderer screen;
-
         [Header("Traveller Settings")]
-        [SerializeField] float teleportOffset = 1f;
-        public float TeleportOffset => teleportOffset;
+        [SerializeField] float _teleportOffset = 1f;
+        public float TeleportOffset => _teleportOffset;
         [SerializeField] int recursionLimit = 1;
 
         [SerializeField] LayerMask travellerLayer;
@@ -68,14 +67,15 @@ namespace VRolijk.Portals
                 // Calculate position and orientation
                 localToWorldMatrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * localToWorldMatrix;
                 int renderOrderIndex = recursionLimit - i - 1;
-                //renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
-                renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y / cameraOffset, portalCam.transform.position.z);
+                renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
+                //renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y / cameraOffset, portalCam.transform.position.z);
                 renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
 
                 portalCam.transform.SetPositionAndRotation(renderPositions[renderOrderIndex], renderRotations[renderOrderIndex]);
                 //portalCam.transform.position = new Vector3(0, portalCam.transform.localPosition.y, 0);
                 startIndex = renderOrderIndex;
             }
+
 
             // Hide screen so that camera can see through portal
             screen.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
@@ -84,6 +84,7 @@ namespace VRolijk.Portals
             for (int i = startIndex; i < recursionLimit; i++)
             {
                 portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
+                UniversalRenderPipeline.RenderSingleCamera(context, portalCam);
 
                 if (i == startIndex)
                 {
