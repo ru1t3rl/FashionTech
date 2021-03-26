@@ -10,9 +10,13 @@ namespace VRolijk.Portals
     {
         [Header("Main Settings")]
         public Portal linkedPortal;
-        
+        [SerializeField] RenderTexture targetRenderTexture;
+        [SerializeField] bool useCustomViewTextureSize = true;
+        [SerializeField] Vector2Int viewTextureSize = new Vector2Int(512, 512);
+
         [SerializeField] MeshRenderer screen;
 
+        [Header("Traveller Settings")]
         [SerializeField] float teleportOffset = 1f;
         public float TeleportOffset => teleportOffset;
         [SerializeField] int recursionLimit = 1;
@@ -20,14 +24,10 @@ namespace VRolijk.Portals
         [SerializeField] LayerMask travellerLayer;
         [SerializeField] float cameraOffset = 1.5f;
 
-        [SerializeField] RenderTexture targetRenderTexture;
-        [SerializeField] bool useCustomViewTextureSize = true;
-        [SerializeField] Vector2Int viewTextureSize = new Vector2Int(512, 512);
 
         Camera playerCam, portalCam;
-        RenderTexture viewTexture;
-        MaterialPropertyBlock screenMpb;
-        public MaterialPropertyBlock ScreenMpb => screenMpb;
+        MaterialPropertyBlock _screenMpb;
+        public MaterialPropertyBlock screenMpb => _screenMpb;
         MeshFilter screenMeshFilter;
 
         private void Awake()
@@ -35,13 +35,13 @@ namespace VRolijk.Portals
             playerCam = Camera.main;
             portalCam = GetComponentInChildren<Camera>();
 
-            screenMpb = new MaterialPropertyBlock();
+            _screenMpb = new MaterialPropertyBlock();
             screenMeshFilter = screen.GetComponent<MeshFilter>();
         }
 
         // Called just before player camera is rendered
         public void Render(ScriptableRenderContext context, Camera cam)
-        {      
+        {
             if (!CameraUtility.VisibleFromCamera(linkedPortal.screen, playerCam))
             {
                 return;
@@ -69,7 +69,7 @@ namespace VRolijk.Portals
                 localToWorldMatrix = transform.localToWorldMatrix * linkedPortal.transform.worldToLocalMatrix * localToWorldMatrix;
                 int renderOrderIndex = recursionLimit - i - 1;
                 //renderPositions[renderOrderIndex] = localToWorldMatrix.GetPosition();
-                renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y/cameraOffset, portalCam.transform.position.z);
+                renderPositions[renderOrderIndex] = new Vector3(portalCam.transform.position.x, playerCam.transform.position.y / cameraOffset, portalCam.transform.position.z);
                 renderRotations[renderOrderIndex] = localToWorldMatrix.rotation;
 
                 portalCam.transform.SetPositionAndRotation(renderPositions[renderOrderIndex], renderRotations[renderOrderIndex]);
@@ -83,7 +83,7 @@ namespace VRolijk.Portals
 
             for (int i = startIndex; i < recursionLimit; i++)
             {
-                portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);                   
+                portalCam.transform.SetPositionAndRotation(renderPositions[i], renderRotations[i]);
 
                 if (i == startIndex)
                 {
@@ -97,23 +97,27 @@ namespace VRolijk.Portals
 
         void CreateViewTexture()
         {
-            if (targetRenderTexture == null || 
+            if (targetRenderTexture == null ||
                 (!useCustomViewTextureSize && (targetRenderTexture.width != Screen.width || targetRenderTexture.height != Screen.height)) ||
                 (useCustomViewTextureSize && (targetRenderTexture.width != viewTextureSize.x || targetRenderTexture.height != viewTextureSize.y)))
             {
-                
+
                 if (targetRenderTexture != null)
                 {
                     targetRenderTexture.Release();
                 }
 
-                if(!useCustomViewTextureSize)
+                if (!useCustomViewTextureSize)
+                {
                     targetRenderTexture = new RenderTexture(Screen.width, Screen.height, 32);
+                }
                 else
+                {
                     targetRenderTexture = new RenderTexture(viewTextureSize.x, viewTextureSize.y, 32);
+                }
 
-                targetRenderTexture.graphicsFormat = GraphicsFormat.R10G10B10_XRSRGBPack32;
-                targetRenderTexture.Create();                
+                targetRenderTexture.name = gameObject.name;
+                targetRenderTexture.Create();
             }
 
             //Render the view from the portal camera to the view texture
@@ -145,16 +149,16 @@ namespace VRolijk.Portals
 
         public void SetTexture(string name, Texture texture)
         {
-            screen.GetPropertyBlock(ScreenMpb);
-            ScreenMpb.SetTexture(name, texture);
-            screen.SetPropertyBlock(ScreenMpb);
+            screen.GetPropertyBlock(screenMpb);
+            screenMpb.SetTexture(name, texture);
+            screen.SetPropertyBlock(screenMpb);
         }
 
         public void SetInt(string name, int value)
         {
-            screen.GetPropertyBlock(ScreenMpb);
-            ScreenMpb.SetInt(name, value);
-            screen.SetPropertyBlock(ScreenMpb);
+            screen.GetPropertyBlock(screenMpb);
+            screenMpb.SetInt(name, value);
+            screen.SetPropertyBlock(screenMpb);
         }
     }
 }
