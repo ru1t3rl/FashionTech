@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class Storeable : MonoBehaviour
 {
@@ -31,6 +32,21 @@ public class Storeable : MonoBehaviour
         }
     }
 
+    public void LockInPlace()
+    {
+        if (container && container.GetAvailability())
+        {
+            isAvailable = false;
+            container.Attatch(this.gameObject);
+
+            transform.Translate(0, 5, 0);
+
+            Destroy(GetComponent<Throwable>());
+            Destroy(GetComponent<Interactable>());
+        }
+        
+    }
+
     public void PickUp()
     {
         if (container)
@@ -40,7 +56,6 @@ public class Storeable : MonoBehaviour
             this.transform.localScale = defaultScale;
             isAvailable = true;
             container = null;
-
         }
     }
 
