@@ -12,6 +12,7 @@ public class InventorySlot : MonoBehaviour
 
     public GameObject container;
     public Vector3 scale;
+    public float upPositionOffset = 0.1f;
 
     private GameObject storedObject = null;
     private FixedJoint joint = null;
@@ -40,6 +41,18 @@ public class InventorySlot : MonoBehaviour
 
         Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
         joint.connectedBody = targetBody;
+        SetContainerFull();
+    }
+
+    public void AttachOnTop(GameObject newObject)
+    {
+        if (storedObject) { return; }
+        storedObject = newObject;
+
+        storedObject.transform.position = transform.position + Vector3.up * upPositionOffset;
+        storedObject.transform.rotation = Quaternion.identity;
+
+        Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
         SetContainerFull();
     }
 
