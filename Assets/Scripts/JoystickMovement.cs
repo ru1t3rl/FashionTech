@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
@@ -32,26 +33,24 @@ namespace VRolijk.Movement
             cController = GetComponent<CharacterController>();
         }
 
-        void Update()
+        void FixedUpdate()
         {
             // Calculate the acceleration based on the direction the player is looking in and the joystick axes
-            Vector3 vel = Player.instance.hmdTransform.forward * touchpadInput.axis.y * horsePower+
+            Vector3 vel = Player.instance.hmdTransform.forward * touchpadInput.axis.y * horsePower +
                           Player.instance.hmdTransform.right * touchpadInput.axis.x * horsePower;
             velocity.x += vel.x;
             velocity.z += vel.z;
-        }
 
-        void FixedUpdate()
-        {
             if (useGravity)
             {
+                Debug.DrawRay(bottomOfPlayerBody.position, Vector3.down * maxRayLength, Color.red);
                 if (Physics.Raycast(bottomOfPlayerBody.position, Vector3.down, maxRayLength))
                 {
 
                 }
                 else
                 {
-                    velocity.y -= gravity / mass;
+                    velocity.y += gravity / mass;
 
                     if (velocity.y > maxYSpeed)
                     {
@@ -64,12 +63,8 @@ namespace VRolijk.Movement
             velocity /= drag;
             Truncate(ref velocity, maxSpeed, false);
 
-            cController.Move(Vector3.ProjectOnPlane(Time.fixedDeltaTime * velocity, Vector3.up));
-
-            for(int iHand = 0; iHand < Player.instance.handCount; iHand++)
-            {
-                Player.instance.hands[iHand].transform.position += Vector3.ProjectOnPlane(Time.fixedDeltaTime * velocity, Vector3.up)*2;
-            }
+            cController.Move(Time.fixedDeltaTime * velocity);
+           
 
             // Set the colliders height to Player camera's height
             cController.height = Player.instance.eyeHeight;
