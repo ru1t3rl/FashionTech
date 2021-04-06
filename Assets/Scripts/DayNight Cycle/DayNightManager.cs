@@ -36,7 +36,7 @@ namespace VRolijk.DayNight
         [SerializeField, Range(-45f, 45f)] float maxSeasonalTilt;
 
         [Header("Modules")]
-        List<DNModuleBase> modules = new List<DNModuleBase>();
+        List<DayNightModuleBase> modules = new List<DayNightModuleBase>();
 
         void Update()
         {
@@ -90,12 +90,12 @@ namespace VRolijk.DayNight
             intensity = Mathf.Clamp01(intensity);
         }
 
-        public void AddModule(DNModuleBase module)
+        public void AddModule(DayNightModuleBase module)
         {
             modules.Add(module);
         }
 
-        public void RemoveModule(DNModuleBase module)
+        public void RemoveModule(DayNightModuleBase module)
         {
             modules.Remove(module);
         }

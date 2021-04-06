@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VRolijk.DayNight
 {
-    public abstract class DNModuleBase : MonoBehaviour
+    public abstract class DayNightModuleBase : MonoBehaviour
     {
         protected DayNightManager manager;
 

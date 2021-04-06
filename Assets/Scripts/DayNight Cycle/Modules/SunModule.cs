@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VRolijk.DayNight.Module
 {
-    public class SunModule : DNModuleBase
+    public class SunModule : DayNightModuleBase
     {
         [SerializeField] Light sun;
         [SerializeField] Gradient sunColor;

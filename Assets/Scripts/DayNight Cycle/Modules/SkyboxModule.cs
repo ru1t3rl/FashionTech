@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VRolijk.DayNight.Module
 {
-    public class SkyboxModule : DNModuleBase
+    public class SkyboxModule : DayNightModuleBase
     {
         [SerializeField] Gradient skyColor, groundColor;
 
