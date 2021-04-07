@@ -39,16 +39,17 @@ public class Storeable : MonoBehaviour
             isAvailable = false;
             container.AttachOnTop(this.gameObject);
 
-           
-
             Destroy(transform.GetComponent<Throwable>());
             Destroy(transform.GetComponent<Interactable>());
             Destroy(transform.GetComponent<Rigidbody>());
-
-            Debug.Log(transform);
-
         }
-        
+
+        var plantComponent = GetComponent<Plant>();
+
+        if (container.CompareTag("PlantSlot") && transform.CompareTag("Plant") && plantComponent != null)
+        {
+            plantComponent.StartGrowing();
+        }
     }
 
     public void PickUp()
@@ -65,7 +66,12 @@ public class Storeable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "InventorySlot" && isAvailable)
+        if (transform.CompareTag("Storable") && other.tag == "InventorySlot" && isAvailable)
+        {
+            SetContainer(other.gameObject.GetComponent<InventorySlot>());
+        }
+
+        if (transform.CompareTag("Plant") && other.tag == "PlantSlot" && isAvailable)
         {
             SetContainer(other.gameObject.GetComponent<InventorySlot>());
         }
