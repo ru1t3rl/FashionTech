@@ -32,7 +32,6 @@ namespace Valve.VR.InteractionSystem
 
         private bool collisionsEnabled = true;
 
-
         private void Start()
         {
             hand = GetComponent<Hand>();
@@ -62,7 +61,7 @@ namespace Valve.VR.InteractionSystem
         const int wristBone = SteamVR_Skeleton_JointIndexes.wrist;
         const int rootBone = SteamVR_Skeleton_JointIndexes.root;
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (hand.skeleton == null) return;
             initialized = true;
