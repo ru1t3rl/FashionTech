@@ -46,9 +46,11 @@ public class Storeable : MonoBehaviour
 
         var plantComponent = GetComponent<Plant>();
 
-        if (container.CompareTag("PlantSlot") && transform.CompareTag("Plant") && plantComponent != null)
+        if (container.CompareTag("PlantSlot") && 
+            transform.CompareTag("Plant") && 
+            plantComponent != null)
         {
-            plantComponent.StartGrowing();
+            plantComponent.PlacedPlant();
         }
     }
 
