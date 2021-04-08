@@ -320,7 +320,7 @@ MonoBehaviour:
   useGravity: 1
   gravity: -9.81
   drag: 1.2
-  maxRayLength: 0.2
+  maxRayLength: 0.1
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 12440092}
   - component: {fileID: 1428529163}
   - component: {fileID: 4929939476305475176}
+  - component: {fileID: 946127284}
   m_Layer: 6
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -720,6 +721,20 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
 --- !u!114 &4929939476305475176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aec6731235e4d840ba9e7140e7368f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeTillEvent: 10
+  stareBounds: 10
+--- !u!114 &946127284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
