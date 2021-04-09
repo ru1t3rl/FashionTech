@@ -48,7 +48,7 @@ public class StareReactor : MonoBehaviour
 
     void ScaleUpAndDown()
     {
-        Vector3 newScale = new Vector3(transform.localScale.x, transform.localScale.y + 1.2f * Mathf.Sin(Time.time * 0.5f), transform.localScale.z);
+        Vector3 newScale = new Vector3(transform.localScale.x, transform.localScale.y - .2f * Mathf.Sin(Time.time * 0.5f), transform.localScale.z);
         transform.localScale = newScale;
     }
 
