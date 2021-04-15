@@ -37,7 +37,7 @@ public class Storeable : MonoBehaviour
         if (container && container.GetAvailability())
         {
             isAvailable = false;
-            container.AttachOnTop(this.gameObject);
+            container.AttachOnOffset(this.gameObject);
 
             Destroy(transform.GetComponent<Throwable>());
             Destroy(transform.GetComponent<Interactable>());

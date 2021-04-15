@@ -23,6 +23,7 @@ public class Plant : MonoBehaviour
     public void PlacedPlant()
     {
         placed = true;
+        StartGrowing();
     }
 
     private void StartGrowing()
