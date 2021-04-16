@@ -15,8 +15,7 @@ public class WeatherTester : MonoBehaviour
     bool printed = false;
 
     private async void Awake()
-    {
-        //weather = WeatherAPI.GetCurrentWeather("c7ac86f3c41189c78302f6e0a4f27c7c");
+    {        
         IpInfo info = new IpInfo();
         info.SyncWithExternalIp();
 

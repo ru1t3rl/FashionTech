@@ -35,6 +35,7 @@ namespace VRolijk.Weather.Localization
         [JsonProperty("postal")]
         public string Postal { get; set; }
 
+        #region SyncWithIp
         private HttpWebRequest request;
         private Regex ipRegex = new Regex(@"(?:[0-9]{1,3}\.){3}[0-9]{1,3}");
 
@@ -78,5 +79,6 @@ namespace VRolijk.Weather.Localization
                 Debug.LogError($"<b>[Weather API - IpInfo]</b> {e.Message}");
             }
         }
+        #endregion
     }
 }

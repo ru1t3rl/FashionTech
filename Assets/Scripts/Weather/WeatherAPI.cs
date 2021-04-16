@@ -21,7 +21,7 @@ namespace VRolijk.Weather
         /// <summary>
         /// Request the current weather from openweathermap api
         /// </summary>
-        /// <param name="key">Openweather API key</param>        
+        /// <param name="apiKey">Openweather API key</param>        
         /// <returns>Returns the current weather of your current location; based on your IP Address</returns>
         public static CurrentWeather GetCurrentWeather(string apiKey)
         {
@@ -33,7 +33,7 @@ namespace VRolijk.Weather
         /// <summary>
         /// Request the current weather from openweathermap api
         /// </summary>
-        /// <param name="key">Openweather API key</param>
+        /// <param name="apiKey">Openweather API key</param>
         /// <param name="cityName">City Name</param>
         /// <returns>Returns the current weather of cityName</returns>
         public static CurrentWeather GetCurrentWeather(string apiKey, string cityName)
@@ -65,7 +65,7 @@ namespace VRolijk.Weather
         /// <summary>
         /// Request the current weather from openweathermap api
         /// </summary>
-        /// <param name="key">Openweather API key</param>        
+        /// <param name="apiKey">Openweather API key</param>        
         /// <returns>Returns the current weather of your current location; based on your IP Address</returns>
         public static async Task<CurrentWeather> GetCurrentWeatherAsync(string apiKey)
         {
@@ -78,7 +78,7 @@ namespace VRolijk.Weather
         /// <summary>
         /// Request the current weather from openweathermap api
         /// </summary>
-        /// <param name="key">Openweather API key</param>
+        /// <param name="apiKey">Openweather API key</param>
         /// <param name="cityName">Zip code...</param>
         /// <returns>Returns the current weather of cityName</returns>
         public static async Task<CurrentWeather> GetCurrentWeatherAsync(string apiKey, string cityName)
