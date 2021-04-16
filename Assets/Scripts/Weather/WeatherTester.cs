@@ -14,20 +14,13 @@ public class WeatherTester : MonoBehaviour
     CurrentWeather weather;
     bool printed = false;
 
-    private void Awake()
+    private async void Awake()
     {
-        weather = WeatherAPI.GetCurrentWeather("c7ac86f3c41189c78302f6e0a4f27c7c");
-        //weather = await WeatherAPI.GetCurrentWeatherAsync("c7ac86f3c41189c78302f6e0a4f27c7c", info.Loc);
-    }
+        //weather = WeatherAPI.GetCurrentWeather("c7ac86f3c41189c78302f6e0a4f27c7c");
+        IpInfo info = new IpInfo();
+        info.SyncWithExternalIp();
 
-    void Update()
-    {
-        if (!printed && weather != null)
-        {
-            for (int iWeather = 0; iWeather < weather.weather.Length; iWeather++)
-            {
-                Debug.Log($"<b>[Weather Test]</b> {weather.weather[iWeather].main}");
-            }
-        }
+        weather = await WeatherAPI.GetCurrentWeatherAsync("c7ac86f3c41189c78302f6e0a4f27c7c", info.City);
+        Debug.Log($"<b>[Weather Test]</b> {weather.weather[0].main}: {weather.weather[0].description}");
     }
 }

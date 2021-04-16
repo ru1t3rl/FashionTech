@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using Valve.Newtonsoft.Json;
 
@@ -33,17 +35,27 @@ namespace VRolijk.Weather.Localization
         [JsonProperty("postal")]
         public string Postal { get; set; }
 
-        private WebClient client;
+        private HttpWebRequest request;
+        private Regex ipRegex = new Regex(@"(?:[0-9]{1,3}\.){3}[0-9]{1,3}");
+
         public void SyncWithExternalIp()
         {
-            client = new WebClient();
+            request = (HttpWebRequest)HttpWebRequest.Create("http://checkip.dyndns.org");
+            request.Method = "GET";
 
-            string response = client.DownloadString(new System.Uri("http://icanhazip.com"));
-
-            if (string.IsNullOrEmpty(response))
+            try
             {
-                var externalIp = IPAddress.Parse(response.Replace("\\r\\n", "").Replace("\\n", "").Trim());
+                // Get the External IP
+                using HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
 
+                string result = reader.ReadToEnd();
+
+                var externalIp = ipRegex.Matches(result)[0];
+                Debug.Log($"<b>[Weather API - IpInfo]</b>  IP: {externalIp}");
+
+                // Get the IP Information
                 string info = new WebClient().DownloadString("http://ipinfo.io/" + externalIp);
                 IpInfo locationInfo = JsonConvert.DeserializeObject<IpInfo>(info);
 
@@ -55,8 +67,16 @@ namespace VRolijk.Weather.Localization
                 Loc = locationInfo.Loc;
                 Org = locationInfo.Org;
                 Postal = locationInfo.Postal;
-            }
 
+                Debug.Log($"<b>[Weather API - IpInfo]</b>  City: {City} | Cords: {Loc}");
+
+                reader.Close();
+                dataStream.Close();
+            }
+            catch (WebException e)
+            {
+                Debug.LogError($"<b>[Weather API - IpInfo]</b> {e.Message}");
+            }
         }
     }
 }

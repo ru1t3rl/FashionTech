@@ -26,9 +26,8 @@ namespace VRolijk.Weather
         public static CurrentWeather GetCurrentWeather(string apiKey)
         {
             IpInfo ipInfo = new IpInfo();
-            ipInfo.SyncWithExternalIp();
-
-            return GetCurrentWeather(apiKey, ipInfo.Loc);
+            ipInfo.SyncWithExternalIp();            
+            return GetCurrentWeather(apiKey, ipInfo.City);
         }
 
         /// <summary>
@@ -57,7 +56,7 @@ namespace VRolijk.Weather
             }
             catch (WebException e)
             {
-                Debug.Log($"<b>[Weather API]</b> {e.Message}");
+                Debug.LogError($"<b>[Weather API]</b> {e.Message}");
             }
 
             return JsonConvert.DeserializeObject<CurrentWeather>(result);
@@ -73,7 +72,7 @@ namespace VRolijk.Weather
             IpInfo ipInfo = new IpInfo();
             ipInfo.SyncWithExternalIp();
 
-            return await GetCurrentWeatherAsync(apiKey, ipInfo.Loc);
+            return await GetCurrentWeatherAsync(apiKey, ipInfo.City);
         }
 
         /// <summary>
@@ -104,7 +103,7 @@ namespace VRolijk.Weather
             }
             catch (WebException e)
             {
-                Debug.Log($"<b>[Weather API] {e.Message}");
+                Debug.LogError($"<b>[Weather API] {e.Message}");
             }
 
             return JsonConvert.DeserializeObject<CurrentWeather>(result);
