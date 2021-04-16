@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace VRolijk.DayNight.Module
 {
     public class SkyboxModule : DayNightModuleBase
     {
-        [SerializeField] Gradient skyColor, groundColor;
+        [SerializeField] Gradient skyColor, groundColor;        
 
         public override void UpdateModule(float intensity)
         {
