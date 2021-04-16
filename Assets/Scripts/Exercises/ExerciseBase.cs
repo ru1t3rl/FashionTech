@@ -46,7 +46,7 @@ namespace VRolijk.Excercises
 
         void SelectNextInstruction()
         {
-            currentInstruction++;
+            currentInstruction += 1;
 
             if (currentInstruction < instructions.Length)
             {

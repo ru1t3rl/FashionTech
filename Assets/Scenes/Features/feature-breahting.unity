@@ -4214,7 +4214,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.908
+      value: 0.614
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4267,20 +4267,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 790560900}
-  repetitions: 2
+  repetitions: 20
   instructions:
   - name: Hands on Belly
     textInstruction: Put your hands your belly
-    audioInstruction: {fileID: 0}
-    duration: 2
-    instructionType: 0
+    audioInstruction: {fileID: 8300000, guid: e2e6af384c206014892710ef806aab3e, type: 3}
+    duration: 3
+    instructionType: 1
     onPlay:
       m_PersistentCalls:
         m_Calls: []
-  - name: Breath In
-    textInstruction: Breath In
+  - name: Breath in
+    textInstruction: Breath in through your nose
     audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
-    duration: 3
+    duration: 2
     instructionType: 2
     onPlay:
       m_PersistentCalls:
@@ -4297,10 +4297,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: Breath Out
-    textInstruction: Breath Out
+  - name: Breath out
+    textInstruction: Breath out through your mouth with pursed lips
     audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
-    duration: 3
+    duration: 1
     instructionType: 2
     onPlay:
       m_PersistentCalls:
@@ -4319,7 +4319,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: Reward
     textInstruction: Good job, you earned a reward
-    audioInstruction: {fileID: 0}
+    audioInstruction: {fileID: 8300000, guid: 24ff93bd0822342479c3e7bf8b1ea504, type: 3}
     duration: 1
     instructionType: 3
     onPlay:
