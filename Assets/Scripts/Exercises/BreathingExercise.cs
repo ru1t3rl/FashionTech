@@ -8,40 +8,51 @@ using Valve.VR.InteractionSystem;
 
 public class BreathingExercise : MonoBehaviour
 {
-    [SerializeField] float minYDelta;
-    Transform[] handBaseTransforms;
+    [SerializeField] float minDeltaY;
+    Vector3[] previousHandPos;
+    [SerializeField] float sensitivity = 100f;
 
     private void Awake()
     {
-        handBaseTransforms = new Transform[Player.instance.handCount];
+        previousHandPos = new Vector3[Player.instance.handCount];
     }
 
     public void OnBreathIn()
     {
-        for (int iHand = 0; iHand < handBaseTransforms.Length; iHand++)
+        for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
-            try { handBaseTransforms[iHand] = Player.instance.hands[iHand].transform; } catch (IndexOutOfRangeException) { }
+            try
+            {                
+                previousHandPos[iHand] = new Vector3(Player.instance.hands[iHand].transform.position.x, Player.instance.hands[iHand].transform.position.y, Player.instance.hands[iHand].transform.position.z);
+            }
+            catch (IndexOutOfRangeException) { }
         }
     }
 
     public void OnBreathOut()
     {
-        for (int iHand = 0; iHand < handBaseTransforms.Length; iHand++)
+        for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
             try
             {
                 Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.up, Player.instance.hands[iHand].transform.position) -
-                                 Vector3.Scale(handBaseTransforms[iHand].up, handBaseTransforms[iHand].position);
+                                 Vector3.Scale(Player.instance.hands[iHand].transform.up, previousHandPos[iHand]);
 
-                Debug.Log("deltaY sqrMagnitude: " + deltaY.sqrMagnitude);
+                /*
+                Debug.Log($"Top: Hand ({Player.instance.hands[iHand].gameObject.name}): y-position {Player.instance.hands[iHand].transform.position.y}");
 
-                if (deltaY.sqrMagnitude >= minYDelta * minYDelta)
+
+                Debug.Log($"Bottom: Hand ({Player.instance.hands[iHand].gameObject.name}): y-position {previousHandPos[iHand].y}");
+                Debug.Log("Difference: " + (Player.instance.hands[iHand].transform.position.y * sensitivity - previousHandPos[iHand].y * sensitivity));
+                */
+
+                if (deltaY.sqrMagnitude >= minDeltaY * minDeltaY)
                 {
-                    Debug.Log("Hey you're doing great");
+                    Debug.Log("<b>[Breathing Exercise]</b> Hey you're doing great");
                 }
                 else
                 {
-                    Debug.Log("Try to breath more through your belly");
+                    Debug.Log("<b>[Breathing Exercise]</b> Try to breath more through your belly");
                 }
             }
             catch (IndexOutOfRangeException) { }
