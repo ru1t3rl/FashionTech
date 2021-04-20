@@ -398,7 +398,7 @@ Transform:
   m_LocalScale: {x: 3.6115232, y: 1.620507, z: 1.8926308}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &59401307
 PrefabInstance:
@@ -2402,7 +2402,7 @@ Transform:
   - {fileID: 219532463}
   - {fileID: 905544688}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &427217588 stripped
 Transform:
@@ -2701,7 +2701,7 @@ Transform:
   - {fileID: 2004733680}
   - {fileID: 1998009592}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &471821984
 PrefabInstance:
@@ -3230,7 +3230,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &651358670
 PrefabInstance:
@@ -5613,7 +5613,7 @@ Transform:
   - {fileID: 1719445017}
   - {fileID: 537057549}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1069199830
 PrefabInstance:
@@ -7539,7 +7539,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1483027411
 PrefabInstance:
@@ -8321,7 +8321,7 @@ Transform:
   m_Children:
   - {fileID: 1885321468}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: -19.508, z: 0}
 --- !u!1001 &1560835292
 PrefabInstance:
@@ -11074,7 +11074,7 @@ Transform:
   m_LocalScale: {x: 3.6115232, y: 1.620507, z: 1.8926308}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2054793708
 Light:
@@ -11492,7 +11492,7 @@ AudioSource:
   m_GameObject: {fileID: 2116303600}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8827849354460609857, guid: ada9b5d38976f6648ba069fc894a61f8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -11722,7 +11722,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2121721205
 PrefabInstance:
