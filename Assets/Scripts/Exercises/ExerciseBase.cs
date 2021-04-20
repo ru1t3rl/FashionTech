@@ -12,6 +12,8 @@ namespace VRolijk.Excercises
         [SerializeField] Instruction[] instructions;
 
         bool active = false;
+        bool delayedStart = false;
+        public bool DelayedStart { get => delayedStart; set => delayedStart = value; }
 
         int currentInstruction = -1;
         int nextInstructionTime = 0;
@@ -27,20 +29,33 @@ namespace VRolijk.Excercises
         {
             if (active && currentInstruction < instructions.Length)
             {
-                if (Time.time > nextInstructionTime)
+                if (Time.time > nextInstructionTime && !delayedStart)
                 {
                     SelectNextInstruction();
 
                     if (active)
                     {
-                        // Start the new instruction
-                        instructions[currentInstruction].Play(audioSource);
-                        Debug.Log($"<b>[Base Exercise]</b> Instruction:\n{instructions[currentInstruction].TextInstruction}");
-
-                        // Set the time when the next instruction may start
-                        nextInstructionTime = Mathf.RoundToInt(Time.time + instructions[currentInstruction].Duration);
+                        Play();
                     }
                 }
+                else if (delayedStart)
+                {
+                    Play();
+                }
+            }
+        }
+
+        private void Play()
+        {
+            // Start the new instruction
+            instructions[currentInstruction].Play(audioSource, this);
+
+            if (!delayedStart)
+            {
+                Debug.Log($"<b>[Base Exercise]</b> Instruction:\n{instructions[currentInstruction].TextInstruction}");
+
+                // Set the time when the next instruction may start
+                nextInstructionTime = Mathf.RoundToInt(Time.time + instructions[currentInstruction].Duration);
             }
         }
 
@@ -116,11 +131,20 @@ namespace VRolijk.Excercises
 
         public UnityEvent onPlay;
 
-        public void Play(AudioSource source)
+        public void Play(AudioSource source, ExerciseBase parent = null)
         {
+            if (parent != null && !parent.DelayedStart)
+            {
+                onPlay?.Invoke();
+            }
+
             if (source.isPlaying)
             {
-                source.Stop();
+                if (parent != null)
+                {
+                    parent.DelayedStart = true;
+                }
+                return;
             }
 
             if (AudioInstruction != null)
@@ -129,7 +153,10 @@ namespace VRolijk.Excercises
                 source.Play();
             }
 
-            onPlay?.Invoke();
+            if (parent != null)
+            {
+                parent.DelayedStart = false;
+            }
         }
     }
 

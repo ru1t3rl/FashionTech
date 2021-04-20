@@ -8,9 +8,18 @@ using Valve.VR.InteractionSystem;
 
 public class BreathingExercise : MonoBehaviour
 {
-    [SerializeField] float minDeltaY;
+    [Header("Calculations")]
+    [SerializeField] float minDeltaYLeft;
+    [SerializeField] float maxDeltaYRight;
     Vector3[] previousHandPos;
     [SerializeField] float sensitivity = 100f;
+
+    [Header("Audio")]
+    [SerializeField] int playOnNTimes = 3;
+    int nTime = 0;
+    [SerializeField] AudioSource instructionSource;
+    [SerializeField] AudioClip encourageAudio;
+    [SerializeField] AudioClip hintAudio;
 
     private void Awake()
     {
@@ -22,7 +31,7 @@ public class BreathingExercise : MonoBehaviour
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
             try
-            {                
+            {
                 previousHandPos[iHand] = new Vector3(Player.instance.hands[iHand].transform.position.x, Player.instance.hands[iHand].transform.position.y, Player.instance.hands[iHand].transform.position.z);
             }
             catch (IndexOutOfRangeException) { }
@@ -31,6 +40,7 @@ public class BreathingExercise : MonoBehaviour
 
     public void OnBreathOut()
     {
+        bool left = false, right = false;
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
             try
@@ -38,25 +48,43 @@ public class BreathingExercise : MonoBehaviour
                 Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.up, Player.instance.hands[iHand].transform.position) -
                                  Vector3.Scale(Player.instance.hands[iHand].transform.up, previousHandPos[iHand]);
 
-                /*
-                Debug.Log($"Top: Hand ({Player.instance.hands[iHand].gameObject.name}): y-position {Player.instance.hands[iHand].transform.position.y}");
+                Debug.Log($"Magnitude {Player.instance.hands[iHand].handType} {deltaY.sqrMagnitude * sensitivity}");
 
-
-                Debug.Log($"Bottom: Hand ({Player.instance.hands[iHand].gameObject.name}): y-position {previousHandPos[iHand].y}");
-                Debug.Log("Difference: " + (Player.instance.hands[iHand].transform.position.y * sensitivity - previousHandPos[iHand].y * sensitivity));
-                */
-
-                if (deltaY.sqrMagnitude >= minDeltaY * minDeltaY)
+                if (Player.instance.hands[iHand].handType == SteamVR_Input_Sources.LeftHand && deltaY.sqrMagnitude * sensitivity >= minDeltaYLeft)
                 {
-                    Debug.Log("<b>[Breathing Exercise]</b> Hey you're doing great");
+                    left = true;
                 }
-                else
+                else if (Player.instance.hands[iHand].handType == SteamVR_Input_Sources.RightHand && deltaY.sqrMagnitude * sensitivity <= maxDeltaYRight)
                 {
-                    Debug.Log("<b>[Breathing Exercise]</b> Try to breath more through your belly");
+                    right = true;
                 }
             }
             catch (IndexOutOfRangeException) { }
         }
+
+        if (nTime % playOnNTimes == 0)
+        {
+            if (right && left)
+            {
+                if (encourageAudio != null && !instructionSource.isPlaying)
+                {
+                    instructionSource.Stop();
+                    instructionSource.clip = encourageAudio;
+                    instructionSource.Play();
+                }
+            }
+            else
+            {
+                if (hintAudio != null && !instructionSource.isPlaying)
+                {
+                    instructionSource.Stop();
+                    instructionSource.clip = hintAudio;
+                    instructionSource.Play();
+                }
+            }
+        }
+
+        nTime++;
     }
 
     public void DetectBreathingThroughBelly()
