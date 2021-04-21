@@ -13,21 +13,37 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] float maxDeltaYRight;
     Vector3[] previousHandPos;
     [SerializeField] float sensitivity = 100f;
+    [SerializeField] float maxTotalControllerMovement;
 
     [Header("Audio")]
-    [SerializeField] int playOnNTimes = 3;
-    int nTime = 0;
+    [SerializeField] int attemptsBeforeHint = 3;
+    int attempts = 0;
     [SerializeField] AudioSource instructionSource;
     [SerializeField] AudioClip encourageAudio;
     [SerializeField] AudioClip hintAudio;
 
+    [Header("Visuals")]
+    [SerializeField] float minVisualSize;
+    [SerializeField] float maxVisualSize;
+    [SerializeField] Animation animation;
+    [SerializeField] AnimationClip breathIn, breathOut;
+
+    bool active = false;
+    public bool IsActive => active;
+
     private void Awake()
     {
         previousHandPos = new Vector3[Player.instance.handCount];
+
+
+        animation.AddClip(breathIn, breathIn.name);        
+        animation.AddClip(breathOut, breathOut.name);
     }
 
     public void OnBreathIn()
     {
+        animation.Play(breathIn.name);
+
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
             try
@@ -39,7 +55,9 @@ public class BreathingExercise : MonoBehaviour
     }
 
     public void OnBreathOut()
-    {
+    {        
+        animation.Play(breathOut.name);
+
         bool left = false, right = false;
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
@@ -47,8 +65,6 @@ public class BreathingExercise : MonoBehaviour
             {
                 Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.up, Player.instance.hands[iHand].transform.position) -
                                  Vector3.Scale(Player.instance.hands[iHand].transform.up, previousHandPos[iHand]);
-
-                Debug.Log($"Magnitude {Player.instance.hands[iHand].handType} {deltaY.sqrMagnitude * sensitivity}");
 
                 if (Player.instance.hands[iHand].handType == SteamVR_Input_Sources.LeftHand && deltaY.sqrMagnitude * sensitivity >= minDeltaYLeft)
                 {
@@ -62,7 +78,7 @@ public class BreathingExercise : MonoBehaviour
             catch (IndexOutOfRangeException) { }
         }
 
-        if (nTime % playOnNTimes == 0)
+        if (attempts % attemptsBeforeHint == 0)
         {
             if (right && left)
             {
@@ -84,10 +100,32 @@ public class BreathingExercise : MonoBehaviour
             }
         }
 
-        nTime++;
+        attempts++;
     }
 
-    public void DetectBreathingThroughBelly()
+    /*
+    bool breathIn = false;
+    public void SetVisualTime(float duration)
+    {
+        breathIn = !breathIn;
+       
+        visual.transform.localScale = Vector3.SmoothDamp(transform.localScale, breathIn ? new Vector3(maxVisualSize, maxVisualSize, maxVisualSize) :
+                                                                                          new Vector3(minVisualSize, minVisualSize, minVisualSize),
+                                                                                          ref velocity, duration*60);
+    }
+    */
+
+    public void Play()
+    {
+        active = true;
+    }
+
+    public void Stop()
+    {
+        active = false;
+    }
+
+    public void DetectControllerPosition()
     {
 
     }

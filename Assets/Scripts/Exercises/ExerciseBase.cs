@@ -129,14 +129,10 @@ namespace VRolijk.Excercises
         [SerializeField] InstructionType instructionType = InstructionType.None;
         public InstructionType Type => instructionType;
 
-        public UnityEvent onPlay;
+        public UnityEvent<float> onPlay;
 
         public void Play(AudioSource source, ExerciseBase parent = null)
         {
-            if (parent != null && !parent.DelayedStart)
-            {
-                onPlay?.Invoke();
-            }
 
             if (source.isPlaying)
             {
@@ -152,6 +148,8 @@ namespace VRolijk.Excercises
                 source.clip = AudioInstruction;
                 source.Play();
             }
+
+            onPlay?.Invoke(duration);
 
             if (parent != null)
             {
