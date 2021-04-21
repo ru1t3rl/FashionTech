@@ -7,7 +7,7 @@ using Valve.VR.InteractionSystem;
 
 namespace VRolijk.Movement
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController)), RequireComponent(typeof(AudioSource))]
     public class JoystickMovement : MonoBehaviour
     {
         [SerializeField] SteamVR_Action_Vector2 touchpadInput;
@@ -26,11 +26,13 @@ namespace VRolijk.Movement
         Vector3 velocity = Vector3.zero;
 
         CharacterController cController;
+        AudioSource walkAudioSource;
 
 
         private void Awake()
         {
             cController = GetComponent<CharacterController>();
+            walkAudioSource = GetComponent<AudioSource>();
         }
 
         void FixedUpdate()
@@ -43,7 +45,6 @@ namespace VRolijk.Movement
 
             if (useGravity)
             {
-                Debug.DrawRay(bottomOfPlayerBody.position, Vector3.down * maxRayLength, Color.red);
                 if (Physics.Raycast(bottomOfPlayerBody.position, Vector3.down, maxRayLength))
                 {
 
@@ -64,7 +65,24 @@ namespace VRolijk.Movement
             Truncate(ref velocity, maxSpeed, false);
 
             cController.Move(Time.fixedDeltaTime * velocity);
-           
+
+            
+            if (velocity.magnitude < .1f)
+            {
+                if (walkAudioSource.isPlaying)
+                {
+                    walkAudioSource.Stop();
+                }
+            }
+            else
+            {
+                if (!walkAudioSource.isPlaying)
+                {
+                    walkAudioSource.pitch = Random.Range(1f, 1.05f);
+                    walkAudioSource.Play();                    
+                }
+            }
+
 
             // Set the colliders height to Player camera's height
             cController.height = Player.instance.eyeHeight;
