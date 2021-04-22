@@ -10,6 +10,7 @@ namespace VRolijk.Excercises
         [SerializeField] AudioSource audioSource;
         [SerializeField] int repetitions = 5;
         [SerializeField] Instruction[] instructions;
+        [SerializeField] UnityEvent OnReset;
 
         bool active = false;
         bool delayedStart = false;
@@ -27,16 +28,14 @@ namespace VRolijk.Excercises
 
         private void Update()
         {
+
             if (active && currentInstruction < instructions.Length)
             {
                 if (Time.time > nextInstructionTime && !delayedStart)
                 {
                     SelectNextInstruction();
 
-                    if (active)
-                    {
-                        Play();
-                    }
+                    Play();
                 }
                 else if (delayedStart)
                 {
@@ -107,6 +106,16 @@ namespace VRolijk.Excercises
         public void Deactivate(Vector3 position)
         {
             active = false;
+        }
+
+        public void Reset()
+        {
+            Deactivate(transform.position);
+
+            currentInstruction = 0;
+            repeated = 0;
+
+            OnReset?.Invoke();
         }
 
         public bool IsActive => active;

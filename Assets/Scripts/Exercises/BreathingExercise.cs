@@ -5,9 +5,13 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.Extras;
 using Valve.VR.InteractionSystem;
+using VRolijk.Excercises;
 
+[RequireComponent(typeof(ExerciseBase))]
 public class BreathingExercise : MonoBehaviour
 {
+    [SerializeField] ExerciseBase baseExercise;
+
     [Header("Calculations")]
     [SerializeField] float minDeltaYLeft;
     [SerializeField] float maxDeltaYRight;
@@ -21,6 +25,7 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] AudioSource instructionSource;
     [SerializeField] AudioClip encourageAudio;
     [SerializeField] AudioClip hintAudio;
+    [SerializeField] AudioClip tryAgainAudio;
 
     [Header("Visuals")]
     [SerializeField] float minVisualSize;
@@ -34,10 +39,6 @@ public class BreathingExercise : MonoBehaviour
     private void Awake()
     {
         previousHandPos = new Vector3[Player.instance.handCount];
-
-
-        //animation.AddClip(breathIn, breathIn.name);        
-        //animation.AddClip(breathOut, breathOut.name);
     }
 
     public void OnBreathIn()
@@ -55,7 +56,26 @@ public class BreathingExercise : MonoBehaviour
     }
 
     public void OnBreathOut()
-    {        
+    {
+
+        for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
+        {
+            Debug.Log(Vector3.SqrMagnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity);
+            if (Vector3.SqrMagnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity > maxTotalControllerMovement)
+            {
+                baseExercise.Reset();
+                Reset();
+
+
+                instructionSource.Stop();
+                instructionSource.clip = tryAgainAudio;
+                instructionSource.Play();
+
+                return;
+            }
+        }
+
+
         animation.Play("BreathOut");
 
         bool left = false, right = false;
@@ -103,17 +123,10 @@ public class BreathingExercise : MonoBehaviour
         attempts++;
     }
 
-    /*
-    bool breathIn = false;
-    public void SetVisualTime(float duration)
+    public void Reset()
     {
-        breathIn = !breathIn;
-       
-        visual.transform.localScale = Vector3.SmoothDamp(transform.localScale, breathIn ? new Vector3(maxVisualSize, maxVisualSize, maxVisualSize) :
-                                                                                          new Vector3(minVisualSize, minVisualSize, minVisualSize),
-                                                                                          ref velocity, duration*60);
+
     }
-    */
 
     public void Play()
     {
