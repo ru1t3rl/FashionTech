@@ -5,7 +5,6 @@ using UnityEngine;
 
 public static class ExtensionMethods
 {
-
     public static int TotalSeconds(this DateTime date)
     {
         int totalTimeInSeconds = 0;
@@ -19,5 +18,4 @@ public static class ExtensionMethods
 
         return totalTimeInSeconds;
     }
-
 }
