@@ -17,7 +17,7 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] float maxDeltaYRight;
     Vector3[] previousHandPos;
     [SerializeField] float sensitivity = 100f;
-    [SerializeField] float maxTotalControllerMovement;
+    [SerializeField] float overallMaxTotalControllerMovement;
 
     [Header("Audio")]
     [SerializeField] int attemptsBeforeHint = 3;
@@ -32,6 +32,7 @@ public class BreathingExercise : MonoBehaviour
     [SerializeField] float maxVisualSize;
     [SerializeField] Animation animation;
     [SerializeField] AnimationClip breathIn, breathOut;
+    Vector3 visualizationStartScale;
 
     bool active = false;
     public bool IsActive => active;
@@ -39,6 +40,7 @@ public class BreathingExercise : MonoBehaviour
     private void Awake()
     {
         previousHandPos = new Vector3[Player.instance.handCount];
+        visualizationStartScale = animation.gameObject.transform.localScale;
     }
 
     public void OnBreathIn()
@@ -60,10 +62,9 @@ public class BreathingExercise : MonoBehaviour
 
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
-            Debug.Log(Vector3.SqrMagnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity);
-            if (Vector3.SqrMagnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity > maxTotalControllerMovement)
+            if (Vector3.Magnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity > overallMaxTotalControllerMovement)
             {
-                baseExercise.Reset();
+                baseExercise.Reset(Vector3.zero);
                 Reset();
 
 
@@ -125,7 +126,8 @@ public class BreathingExercise : MonoBehaviour
 
     public void Reset()
     {
-
+        attempts = 0;
+        animation.gameObject.transform.localScale = visualizationStartScale;
     }
 
     public void Play()
@@ -136,10 +138,5 @@ public class BreathingExercise : MonoBehaviour
     public void Stop()
     {
         active = false;
-    }
-
-    public void DetectControllerPosition()
-    {
-
     }
 }

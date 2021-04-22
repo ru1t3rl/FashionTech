@@ -23,7 +23,7 @@ namespace VRolijk.Excercises
         private void Start()
         {
             StareManager.current.OnStartStaring += Activate;
-            StareManager.current.OnStopStaring += Deactivate;
+            StareManager.current.OnStopStaring += Reset;
         }
 
         private void Update()
@@ -34,8 +34,11 @@ namespace VRolijk.Excercises
                 if (Time.time > nextInstructionTime && !delayedStart)
                 {
                     SelectNextInstruction();
-
-                    Play();
+                    
+                    if (active)
+                    {
+                        Play();
+                    }
                 }
                 else if (delayedStart)
                 {
@@ -51,8 +54,6 @@ namespace VRolijk.Excercises
 
             if (!delayedStart)
             {
-                // Debug.Log($"<b>[Base Exercise]</b> Instruction:\n{instructions[currentInstruction].TextInstruction}");
-
                 // Set the time when the next instruction may start
                 nextInstructionTime = Mathf.RoundToInt(Time.time + instructions[currentInstruction].Duration);
             }
@@ -87,6 +88,7 @@ namespace VRolijk.Excercises
             }
             else
             {
+                gameObject.SetActive(false);
                 active = false;
             }
         }
@@ -108,7 +110,7 @@ namespace VRolijk.Excercises
             active = false;
         }
 
-        public void Reset()
+        public void Reset(Vector3 position)
         {
             Deactivate(transform.position);
 
