@@ -36,13 +36,13 @@ public class BreathingExercise : MonoBehaviour
         previousHandPos = new Vector3[Player.instance.handCount];
 
 
-        animation.AddClip(breathIn, breathIn.name);        
-        animation.AddClip(breathOut, breathOut.name);
+        //animation.AddClip(breathIn, breathIn.name);        
+        //animation.AddClip(breathOut, breathOut.name);
     }
 
     public void OnBreathIn()
     {
-        animation.Play(breathIn.name);
+        animation.Play("BreathIn");
 
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
@@ -56,7 +56,7 @@ public class BreathingExercise : MonoBehaviour
 
     public void OnBreathOut()
     {        
-        animation.Play(breathOut.name);
+        animation.Play("BreathOut");
 
         bool left = false, right = false;
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)

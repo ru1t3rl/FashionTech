@@ -6849,6 +6849,7 @@ GameObject:
   - component: {fileID: 1261135962}
   - component: {fileID: 1261135961}
   - component: {fileID: 1261135965}
+  - component: {fileID: 1261135966}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -6888,7 +6889,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 99d1e94e2e56e55419f27a27ef154413, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6927,7 +6928,7 @@ Transform:
   m_GameObject: {fileID: 1261135960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 108.65225, y: 14.367813, z: 89.039795}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 32
@@ -6941,7 +6942,7 @@ Animation:
   m_GameObject: {fileID: 1261135960}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: e802c660d4b643748af216e772de6d1b, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 7400000, guid: e802c660d4b643748af216e772de6d1b, type: 2}
   - {fileID: 7400000, guid: d05b5c1220b9c704498eb20c2f979443, type: 2}
@@ -6949,6 +6950,28 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1261135966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261135960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ccc5c7226ec07488c29eec87d4a9bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play: 1
+  amplitude: 0.1
+  frequentie: 0.04
+  center: {x: 0, y: 0, z: 0}
+  fixedXScale: 1
+  fixedYScale: 1
+  fixedZScale: 1
+  fixedXPosition: 1
+  fixedYPosition: 0
+  fixedZPosition: 1
 --- !u!1001 &1274251042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11753,6 +11776,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1261135966}
+          m_TargetAssemblyTypeName: SineWaveOptions, Assembly-CSharp
+          m_MethodName: Pause
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - name: First time breath in
     textInstruction: Breath in through your nose
     audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
@@ -11844,6 +11879,18 @@ MonoBehaviour:
         - m_Target: {fileID: 2116303602}
           m_TargetAssemblyTypeName: BreathingExercise, Assembly-CSharp
           m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1261135966}
+          m_TargetAssemblyTypeName: SineWaveOptions, Assembly-CSharp
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

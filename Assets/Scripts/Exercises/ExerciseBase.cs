@@ -52,7 +52,7 @@ namespace VRolijk.Excercises
 
             if (!delayedStart)
             {
-                Debug.Log($"<b>[Base Exercise]</b> Instruction:\n{instructions[currentInstruction].TextInstruction}");
+                // Debug.Log($"<b>[Base Exercise]</b> Instruction:\n{instructions[currentInstruction].TextInstruction}");
 
                 // Set the time when the next instruction may start
                 nextInstructionTime = Mathf.RoundToInt(Time.time + instructions[currentInstruction].Duration);
