@@ -9,7 +9,7 @@ public class Storeable : MonoBehaviour
     public Vector3 storedScale = Vector3.one;
     public Collider objectCollider;
 
-    protected bool isAvailable = true;
+    protected bool isAvailable = true, blocked = false;
     private InventorySlot container;
 
     public void Awake()
@@ -21,8 +21,22 @@ public class Storeable : MonoBehaviour
         container = newContainer;
     }
 
+    public void onDetachFromHand()
+    {
+        if (container && container.CompareTag("PlantSlot") && transform.CompareTag("Plant"))
+        {
+            LockInPlace();
+        }
+        else if (container && container.CompareTag("InventorySlot"))
+        {
+            Store();
+        }
+    }
+
     public void Store()
     {
+        Debug.Log($"test3Store storing {container} {container.GetAvailability()}");
+
         EnableCollisions(false);
         if (container && container.GetAvailability())
         {
@@ -46,8 +60,8 @@ public class Storeable : MonoBehaviour
 
         var plantComponent = GetComponent<Plant>();
 
-        if (container.CompareTag("PlantSlot") && 
-            transform.CompareTag("Plant") && 
+        if (container.CompareTag("PlantSlot") &&
+            transform.CompareTag("Plant") &&
             plantComponent != null)
         {
             plantComponent.PlacedPlant();
@@ -56,31 +70,56 @@ public class Storeable : MonoBehaviour
 
     public void PickUp()
     {
+        Debug.Log($"test2 {container}");
+
         if (container)
         {
-            EnableCollisions(true);
-            container.Detatch();
-            this.transform.localScale = defaultScale;
-            isAvailable = true;
-            container = null;
+            RemoveFromContainer();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (transform.CompareTag("Storable") && other.tag == "InventorySlot" && isAvailable)
+        Debug.Log("x enter");
+
+        if (transform.CompareTag("Plant") && other.tag == "PlantSlot" && isAvailable && !blocked)
         {
             SetContainer(other.gameObject.GetComponent<InventorySlot>());
+            blocked = true;
         }
 
-        if (transform.CompareTag("Plant") && other.tag == "PlantSlot" && isAvailable)
+        if (transform.CompareTag("Storable") || transform.CompareTag("Plant") && other.tag == "InventorySlot" && isAvailable && !blocked)
         {
             SetContainer(other.gameObject.GetComponent<InventorySlot>());
+            blocked = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("x exit");
+
+        if (other.CompareTag("InventorySlot"))
+        {
+            blocked = false;
+            if (container)
+            {
+                RemoveFromContainer();
+            }
         }
     }
 
     public void EnableCollisions(bool enable)
     {
-            objectCollider.enabled = enable;
+        objectCollider.enabled = enable;
+    }
+
+    public void RemoveFromContainer ()
+    {
+        EnableCollisions(true);
+        container.Detatch();
+        this.transform.localScale = defaultScale;
+        isAvailable = true;
+        container = null;
     }
 }

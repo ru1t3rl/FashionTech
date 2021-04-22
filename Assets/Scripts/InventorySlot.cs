@@ -65,6 +65,8 @@ public class InventorySlot : MonoBehaviour
 
     public void Detatch()
     {
+        Debug.Log($"test {storedObject}");
+
         if (!storedObject) { return; }
         joint.connectedBody = null;
         storedObject.GetComponent<Storeable>().SetContainer(null);
