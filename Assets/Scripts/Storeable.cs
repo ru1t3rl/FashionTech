@@ -35,9 +35,8 @@ public class Storeable : MonoBehaviour
 
     public void Store()
     {
-        Debug.Log($"test3Store storing {container} {container.GetAvailability()}");
-
         EnableCollisions(false);
+
         if (container && container.GetAvailability())
         {
             isAvailable = false;
@@ -70,8 +69,6 @@ public class Storeable : MonoBehaviour
 
     public void PickUp()
     {
-        Debug.Log($"test2 {container}");
-
         if (container)
         {
             RemoveFromContainer();
@@ -80,8 +77,6 @@ public class Storeable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("x enter");
-
         if (transform.CompareTag("Plant") && other.tag == "PlantSlot" && isAvailable && !blocked)
         {
             SetContainer(other.gameObject.GetComponent<InventorySlot>());
@@ -97,8 +92,6 @@ public class Storeable : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("x exit");
-
         if (other.CompareTag("InventorySlot"))
         {
             blocked = false;

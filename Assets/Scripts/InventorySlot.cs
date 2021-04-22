@@ -26,9 +26,7 @@ public class InventorySlot : MonoBehaviour
     {
         SetContainerEmpty();
         scale = transform.localScale;
-        Debug.Log(offsetEmpty);
         if (offsetEmpty != null) useOffset = true;
-        Debug.Log(useOffset);
     }
 
     void Awake()
@@ -65,8 +63,6 @@ public class InventorySlot : MonoBehaviour
 
     public void Detatch()
     {
-        Debug.Log($"test {storedObject}");
-
         if (!storedObject) { return; }
         joint.connectedBody = null;
         storedObject.GetComponent<Storeable>().SetContainer(null);
