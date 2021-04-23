@@ -15,6 +15,12 @@ public class WalkInPlace : MonoBehaviour
     private bool isRightLegUp = false;
     private bool isRightLegDown = false;
     private Vector3 bodyDirection;
+    private Vector3 baseLeftPosition;
+    private Vector3 baserightPosition;
+    private Vector3 baseLeftOrientation;
+    private Vector3 baseRightOrientation;
+
+
     CharacterController controller;
 
 
@@ -22,18 +28,39 @@ public class WalkInPlace : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        print("----");
+
     }
 
     // Update is called once per frame
     void Update()
     {
         OrientBody();
-        float curSpeed = walkSpeed * Input.GetAxis("Vertical");
-        controller.SimpleMove(bodyDirection * curSpeed);
+        if (IsWalking())
+        {
+            //float curSpeed = walkSpeed * Input.GetAxis("Vertical");
+           float curSpeed = walkSpeed; //TODO should ease in the walk speed to a max walking speed;
+            controller.SimpleMove(bodyDirection * curSpeed);
+
+        }
     }
 
-    void getForwardDirection()
+    // this method is called during a tracking event change. on the left and right hand.
+    public void Calibrate()
     {
+        print("----");
+        print("CALIBRATING");
+        baseLeftPosition = leftController.transform.position;
+        baserightPosition = rightController.transform.position;
+
+        baseLeftOrientation = leftController.transform.localEulerAngles;
+        baseRightOrientation = rightController.transform.localEulerAngles;
+
+        print(baseLeftPosition);
+        print(baserightPosition);
+        print(baseLeftOrientation);
+        print(baseRightOrientation);
+        print("----");
 
     }
 
@@ -51,13 +78,23 @@ public class WalkInPlace : MonoBehaviour
         GameObject.Destroy(myLine, duration);
     }
 
+    void CheckLeftLeg()
+    {
+
+    }
+
+    void CheckRightLeg()
+    {
+
+    }
+
     bool IsWalking()
     {
-       // if () {
+        if (isLeftLegUp && isLeftLegDown && isRightLegUp || isRightLegUp && isRightLegDown && isLeftLegUp) {
             return true;
-        //} else {
-            return false;
-        //}
+        } else {
+            return true;
+        }
     }
 
     void OrientBody()
@@ -66,7 +103,7 @@ public class WalkInPlace : MonoBehaviour
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
-        //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
+        DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
         DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
     }
 }
