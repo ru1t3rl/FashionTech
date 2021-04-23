@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009477557, g: 0.011172487, b: 0.032029957, a: 1}
+  m_IndirectSpecularColor: {r: 0.23945858, g: 0.34841737, b: 0.622875, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4008,6 +4008,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5f98a33ae68b2f842ab191c8330ce387, type: 3}
   m_PrefabInstance: {fileID: 728561580}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &733511831
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 115.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 118.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185503601669, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_Name
+      value: Breathing Exercise (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
 --- !u!1001 &734391934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8245,7 +8302,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1483027411
 PrefabInstance:
@@ -8747,18 +8804,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: _timeOfDay
-      value: 0.561
+      value: 0.255
       objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: _targetDayLength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
+      propertyPath: minActiveIntensity
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388990, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: m_Name
       value: DayNightCycle
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
 --- !u!4 &1514895650 stripped
 Transform:
@@ -12135,266 +12195,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63769647cac31d84d8d4956fd69e82dc, type: 3}
---- !u!1 &2116303600
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2116303604}
-  - component: {fileID: 2116303603}
-  - component: {fileID: 2116303602}
-  - component: {fileID: 2116303601}
-  m_Layer: 0
-  m_Name: Breathing Exercise
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &2116303601
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116303600}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 8827849354460609857, guid: ada9b5d38976f6648ba069fc894a61f8, type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.774
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!114 &2116303602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116303600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2243b314942a6f4b9eb34a7ea3d656a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDeltaYLeft: 0.04
-  maxDeltaYRight: 0.007
-  sensitivity: 1000
-  playOnNTimes: 3
-  instructionSource: {fileID: 2116303601}
-  encourageAudio: {fileID: 0}
-  hintAudio: {fileID: 0}
---- !u!114 &2116303603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116303600}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793c17953bfe4b545924026afbe36650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 2116303601}
-  repetitions: 5
-  instructions:
-  - name: Controller setup
-    textInstruction: Put your left controller on your belly and your right controller
-      on your chest.
-    audioInstruction: {fileID: 8300000, guid: e2e6af384c206014892710ef806aab3e, type: 3}
-    duration: 4
-    instructionType: 1
-    onPlay:
-      m_PersistentCalls:
-        m_Calls: []
-  - name: First time breath in
-    textInstruction: Breath in through your nose
-    audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
-    duration: 3
-    instructionType: 0
-    onPlay:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2116303602}
-          m_TargetAssemblyTypeName: BreathingExercise, Assembly-CSharp
-          m_MethodName: OnBreathIn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: First time breath out
-    textInstruction: Breath out through your mouth with pursed lips
-    audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
-    duration: 4
-    instructionType: 0
-    onPlay:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2116303602}
-          m_TargetAssemblyTypeName: BreathingExercise, Assembly-CSharp
-          m_MethodName: OnBreathOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Breath in
-    textInstruction: 'Breath in '
-    audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
-    duration: 4
-    instructionType: 2
-    onPlay:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2116303602}
-          m_TargetAssemblyTypeName: BreathingExercise, Assembly-CSharp
-          m_MethodName: OnBreathIn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Breath out
-    textInstruction: Breath out
-    audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
-    duration: 5
-    instructionType: 2
-    onPlay:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2116303602}
-          m_TargetAssemblyTypeName: BreathingExercise, Assembly-CSharp
-          m_MethodName: OnBreathOut
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - name: Reward
-    textInstruction: Well done, you have earned a reward
-    audioInstruction: {fileID: 8300000, guid: 24ff93bd0822342479c3e7bf8b1ea504, type: 3}
-    duration: 1
-    instructionType: 3
-    onPlay:
-      m_PersistentCalls:
-        m_Calls: []
---- !u!4 &2116303604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116303600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.68, y: 13.87, z: 93.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2121721205
 PrefabInstance:
   m_ObjectHideFlags: 0
