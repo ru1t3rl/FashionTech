@@ -9,7 +9,6 @@ public static class ExtensionMethods
     {
         int totalTimeInSeconds = 0;
 
-        //totalTimeInSeconds += Mathf.FloorToInt(date.Year * 365.25f * 12 * 24 * 60 * 60);
         totalTimeInSeconds += date.Month * 12 * 24 * 60 * 60;
         totalTimeInSeconds += date.Day * 24 * 60 * 60;
         totalTimeInSeconds += date.Hour * 60 * 60;
