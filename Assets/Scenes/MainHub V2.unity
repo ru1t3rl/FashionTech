@@ -11653,15 +11653,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.68
+      value: 115.505
       objectReference: {fileID: 0}
     - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.87
+      value: 14.789
       objectReference: {fileID: 0}
     - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 93.57
+      value: 118.563
       objectReference: {fileID: 0}
     - target: {fileID: 9107185503601665, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11694,6 +11694,18 @@ PrefabInstance:
     - target: {fileID: 9107185503601669, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
       propertyPath: m_Name
       value: Breathing Exercise
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185721661097, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185721661097, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107185721661097, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4decbcb20edaec4e97eae460b8ebddf, type: 3}
