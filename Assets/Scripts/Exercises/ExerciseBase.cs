@@ -11,6 +11,7 @@ namespace VRolijk.Excercises
         [SerializeField] int repetitions = 5;
         [SerializeField] Instruction[] instructions;
         [SerializeField] UnityEvent OnReset;
+        [SerializeField] float maxGazeDistance = 10;
 
         bool active = false;
         bool delayedStart = false;
@@ -99,10 +100,15 @@ namespace VRolijk.Excercises
             StareManager.current.OnStopStaring -= Deactivate;
         }
 
+        private bool InRange(Vector3 position, float range) => Vector3.Distance(position, transform.position) < range;
+
         #region Excersise State
         public void Activate(Vector3 position)
         {
-            active = true;
+            if (InRange(position, maxGazeDistance))
+            {
+                active = true;
+            }
         }
 
         public void Deactivate(Vector3 position)
