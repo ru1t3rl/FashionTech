@@ -5,29 +5,48 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.Extras;
 using Valve.VR.InteractionSystem;
+using VRolijk.Excercises;
 
+[RequireComponent(typeof(ExerciseBase))]
 public class BreathingExercise : MonoBehaviour
 {
+    [SerializeField] ExerciseBase baseExercise;
+
     [Header("Calculations")]
     [SerializeField] float minDeltaYLeft;
     [SerializeField] float maxDeltaYRight;
     Vector3[] previousHandPos;
     [SerializeField] float sensitivity = 100f;
+    [SerializeField] float overallMaxTotalControllerMovement;
 
     [Header("Audio")]
-    [SerializeField] int playOnNTimes = 3;
-    int nTime = 0;
+    [SerializeField] int attemptsBeforeHint = 3;
+    int attempts = 0;
     [SerializeField] AudioSource instructionSource;
     [SerializeField] AudioClip encourageAudio;
     [SerializeField] AudioClip hintAudio;
+    [SerializeField] AudioClip tryAgainAudio;
+
+    [Header("Visuals")]
+    [SerializeField] float minVisualSize;
+    [SerializeField] float maxVisualSize;
+    [SerializeField] Animation animation;
+    [SerializeField] AnimationClip breathIn, breathOut;
+    Vector3 visualizationStartScale;
+
+    bool active = false;
+    public bool IsActive => active;
 
     private void Awake()
     {
         previousHandPos = new Vector3[Player.instance.handCount];
+        visualizationStartScale = animation.gameObject.transform.localScale;
     }
 
     public void OnBreathIn()
     {
+        animation.Play("BreathIn");
+
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
             try
@@ -40,6 +59,26 @@ public class BreathingExercise : MonoBehaviour
 
     public void OnBreathOut()
     {
+
+        for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
+        {
+            if (Vector3.Magnitude(Player.instance.hands[iHand].transform.position - previousHandPos[iHand]) * sensitivity > overallMaxTotalControllerMovement)
+            {
+                baseExercise.Reset(Vector3.zero);
+                Reset();
+
+
+                instructionSource.Stop();
+                instructionSource.clip = tryAgainAudio;
+                instructionSource.Play();
+
+                return;
+            }
+        }
+
+
+        animation.Play("BreathOut");
+
         bool left = false, right = false;
         for (int iHand = 0; iHand < previousHandPos.Length; iHand++)
         {
@@ -47,8 +86,6 @@ public class BreathingExercise : MonoBehaviour
             {
                 Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.up, Player.instance.hands[iHand].transform.position) -
                                  Vector3.Scale(Player.instance.hands[iHand].transform.up, previousHandPos[iHand]);
-
-                Debug.Log($"Magnitude {Player.instance.hands[iHand].handType} {deltaY.sqrMagnitude * sensitivity}");
 
                 if (Player.instance.hands[iHand].handType == SteamVR_Input_Sources.LeftHand && deltaY.sqrMagnitude * sensitivity >= minDeltaYLeft)
                 {
@@ -62,7 +99,7 @@ public class BreathingExercise : MonoBehaviour
             catch (IndexOutOfRangeException) { }
         }
 
-        if (nTime % playOnNTimes == 0)
+        if (attempts % attemptsBeforeHint == 0)
         {
             if (right && left)
             {
@@ -84,11 +121,23 @@ public class BreathingExercise : MonoBehaviour
             }
         }
 
-        nTime++;
+        attempts++;
     }
 
-    public void DetectBreathingThroughBelly()
+    public void Reset()
     {
+        attempts = 0;
+        animation.Stop();
+        animation.gameObject.transform.localScale = visualizationStartScale;
+    }
 
+    public void Play()
+    {
+        active = true;
+    }
+
+    public void Stop()
+    {
+        active = false;
     }
 }
