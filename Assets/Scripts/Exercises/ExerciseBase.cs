@@ -34,7 +34,7 @@ namespace VRolijk.Excercises
                 if (Time.time > nextInstructionTime && !delayedStart)
                 {
                     SelectNextInstruction();
-                    
+
                     if (active)
                     {
                         Play();
@@ -88,7 +88,7 @@ namespace VRolijk.Excercises
             }
             else
             {
-                gameObject.SetActive(false);
+                Reset(Vector3.zero);
                 active = false;
             }
         }
@@ -110,18 +110,18 @@ namespace VRolijk.Excercises
             active = false;
         }
 
+        public bool IsActive => active;
+        #endregion
+
         public void Reset(Vector3 position)
         {
             Deactivate(transform.position);
 
-            currentInstruction = 0;
+            currentInstruction = -1;
             repeated = 0;
 
             OnReset?.Invoke();
         }
-
-        public bool IsActive => active;
-        #endregion
     }
 
     [System.Serializable]

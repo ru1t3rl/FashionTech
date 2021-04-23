@@ -127,6 +127,7 @@ public class BreathingExercise : MonoBehaviour
     public void Reset()
     {
         attempts = 0;
+        animation.Stop();
         animation.gameObject.transform.localScale = visualizationStartScale;
     }
 
