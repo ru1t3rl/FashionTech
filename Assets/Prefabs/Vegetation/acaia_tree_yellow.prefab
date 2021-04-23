@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1439967600224674831}
-  - component: {fileID: 2617736466703952810}
-  - component: {fileID: 265965521766801248}
+  - component: {fileID: 7201846582889684668}
+  - component: {fileID: 6824578688384263009}
+  - component: {fileID: 5260500406315673021}
   m_Layer: 0
   m_Name: acaia_tree_yellow
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2617736466703952810
+--- !u!33 &7201846582889684668
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +41,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778950765084606133}
   m_Mesh: {fileID: 2494185979427425891, guid: acd3610af4a9d0a4684822b5189101c1, type: 3}
---- !u!23 &265965521766801248
+--- !u!23 &6824578688384263009
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5260500406315673021
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778950765084606133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.78715384, y: 6.5081024, z: 0.97416276}
+  m_Center: {x: -0.005937939, y: 3.2373579, z: -0.0028037399}
