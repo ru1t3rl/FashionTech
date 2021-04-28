@@ -14,7 +14,7 @@ public class WalkInPlace : MonoBehaviour
     public float minLeftUp = -0.5f;
     public float maxRightUp = 0.01f;
     public float minRightUp = -0.5f;
-
+    public float legUptime = 1.1f;
 
     public bool isLeftLegUp = false;
     public bool isLeftLegDown = false;
@@ -25,6 +25,10 @@ public class WalkInPlace : MonoBehaviour
     public Vector3 baseRightPosition;
     public Vector3 baseLeftOrientation;
     public Vector3 baseRightOrientation;
+
+    private float leftLegUpTime = 0f;
+    private float rightLegUpTime = 0f;
+
 
 
     CharacterController controller;
@@ -44,7 +48,7 @@ public class WalkInPlace : MonoBehaviour
         {
             Calibrate();
         }
-
+        if(leftLegUpTime > 0) { }
         OrientBody();
         if (IsWalking())
         {
@@ -123,17 +127,17 @@ public class WalkInPlace : MonoBehaviour
 
     void CheckLeftLeg()
     {
-        if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; }
+        if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
-        if (IsWithinRange(leftController.transform.localPosition.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true; }
+        if (IsWithinRange(leftController.transform.localPosition.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true;}
         else { isLeftLegDown = false; }
 
     }
 
     void CheckRightLeg()
     { 
-        if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; }
+        if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false;}
 
         if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
@@ -151,6 +155,8 @@ public class WalkInPlace : MonoBehaviour
     {
         CheckLeftLeg();
         CheckRightLeg();
+
+        
 
         if (baseLeftOrientation == Vector3.zero && baseRightOrientation == Vector3.zero)
         {
