@@ -24,7 +24,7 @@ namespace VRolijk.Excercises
         private void Start()
         {
             StareManager.current.OnStartStaring += Activate;
-            StareManager.current.OnStopStaring += Reset;
+            // StareManager.current.OnStopStaring += Reset;
         }
 
         private void Update()
