@@ -783,11 +783,11 @@ MonoBehaviour:
   rightController: {fileID: 873831501}
   walkSpeed: 3
   rotateSpeed: 1
-  detectionPrecision: 0.05
-  maxLeftUp: 0.1
-  minLeftUp: 0
-  maxRightUp: 0.1
-  minRightUp: 0
+  detectionPrecision: 0.11
+  maxLeftUp: 1
+  minLeftUp: -0.1
+  maxRightUp: 1
+  minRightUp: -0.1
   isLeftLegUp: 0
   isLeftLegDown: 0
   isRightLegUp: 0

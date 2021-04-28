@@ -76,8 +76,8 @@ public class WalkInPlace : MonoBehaviour
 
         if (rightController.transform.localEulerAngles != Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
         {
-            baseLeftPosition = leftController.transform.position;
-            baseRightPosition = rightController.transform.position;
+            baseLeftPosition = leftController.transform.localPosition;
+            baseRightPosition = rightController.transform.localPosition;
             baseLeftOrientation = leftController.transform.localEulerAngles;
             baseRightOrientation = rightController.transform.localEulerAngles;
         }
@@ -123,20 +123,20 @@ public class WalkInPlace : MonoBehaviour
 
     void CheckLeftLeg()
     {
-        if (IsWithinRange(leftController.transform.position.y, maxLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegUp = true; }
+        if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; }
         else { isLeftLegUp = false; }
 
-        if (IsWithinRange(leftController.transform.position.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true; }
+        if (IsWithinRange(leftController.transform.localPosition.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true; }
         else { isLeftLegDown = false; }
 
     }
 
     void CheckRightLeg()
     { 
-        if (IsWithinRange(rightController.transform.position.y, maxRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegUp = true; }
+        if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; }
         else { isRightLegUp = false;}
 
-        if (IsWithinRange(rightController.transform.position.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
+        if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
         else { isRightLegDown = false;}
     }
 

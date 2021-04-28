@@ -34,8 +34,8 @@ public class debugUIVisuals : MonoBehaviour
         rightLegUp.enabled = walkinplace.isRightLegUp;
         rightLegDown.enabled = walkinplace.isRightLegDown;
         fps.text = "fps: " + (int)(1.0f / Time.smoothDeltaTime);
-        leftLegY.text = "y: " + walkinplace.leftController.transform.position.y;
-        rightLegY.text = "y: " + walkinplace.rightController.transform.position.y;
+        leftLegY.text = "y: " + walkinplace.leftController.transform.localPosition.y;
+        rightLegY.text = "y: " + walkinplace.rightController.transform.localPosition.y;
         leftLegMax.text = "max: " + (walkinplace.maxLeftUp + walkinplace.baseLeftPosition.y);
         leftLegMin.text = "min: " + (walkinplace.minLeftUp + walkinplace.baseLeftPosition.y);
         rightLegMax.text = "max: " + (walkinplace.maxRightUp + walkinplace.baseRightPosition.y);
