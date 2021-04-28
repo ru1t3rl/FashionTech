@@ -24,10 +24,12 @@ public class WalkInPlace : MonoBehaviour
     public Vector3 baseLeftPosition;
     public Vector3 baseRightPosition;
     public Vector3 baseLeftOrientation;
-    public Vector3 baseRightOrientation;
+    public Vector3 baseRightOrientation;   
 
-    private float leftLegUpTime = 0f;
-    private float rightLegUpTime = 0f;
+    public float leftLegUpTime = 0f;
+    public float rightLegUpTime = 0f;
+
+    public float currentWalkingSpeed = 0f;
 
 
 
@@ -48,15 +50,20 @@ public class WalkInPlace : MonoBehaviour
         {
             Calibrate();
         }
-        if(leftLegUpTime > 0) { }
+        if(leftLegUpTime > 0) { leftLegUpTime -= Time.deltaTime; }
+        if (rightLegUpTime > 0) { rightLegUpTime -= Time.deltaTime; }
         OrientBody();
         if (IsWalking())
         {
-            //float curSpeed = walkSpeed * Input.GetAxis("Vertical");
-           float curSpeed = walkSpeed; //TODO should ease in the walk speed to a max walking speed;
-            controller.SimpleMove(bodyDirection * curSpeed);
+            currentWalkingSpeed = Mathf.Clamp(currentWalkingSpeed+= 0.1f,0, walkSpeed) ;
+
+        } else
+        {
+            currentWalkingSpeed *= 0.9f;
 
         }
+        controller.SimpleMove(bodyDirection * currentWalkingSpeed);
+
     }
 
     // this method is called during a tracking event change. on the left and right hand.
@@ -85,7 +92,6 @@ public class WalkInPlace : MonoBehaviour
             baseLeftOrientation = leftController.transform.localEulerAngles;
             baseRightOrientation = rightController.transform.localEulerAngles;
         }
-
 
         print(baseLeftPosition);
         print(baseRightPosition);
@@ -157,13 +163,13 @@ public class WalkInPlace : MonoBehaviour
         CheckRightLeg();
 
         
-
         if (baseLeftOrientation == Vector3.zero && baseRightOrientation == Vector3.zero)
         {
             return false;
         }
 
-        if (isLeftLegUp && isRightLegDown || isRightLegUp && isLeftLegDown) {
+        if (leftLegUpTime > 0 && rightLegUpTime > 0)
+        {
             return true;
         } else {
             return false;

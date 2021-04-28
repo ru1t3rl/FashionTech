@@ -781,14 +781,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 765042788}
   rightController: {fileID: 873831501}
-  walkSpeed: 3
+  walkSpeed: 2
   rotateSpeed: 1
-  detectionPrecision: 0.11
+  detectionPrecision: 0.05
   maxLeftUp: 1
-  minLeftUp: -0.1
+  minLeftUp: -0.02
   maxRightUp: 1
-  minRightUp: -0.1
-  legUptime: 1.1
+  minRightUp: -0.02
+  legUptime: 1.8
   isLeftLegUp: 0
   isLeftLegDown: 0
   isRightLegUp: 0
@@ -798,6 +798,9 @@ MonoBehaviour:
   baseRightPosition: {x: 0, y: 0, z: 0}
   baseLeftOrientation: {x: 0, y: 0, z: 0}
   baseRightOrientation: {x: 0, y: 0, z: 0}
+  leftLegUpTime: 0
+  rightLegUpTime: 0
+  currentWalkingSpeed: 0
 --- !u!1001 &101061182
 PrefabInstance:
   m_ObjectHideFlags: 0
