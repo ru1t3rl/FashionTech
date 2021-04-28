@@ -12,10 +12,13 @@ public class InventorySlot : MonoBehaviour
 
     public GameObject container;
     public Vector3 scale;
+    public float upPositionOffset = 0.1f;
 
     private GameObject storedObject = null;
     private FixedJoint joint = null;
     public bool isAvailable = true;
+    private bool useOffset = false;
+    public GameObject offsetEmpty;
 
 
     // Start is called before the first frame update
@@ -23,6 +26,7 @@ public class InventorySlot : MonoBehaviour
     {
         SetContainerEmpty();
         scale = transform.localScale;
+        if (offsetEmpty != null) useOffset = true;
     }
 
     void Awake()
@@ -40,6 +44,20 @@ public class InventorySlot : MonoBehaviour
 
         Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
         joint.connectedBody = targetBody;
+        SetContainerFull();
+    }
+
+    public void AttachOnOffset(GameObject newObject)
+    {
+        if (storedObject) { return; }
+        if (!useOffset) return;
+
+        storedObject = newObject;
+
+        storedObject.transform.position = offsetEmpty.transform.position + Vector3.up * upPositionOffset;
+        storedObject.transform.rotation = Quaternion.identity;
+
+        Rigidbody targetBody = storedObject.gameObject.GetComponent<Rigidbody>();
         SetContainerFull();
     }
 
