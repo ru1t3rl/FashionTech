@@ -11,6 +11,14 @@ public class debugUIVisuals : MonoBehaviour
     public Image rightLegUp;
     public Image rightLegDown;
     public Text fps;
+    public Text leftLegY;
+    public Text leftLegMax;
+    public Text leftLegMin;
+    public Text rightLegY;
+    public Text rightLegMax;
+    public Text rightLegMin;
+
+
     public WalkInPlace walkinplace;
 
     // Start is called before the first frame update
@@ -24,8 +32,16 @@ public class debugUIVisuals : MonoBehaviour
         leftLegUp.enabled = walkinplace.isLeftLegUp;
         leftLegDown.enabled = walkinplace.isLeftLegDown;
         rightLegUp.enabled = walkinplace.isRightLegUp;
-        rightLegDown.enabled = walkinplace.isRightLegUp;
+        rightLegDown.enabled = walkinplace.isRightLegDown;
         fps.text = "fps: " + (int)(1.0f / Time.smoothDeltaTime);
+        leftLegY.text = "y: " + walkinplace.leftController.transform.position.y;
+        rightLegY.text = "y: " + walkinplace.rightController.transform.position.y;
+        leftLegMax.text = "max: " + (walkinplace.maxLeftUp + walkinplace.baseLeftPosition.y);
+        leftLegMin.text = "min: " + (walkinplace.minLeftUp + walkinplace.baseLeftPosition.y);
+        rightLegMax.text = "max: " + (walkinplace.maxRightUp + walkinplace.baseRightPosition.y);
+        rightLegMin.text = "min: " + (walkinplace.minRightUp + walkinplace.baseRightPosition.y);
+
+
     }
 
     // Update is called once per frame

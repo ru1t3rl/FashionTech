@@ -20,11 +20,11 @@ public class WalkInPlace : MonoBehaviour
     public bool isLeftLegDown = false;
     public bool isRightLegUp = false;
     public bool isRightLegDown = false;
-    private Vector3 bodyDirection;
-    private Vector3 baseLeftPosition;
-    private Vector3 baserightPosition;
-    private Vector3 baseLeftOrientation;
-    private Vector3 baseRightOrientation;
+    public Vector3 bodyDirection;
+    public Vector3 baseLeftPosition;
+    public Vector3 baseRightPosition;
+    public Vector3 baseLeftOrientation;
+    public Vector3 baseRightOrientation;
 
 
     CharacterController controller;
@@ -40,7 +40,11 @@ public class WalkInPlace : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   if (baseLeftPosition == Vector3.zero)
+        {
+            Calibrate();
+        }
+
         OrientBody();
         if (IsWalking())
         {
@@ -56,27 +60,31 @@ public class WalkInPlace : MonoBehaviour
     {
         print("----");
         print("CALIBRATING");
-   
 
-        if(leftController.transform.localEulerAngles == Vector3.zero && rightController.transform.localEulerAngles != Vector3.zero)
+       
+
+        if (leftController.transform.localEulerAngles == Vector3.zero && rightController.transform.localEulerAngles != Vector3.zero)
         {
-            leftController.transform.position = rightController.transform.position + Vector3.left;
+            //leftController.transform.position = rightController.transform.position + Vector3.left;
+            baseLeftPosition = baseRightPosition;
 
         } else if (rightController.transform.localEulerAngles == Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
         {
-            rightController.transform.position = leftController.transform.position + Vector3.right;
+            //rightController.transform.position = leftController.transform.position + Vector3.right;
+            baseRightPosition = baseLeftPosition;
         }
 
         if (rightController.transform.localEulerAngles != Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
         {
             baseLeftPosition = leftController.transform.position;
-            baserightPosition = rightController.transform.position;
+            baseRightPosition = rightController.transform.position;
             baseLeftOrientation = leftController.transform.localEulerAngles;
             baseRightOrientation = rightController.transform.localEulerAngles;
         }
 
+
         print(baseLeftPosition);
-        print(baserightPosition);
+        print(baseRightPosition);
         print(baseLeftOrientation);
         print(baseRightOrientation);
         print("----");
@@ -115,27 +123,25 @@ public class WalkInPlace : MonoBehaviour
 
     void CheckLeftLeg()
     {
-        if (IsWithinRange(leftController.transform.position.y, maxLeftUp, detectionPrecision)) { isLeftLegUp = true; }
+        if (IsWithinRange(leftController.transform.position.y, maxLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegUp = true; }
         else { isLeftLegUp = false; }
 
-        if (IsWithinRange(leftController.transform.position.y, minLeftUp, detectionPrecision)) { isLeftLegDown = true; }
+        if (IsWithinRange(leftController.transform.position.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true; }
         else { isLeftLegDown = false; }
 
     }
 
     void CheckRightLeg()
     { 
-        if (IsWithinRange(rightController.transform.position.y, maxRightUp, detectionPrecision)) { isRightLegUp = true; }
-        else { isLeftLegUp = false;}
+        if (IsWithinRange(rightController.transform.position.y, maxRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegUp = true; }
+        else { isRightLegUp = false;}
 
-        if (IsWithinRange(rightController.transform.position.y, minRightUp, detectionPrecision)) { isRightLegDown = true;}
-        else { isLeftLegDown = false;}
+        if (IsWithinRange(rightController.transform.position.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
+        else { isRightLegDown = false;}
     }
 
     bool IsWithinRange(float value, float check, float range)
     {
-        print((check - range) + "<-" + value + "->" + (check + range));
-
         if (value > check - range && value < check + range) {return true;}
         else { return false; }
     }
