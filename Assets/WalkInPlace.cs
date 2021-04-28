@@ -9,11 +9,17 @@ public class WalkInPlace : MonoBehaviour
     public GameObject rightController;
     public float walkSpeed = 3.0f;
     public float rotateSpeed = 3.0f;
+    public float detectionPrecision = 1.1f;
+    public float maxLeftUp = 0.01f;
+    public float minLeftUp = -0.5f;
+    public float maxRightUp = 0.01f;
+    public float minRightUp = -0.5f;
 
-    private bool isLeftLegUp = false;
-    private bool isLeftLegDown = false;
-    private bool isRightLegUp = false;
-    private bool isRightLegDown = false;
+
+    public bool isLeftLegUp = false;
+    public bool isLeftLegDown = false;
+    public bool isRightLegUp = false;
+    public bool isRightLegDown = false;
     private Vector3 bodyDirection;
     private Vector3 baseLeftPosition;
     private Vector3 baserightPosition;
@@ -50,11 +56,24 @@ public class WalkInPlace : MonoBehaviour
     {
         print("----");
         print("CALIBRATING");
-        baseLeftPosition = leftController.transform.position;
-        baserightPosition = rightController.transform.position;
+   
 
-        baseLeftOrientation = leftController.transform.localEulerAngles;
-        baseRightOrientation = rightController.transform.localEulerAngles;
+        if(leftController.transform.localEulerAngles == Vector3.zero && rightController.transform.localEulerAngles != Vector3.zero)
+        {
+            leftController.transform.position = rightController.transform.position + Vector3.left;
+
+        } else if (rightController.transform.localEulerAngles == Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
+        {
+            rightController.transform.position = leftController.transform.position + Vector3.right;
+        }
+
+        if (rightController.transform.localEulerAngles != Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
+        {
+            baseLeftPosition = leftController.transform.position;
+            baserightPosition = rightController.transform.position;
+            baseLeftOrientation = leftController.transform.localEulerAngles;
+            baseRightOrientation = rightController.transform.localEulerAngles;
+        }
 
         print(baseLeftPosition);
         print(baserightPosition);
@@ -78,22 +97,64 @@ public class WalkInPlace : MonoBehaviour
         GameObject.Destroy(myLine, duration);
     }
 
+
+    void MeasureLeftLeg()
+    {
+        
+        float heightDifference =  - baseLeftPosition.y;
+        if (heightDifference < minLeftUp)
+        {
+            minLeftUp = heightDifference;
+        }
+        if (heightDifference > maxLeftUp)
+        {
+            maxLeftUp = heightDifference;
+        };
+        print(minLeftUp + "<-" + baseLeftPosition.y + "->"+ maxLeftUp);
+    }
+
     void CheckLeftLeg()
     {
+        if (IsWithinRange(leftController.transform.position.y, maxLeftUp, detectionPrecision)) { isLeftLegUp = true; }
+        else { isLeftLegUp = false; }
+
+        if (IsWithinRange(leftController.transform.position.y, minLeftUp, detectionPrecision)) { isLeftLegDown = true; }
+        else { isLeftLegDown = false; }
 
     }
 
     void CheckRightLeg()
-    {
+    { 
+        if (IsWithinRange(rightController.transform.position.y, maxRightUp, detectionPrecision)) { isRightLegUp = true; }
+        else { isLeftLegUp = false;}
 
+        if (IsWithinRange(rightController.transform.position.y, minRightUp, detectionPrecision)) { isRightLegDown = true;}
+        else { isLeftLegDown = false;}
     }
+
+    bool IsWithinRange(float value, float check, float range)
+    {
+        print((check - range) + "<-" + value + "->" + (check + range));
+
+        if (value > check - range && value < check + range) {return true;}
+        else { return false; }
+    }
+
 
     bool IsWalking()
     {
-        if (isLeftLegUp && isLeftLegDown && isRightLegUp || isRightLegUp && isRightLegDown && isLeftLegUp) {
+        CheckLeftLeg();
+        CheckRightLeg();
+
+        if (baseLeftOrientation == Vector3.zero && baseRightOrientation == Vector3.zero)
+        {
+            return false;
+        }
+
+        if (isLeftLegUp && isRightLegDown || isRightLegUp && isLeftLegDown) {
             return true;
         } else {
-            return true;
+            return false;
         }
     }
 
