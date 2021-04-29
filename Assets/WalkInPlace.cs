@@ -7,29 +7,26 @@ public class WalkInPlace : MonoBehaviour
 {
     public GameObject leftController;
     public GameObject rightController;
-    public float walkSpeed = 3.0f;
-    public float rotateSpeed = 3.0f;
-    public float detectionPrecision = 1.1f;
-    public float maxLeftUp = 0.01f;
-    public float minLeftUp = -0.5f;
-    public float maxRightUp = 0.01f;
-    public float minRightUp = -0.5f;
-    public float legUptime = 1.1f;
+    public float walkSpeed = 2.0f;
+    public float detectionPrecision = 0.05f;
+    public float minLeftUp = -0.02f;
+    public float minRightUp = -0.02f;
+    public float legUptime = 1.8f;
 
     public bool isLeftLegUp = false;
     public bool isLeftLegDown = false;
     public bool isRightLegUp = false;
     public bool isRightLegDown = false;
-    public Vector3 bodyDirection;
-    public Vector3 baseLeftPosition;
-    public Vector3 baseRightPosition;
-    public Vector3 baseLeftOrientation;
-    public Vector3 baseRightOrientation;   
+    private Vector3 bodyDirection;
+    private Vector3 baseLeftPosition;
+    private Vector3 baseRightPosition;
+    private Vector3 baseLeftOrientation;
+    private Vector3 baseRightOrientation;   
 
-    public float leftLegUpTime = 0f;
-    public float rightLegUpTime = 0f;
+    private float leftLegUpTime = 0f;
+    private float rightLegUpTime = 0f;
 
-    public float currentWalkingSpeed = 0f;
+    private float currentWalkingSpeed = 0f;
 
 
 
@@ -40,8 +37,6 @@ public class WalkInPlace : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        print("----");
-
     }
 
     // Update is called once per frame
@@ -93,12 +88,6 @@ public class WalkInPlace : MonoBehaviour
             baseRightOrientation = rightController.transform.localEulerAngles;
         }
 
-        print(baseLeftPosition);
-        print(baseRightPosition);
-        print(baseLeftOrientation);
-        print(baseRightOrientation);
-        print("----");
-
     }
 
     void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
@@ -113,22 +102,6 @@ public class WalkInPlace : MonoBehaviour
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
         GameObject.Destroy(myLine, duration);
-    }
-
-
-    void MeasureLeftLeg()
-    {
-        
-        float heightDifference =  - baseLeftPosition.y;
-        if (heightDifference < minLeftUp)
-        {
-            minLeftUp = heightDifference;
-        }
-        if (heightDifference > maxLeftUp)
-        {
-            maxLeftUp = heightDifference;
-        };
-        print(minLeftUp + "<-" + baseLeftPosition.y + "->"+ maxLeftUp);
     }
 
     void CheckLeftLeg()
@@ -178,11 +151,12 @@ public class WalkInPlace : MonoBehaviour
 
     void OrientBody()
     {
+      
         float directionX = rightController.transform.position.x - leftController.transform.position.x;
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
-        DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-        DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
+        //DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
     }
 }

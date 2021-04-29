@@ -26,7 +26,7 @@ public class debugUIVisuals : MonoBehaviour
     {
         CheckData();
     }
-
+    // make the variables in walkinplace public if you want to debug the values for now.
     void CheckData()
     {
         leftLegUp.enabled = walkinplace.isLeftLegUp;
@@ -36,10 +36,10 @@ public class debugUIVisuals : MonoBehaviour
         fps.text = "fps: " + (int)(1.0f / Time.smoothDeltaTime);
         leftLegY.text = "y: " + walkinplace.leftController.transform.localPosition.y;
         rightLegY.text = "y: " + walkinplace.rightController.transform.localPosition.y;
-        leftLegMax.text = "max: " + (walkinplace.leftLegUpTime);
-        leftLegMin.text = "min: " + (walkinplace.minLeftUp + walkinplace.baseLeftPosition.y);
-        rightLegMax.text = "max: " + (walkinplace.rightLegUpTime);
-        rightLegMin.text = "min: " + (walkinplace.minRightUp + walkinplace.baseRightPosition.y);
+        //leftLegMax.text = "max: " + (walkinplace.leftLegUpTime);
+        //leftLegMin.text = "min: " + (walkinplace.minLeftUp + walkinplace.baseLeftPosition.y);
+        //rightLegMax.text = "max: " + (walkinplace.rightLegUpTime);
+        //rightLegMin.text = "min: " + (walkinplace.minRightUp + walkinplace.baseRightPosition.y);
 
 
     }

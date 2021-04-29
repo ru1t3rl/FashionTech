@@ -782,25 +782,14 @@ MonoBehaviour:
   leftController: {fileID: 765042788}
   rightController: {fileID: 873831501}
   walkSpeed: 2
-  rotateSpeed: 1
   detectionPrecision: 0.05
-  maxLeftUp: 1
   minLeftUp: -0.02
-  maxRightUp: 1
   minRightUp: -0.02
-  legUptime: 1.8
+  legUptime: 2
   isLeftLegUp: 0
   isLeftLegDown: 0
   isRightLegUp: 0
   isRightLegDown: 0
-  bodyDirection: {x: 0, y: 0, z: 0}
-  baseLeftPosition: {x: 0, y: 0, z: 0}
-  baseRightPosition: {x: 0, y: 0, z: 0}
-  baseLeftOrientation: {x: 0, y: 0, z: 0}
-  baseRightOrientation: {x: 0, y: 0, z: 0}
-  leftLegUpTime: 0
-  rightLegUpTime: 0
-  currentWalkingSpeed: 0
 --- !u!1001 &101061182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5563,7 +5552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &815899832
 MonoBehaviour:
   m_ObjectHideFlags: 0
