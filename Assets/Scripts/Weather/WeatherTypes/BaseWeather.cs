@@ -18,7 +18,7 @@ namespace VRolijk.Weather.Type
 
         public UnityEvent OnPlay, OnStop;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             IsPlaying = false;
             weatherEffect.Stop();
