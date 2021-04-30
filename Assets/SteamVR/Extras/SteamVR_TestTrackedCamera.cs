@@ -6,6 +6,7 @@ namespace Valve.VR.Extras
     public class SteamVR_TestTrackedCamera : MonoBehaviour
     {
         public Material material;
+        public Texture defaultTexture;
         public Transform target;
         public bool undistorted = true;
         public bool cropped = true;
@@ -25,7 +26,7 @@ namespace Valve.VR.Extras
         private void OnDisable()
         {
             // Clear the texture when no longer active.
-            material.mainTexture = null;
+            material.mainTexture = defaultTexture;
 
             // The video stream must be symmetrically acquired and released in
             // order to properly disable the stream once there are no consumers.
