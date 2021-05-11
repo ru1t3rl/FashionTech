@@ -2,30 +2,71 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudsNew : MonoBehaviour
+namespace VRolijk.Weather.Type
 {
-    public int horizontalStackSize = 20;
-    public float cloudHeight;
-    public Mesh quadMesh;
-    public Material cloudMaterial;
-    float offset;
-
-    public int layer;
-    public Camera camera;
-    private Matrix4x4 matrix;
-
-    private void Update()
+    public class CloudsNew : BaseWeather
     {
-        cloudMaterial.SetFloat("_MidYValue", transform.position.y);
-        cloudMaterial.SetFloat("_CloudHeight", cloudHeight);
+        [SerializeField] Renderer[] cloudLayersRenderer;
+        MaterialPropertyBlock[] mpbs;
 
-        offset = cloudHeight / horizontalStackSize / 2f;
-        Vector3 startPosition = transform.position + (Vector3.up * (offset * horizontalStackSize / 2f));
+        private float[] startCloudCutOffs, startCloudSoftnesss;
 
-        for (int i = 0; i < horizontalStackSize; i++)
+        private void Awake()
         {
-            matrix = Matrix4x4.TRS(startPosition - (Vector3.up * offset * i), transform.rotation, transform.localScale);
-            Graphics.DrawMesh(quadMesh, matrix, cloudMaterial, layer, camera, 0, null, true, false, false);
+            mpbs = new MaterialPropertyBlock[cloudLayersRenderer.Length];
+            startCloudSoftnesss = new float[mpbs.Length];
+            startCloudCutOffs = new float[mpbs.Length];
+
+            for(int iLayer = 0; iLayer < mpbs.Length; iLayer++)
+            {
+                mpbs[iLayer] = new MaterialPropertyBlock();
+                cloudLayersRenderer[iLayer].GetPropertyBlock(mpbs[iLayer]);
+                
+                startCloudCutOffs[iLayer] = mpbs[iLayer].GetFloat("_CloudCutoff");
+                startCloudSoftnesss[iLayer] = mpbs[iLayer].GetFloat("_CloudSoftness");
+
+                mpbs[iLayer].SetFloat("_CloudCutoff", 0);
+                mpbs[iLayer].SetFloat("_CloudSoftness", 1);
+
+                cloudLayersRenderer[iLayer].SetPropertyBlock(mpbs[iLayer]);
+            }
+        }
+
+        private void FadeIn()
+        {
+            for (int iLayer = 0; iLayer < mpbs.Length; iLayer++)
+            {
+                cloudLayersRenderer[iLayer].GetPropertyBlock(mpbs[iLayer]);
+
+                mpbs[iLayer].SetFloat("_CloudCutoff", startCloudCutOffs[iLayer]);
+                mpbs[iLayer].SetFloat("_CloudSoftness", startCloudSoftnesss[iLayer]);
+
+                cloudLayersRenderer[iLayer].SetPropertyBlock(mpbs[iLayer]);
+            }
+        }
+
+        private void FadeOut()
+        {
+            for (int iLayer = 0; iLayer < mpbs.Length; iLayer++)
+            {
+                cloudLayersRenderer[iLayer].GetPropertyBlock(mpbs[iLayer]);
+
+                mpbs[iLayer].SetFloat("_CloudCutoff", 0);
+                mpbs[iLayer].SetFloat("_CloudSoftness", 1);
+
+                cloudLayersRenderer[iLayer].SetPropertyBlock(mpbs[iLayer]);
+            }
+        }
+
+        public override void Play()
+        {
+            base.Play();
+        }
+
+        public override void Stop()
+        {
+            base.Stop();
+
         }
     }
 }

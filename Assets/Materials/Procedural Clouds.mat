@@ -100,6 +100,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 261cce12761896649a4979e2b2f00ca8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_b58d5b2cbaa64caf8371c7458bd92b3a_Out_0:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -125,9 +129,12 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _CloudCutoff: 0.16
     - _CloudHeight: 100
+    - _CloudScale: 40
     - _CloudScale_01: 0.29
     - _CloudScale_02: -1
+    - _CloudSoftness: 0.56
     - _CloudsPower: 0
     - _CloudsWorldPos: -567.78375
     - _Contrast: 0
@@ -167,5 +174,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Velocity: {r: 0.1, g: 0.1, b: 0, a: 0}
     - idk: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
