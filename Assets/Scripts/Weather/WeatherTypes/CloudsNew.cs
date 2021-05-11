@@ -61,12 +61,13 @@ namespace VRolijk.Weather.Type
         public override void Play()
         {
             base.Play();
+            FadeIn();
         }
 
         public override void Stop()
         {
             base.Stop();
-
+            FadeOut();
         }
     }
 }
