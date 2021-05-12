@@ -105,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Boolean_d74b800c46f041de866da51e4a3f0004: 1
+    - Boolean_d74b800c46f041de866da51e4a3f0004: 0
     - Depth: 6.16
     - Depth_Strength: 0.06
     - Displacement: 0.3
@@ -117,7 +117,7 @@ Material:
     - Side_Smoothness: 0
     - Smoothness: 0.54
     - Tide_Frequency: 1
-    - Vector1_f0243ada0a7d4c93802e1b0d01633f63: 0.23
+    - Vector1_f0243ada0a7d4c93802e1b0d01633f63: 0.6
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -151,14 +151,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Deep_Water_Color: {r: 0.08627436, g: 0.7176471, b: 0.63529414, a: 0.6431373}
+    - Deep_Water_Color: {r: 0.08627426, g: 0.7176471, b: 0.63529414, a: 0.8}
     - Foam_Color: {r: 1, g: 1, b: 1, a: 0}
     - Foam_Tiling: {r: 3, g: 3, b: 0, a: 0}
     - Main_Normal_Tiling: {r: 0.6, g: 0.42, b: 0, a: 0}
     - Second_Normal_Tiling: {r: 0.6, g: 0.87, b: 0, a: 0}
-    - Shallow_Water_Color: {r: 0.77254903, g: 0.90588236, b: 0.8784314, a: 0.5176471}
+    - Shallow_Water_Color: {r: 0.77254903, g: 0.90588236, b: 0.8784314, a: 0.5372549}
     - Side_Bottom_Color: {r: 0, g: 0.20392157, b: 0.32156864, a: 0}
-    - Side_Top_Color: {r: 0, g: 0.8, b: 0.6117647, a: 0}
+    - Side_Top_Color: {r: 0, g: 0.8, b: 0.6117647, a: 1}
     - Vector2_308ebafb16ab4a50b902cc588b96200d: {r: 2, g: 2, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
