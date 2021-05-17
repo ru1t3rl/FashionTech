@@ -124,6 +124,7 @@ Material:
     - Vector1_8b208ce85aa849d7954033d9bb1bfcd7: 0.235
     - Vector1_a4c6d3a3de284316893df90f1c9392e6: 0.49
     - Vector1_b40273feaee2409292ce996698d45ff0: 2.89
+    - Vector1_c2af3c63dba94c2e8ca23f9113a3e96f: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -131,7 +132,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _CloudCutoff: 0.16
     - _CloudHeight: 100
-    - _CloudScale: 40
+    - _CloudScale: 0.056
     - _CloudScale_01: 0.29
     - _CloudScale_02: -1
     - _CloudSoftness: 0.56
@@ -146,6 +147,7 @@ Material:
     - _DetailNoiseTiling: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionStrength: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0

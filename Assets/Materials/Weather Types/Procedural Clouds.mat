@@ -132,7 +132,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _CloudCutoff: 0.16
     - _CloudHeight: 100
-    - _CloudScale: 40
+    - _CloudScale: 0.3
     - _CloudScale_01: 0.29
     - _CloudScale_02: -1
     - _CloudSoftness: 0.56
@@ -147,6 +147,7 @@ Material:
     - _DetailNoiseTiling: 0
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _EmissionStrength: 1
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
