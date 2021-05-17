@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using VRolijk.Weather.Data;
+using VRolijk.Weather.Localization;
 using VRolijk.Weather.Type;
 
 namespace VRolijk.Weather
@@ -16,6 +17,8 @@ namespace VRolijk.Weather
 
         void Awake()
         {
+            GeoLocalizer.GetLocation();
+
             currentWeather = WeatherType.None;
 
             for (int iWeather = 0; iWeather < weatherConditions.Length; iWeather++)
