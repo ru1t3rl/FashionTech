@@ -3,51 +3,100 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using Valve.Newtonsoft.Json;
 
 public class SaveDataSystem : MonoBehaviour
 {
-    public TextAsset saveDataFile;
-    public TextAsset defaultSaveDataFile;
+    public static SaveDataSystem instance = null;
+
+    public UnityEvent saveGameEvent;
+
+    public SaveObject loadedSaveData;
+    public string filePath;
 
     void Start()
     {
-        GetFileWithPath();
+        if (instance == null)
+        {
+            
+            instance = this;
+            Debug.Log("instance given");
+            print(instance);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        saveGameEvent = new UnityEvent();
+
+        filePath = Application.dataPath + "/SaveFiles/SaveData.json";
+
+        loadedSaveData = GetSaveFile();
+
     }
 
-    private void GetFileWithPath()
+    private SaveObject GetSaveFile()
     {
-        string filePath = Application.dataPath + "/SaveFiles/SaveData.json";
         bool exists = File.Exists(filePath);
 
-        string loadedSaveData = File.ReadAllText(filePath);
+        SaveObject newSaveObject = null;
 
-        SaveObject newSaveObject = JsonUtility.FromJson<SaveObject>(loadedSaveData);
+        if (exists)
+        {
+            print(1);
+            string loadedSaveData = File.ReadAllText(filePath);
 
-        //newSaveObject.testString = loadedSaveData.
+            newSaveObject = JsonUtility.FromJson<SaveObject>(loadedSaveData);
+        }
+        
+        if (!exists || newSaveObject == null)
+        {
+            print(2);
+            //TODO: Create new file and save this to path
+            newSaveObject = CreateNewSaveObject();
+        }
 
-        print(filePath);
-        print(exists);
-        print(loadedSaveData);
-        print(newSaveObject.testVariable + "  " + newSaveObject.testString);
+        return newSaveObject;
     }
 
-    private void CreateSaveObject()
+    private SaveObject CreateNewSaveObject()
     {
         SaveObject saveObject = new SaveObject
         {
-            testVariable = 3,
-            testString = "I am a saved string",
+            playerPosition = new Vector3(0, 0, 0),
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
 
-        Debug.Log(saveFile);
+        return saveObject;
+    }
+
+    private void SaveGame()
+    {
+        Debug.Log("Saving game");
+        saveGameEvent.Invoke();
+        
+        SaveToJson();
+    }
+
+    private void SaveToJson()
+    {
+        Debug.Log("saving to json");
+
+        string saveFile = JsonUtility.ToJson(loadedSaveData);
+
+        File.WriteAllText(filePath, saveFile);
+    }
+
+    void OnApplicationQuit()
+    {
+        SaveGame();
     }
 }
 
 public class SaveObject
 {
-    public int testVariable;
-    public string testString;
+    public Vector3 playerPosition;
 }
