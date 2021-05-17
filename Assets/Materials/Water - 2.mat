@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9122965964561954778
+--- !u!114 &-5132636236180345109
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Water - 2
   m_Shader: {fileID: -6465566751694194690, guid: c8902fe27dc02f54bbf861fa4c283c10, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -106,18 +106,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Boolean_d74b800c46f041de866da51e4a3f0004: 1
-    - Depth: 6.16
-    - Depth_Strength: 0.06
-    - Displacement: 0.3
-    - Foam: 0.16
-    - Foam_Strength: 0.32
-    - Main_Wave_Speed: 2
-    - Normal_Strength: 10
-    - Second_Wave_Speed: 20
-    - Side_Smoothness: 0
-    - Smoothness: 0.54
+    - Depth: -4.84
+    - Depth_Strength: 0.12
+    - Displacement: 0.1
+    - Foam: -0.98
+    - Foam_Strength: 0.2
+    - Normal_Strength: 3.61
+    - Side_Smoothness: 1
+    - Smoothness: 0.5
     - Tide_Frequency: 1
-    - Vector1_f0243ada0a7d4c93802e1b0d01633f63: 0.6
+    - Vector1_f0243ada0a7d4c93802e1b0d01633f63: 2
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -137,34 +135,34 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RefractionScale: 5
-    - _RefractionSpeed: 0.1
+    - _RefractionScale: 10
+    - _RefractionSpeed: 0.03
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _TideScale: 15
-    - _UseVertexWaves: 0
+    - _UseVertexWaves: 1
     - _WaveScale: 20
-    - _WaveStrength: 0.37
+    - _WaveStrength: 0.17
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Deep_Water_Color: {r: 0.08627426, g: 0.7176471, b: 0.63529414, a: 0.8}
-    - Foam_Color: {r: 1, g: 1, b: 1, a: 0}
-    - Foam_Tiling: {r: 3, g: 3, b: 0, a: 0}
-    - Main_Normal_Tiling: {r: 0.6, g: 0.42, b: 0, a: 0}
-    - Second_Normal_Tiling: {r: 0.6, g: 0.87, b: 0, a: 0}
-    - Shallow_Water_Color: {r: 0.77254903, g: 0.90588236, b: 0.8784314, a: 0.5372549}
-    - Side_Bottom_Color: {r: 0, g: 0.20392153, b: 0.3215686, a: 0.85882354}
-    - Side_Top_Color: {r: 0, g: 0.8, b: 0.6117647, a: 1}
-    - Vector2_308ebafb16ab4a50b902cc588b96200d: {r: 2, g: 2, b: 0, a: 0}
+    - Deep_Water_Color: {r: 0.05896227, g: 0.23584908, b: 0.2339871, a: 0.5019608}
+    - Foam_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+    - Foam_Tiling: {r: 4, g: 2.4, b: 0, a: 0}
+    - Main_Normal_Tiling: {r: 5, g: 5, b: 0, a: 0}
+    - Second_Normal_Tiling: {r: 5, g: 5, b: 0, a: 0}
+    - Shallow_Water_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 0.5176471}
+    - Side_Bottom_Color: {r: 0, g: 0.33844817, b: 0.7075471, a: 0}
+    - Side_Top_Color: {r: 0, g: 1, b: 0.7073908, a: 0}
+    - Vector2_308ebafb16ab4a50b902cc588b96200d: {r: 0.19, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainWaveVelocity: {r: 10, g: 10, b: 0, a: 0}
-    - _SecondWaveVelocity: {r: 20, g: 20, b: 0, a: 0}
+    - _MainWaveVelocity: {r: 20, g: 10, b: 0, a: 0}
+    - _SecondWaveVelocity: {r: 10, g: 20, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _WaveVelocity: {r: 0.01, g: 0.01, b: 0, a: 0}
+    - _WaveVelocity: {r: 0.05, g: 0.1, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -7316,7 +7316,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "5a728959a6214e8b84b553f30f4bda10",
     "m_Id": 0,
-    "m_DisplayName": "Foam ......",
+    "m_DisplayName": "Foam Distance",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -14399,9 +14399,9 @@
     "m_Guid": {
         "m_GuidSerialized": "f4240523-b313-4a53-b048-904f1d465d26"
     },
-    "m_Name": "Shallow Water Color",
+    "m_Name": "Deep Water Color",
     "m_DefaultReferenceName": "Shallow_Water_Color",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "Deep_Water_Color",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
@@ -15104,9 +15104,9 @@
     "m_Guid": {
         "m_GuidSerialized": "ea3c9359-60ab-4c37-9346-f9e5aaa39d65"
     },
-    "m_Name": "Deep Water Color",
+    "m_Name": "Shallow Water Color",
     "m_DefaultReferenceName": "Deep_Water_Color",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "Shallow_Water_Color",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
