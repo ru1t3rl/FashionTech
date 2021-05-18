@@ -96,6 +96,7 @@ public class GeomitryGenerator : MonoBehaviour
             Gizmos.DrawSphere(GetPosition(i), 0.1f);
         }
 
+#if UNITY_EDITOR
         Handles.DrawBezier(
             GetPosition(0), 
             GetPosition(3), 
@@ -103,7 +104,7 @@ public class GeomitryGenerator : MonoBehaviour
             GetPosition(2), 
             Color.blue, EditorGUIUtility.whiteTexture, 1f
             );
-
+#endif
         Gizmos.color = Color.green;
 
     
