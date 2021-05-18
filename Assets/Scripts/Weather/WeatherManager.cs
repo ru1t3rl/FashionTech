@@ -65,7 +65,9 @@ namespace VRolijk.Weather
         /// <returns>Current weather of type WeatherType</returns>
         WeatherType GetWeatherType()
         {
+            
             CurrentWeather weather = WeatherAPI.GetCurrentWeather("c7ac86f3c41189c78302f6e0a4f27c7c");
+            Debug.Log($"Current weather Description: {weather.weather[0].description}");
             return weather.weather[0].main.ToLower() switch
             {
                 "clouds" => WeatherType.Clouds,
