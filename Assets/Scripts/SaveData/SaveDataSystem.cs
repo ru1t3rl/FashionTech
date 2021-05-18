@@ -35,6 +35,7 @@ public class SaveDataSystem : MonoBehaviour
 
         loadedSaveData = GetSaveFile();
 
+        Debug.Log("LOADED DATA: " + loadedSaveData.playerPosition);
     }
 
     private SaveObject GetSaveFile()
