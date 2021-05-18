@@ -28,6 +28,8 @@ public class SaveDataSystem : MonoBehaviour
 
         saveGameEvent = new UnityEvent();
         saveDataLoadedEvent = new UnityEvent();
+
+        
     }
 
     void Start()
@@ -39,6 +41,23 @@ public class SaveDataSystem : MonoBehaviour
         Debug.Log("LOADED DATA: " + loadedSaveData.playerPosition);
 
         if (loadedSaveData != null) saveDataLoadedEvent.Invoke();
+
+
+
+
+
+
+
+        var test = File.Create(Application.dataPath + "/SaveFiles/CreationTest9.json");
+
+        test.Close();
+
+        Debug.Log(test);
+
+        SaveObject testSave = CreateNewSaveObject();
+        string testString = JsonUtility.ToJson(testSave);
+
+        File.WriteAllText(Application.dataPath + "/SaveFiles/CreationTest9.json", testString);
     }
 
     private SaveObject GetSaveFile()
@@ -49,7 +68,6 @@ public class SaveDataSystem : MonoBehaviour
 
         if (exists)
         {
-            print(1);
             string loadedSaveData = File.ReadAllText(filePath);
 
             newSaveObject = JsonUtility.FromJson<SaveObject>(loadedSaveData);
@@ -57,7 +75,6 @@ public class SaveDataSystem : MonoBehaviour
         
         if (!exists || newSaveObject == null)
         {
-            print(2);
             //TODO: Create new file and save this to path
             newSaveObject = CreateNewSaveObject();
         }
@@ -69,7 +86,7 @@ public class SaveDataSystem : MonoBehaviour
     {
         SaveObject saveObject = new SaveObject
         {
-            playerPosition = new Vector3(111.16f, 13.94f, 98.61f),
+            playerPosition = new Vector3(0, 0, 0),
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
@@ -83,6 +100,11 @@ public class SaveDataSystem : MonoBehaviour
         saveGameEvent.Invoke();
         
         SaveToJson();
+
+
+
+
+
     }
 
     private void SaveToJson()
@@ -92,6 +114,11 @@ public class SaveDataSystem : MonoBehaviour
         string saveFile = JsonUtility.ToJson(loadedSaveData);
 
         File.WriteAllText(filePath, saveFile);
+
+
+
+
+
     }
 
     void OnApplicationQuit()
