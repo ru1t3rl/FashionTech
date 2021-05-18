@@ -32,11 +32,9 @@ namespace VRolijk.Movement
         {
             cController = GetComponent<CharacterController>();
             walkAudioSource = GetComponent<AudioSource>();
-        }
 
-        void Start()
-        {
             SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
+            SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
         }
 
         void FixedUpdate()
@@ -126,6 +124,11 @@ namespace VRolijk.Movement
         private void SaveData()
         {
             SaveDataSystem.instance.loadedSaveData.playerPosition = Player.instance.transform.position;
+        }
+
+        private void LoadData()
+        {
+            Player.instance.transform.position = SaveDataSystem.instance.loadedSaveData.playerPosition;
         }
     }
 }

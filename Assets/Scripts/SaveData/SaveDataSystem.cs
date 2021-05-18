@@ -10,19 +10,16 @@ public class SaveDataSystem : MonoBehaviour
 {
     public static SaveDataSystem instance = null;
 
-    public UnityEvent saveGameEvent;
+    public UnityEvent saveGameEvent, saveDataLoadedEvent;
 
     public SaveObject loadedSaveData;
     public string filePath;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
-            
             instance = this;
-            Debug.Log("instance given");
-            print(instance);
         }
         else if (instance != this)
         {
@@ -30,12 +27,18 @@ public class SaveDataSystem : MonoBehaviour
         }
 
         saveGameEvent = new UnityEvent();
+        saveDataLoadedEvent = new UnityEvent();
+    }
 
+    void Start()
+    {
         filePath = Application.dataPath + "/SaveFiles/SaveData.json";
 
         loadedSaveData = GetSaveFile();
 
         Debug.Log("LOADED DATA: " + loadedSaveData.playerPosition);
+
+        if (loadedSaveData != null) saveDataLoadedEvent.Invoke();
     }
 
     private SaveObject GetSaveFile()
@@ -66,7 +69,7 @@ public class SaveDataSystem : MonoBehaviour
     {
         SaveObject saveObject = new SaveObject
         {
-            playerPosition = new Vector3(0, 0, 0),
+            playerPosition = new Vector3(111.16f, 13.94f, 98.61f),
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
