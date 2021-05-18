@@ -40,8 +40,6 @@ namespace VRolijk.Weather.Type
         {
             IsPlaying = true;
             OnPlay?.Invoke();
-
-            Debug.Log($"<b>[{Weather}]</b> Whoop Whoop... I have been activated");
         }
 
         public virtual void Stop()

@@ -19,8 +19,6 @@ namespace VRolijk.DayNight.Module
 
         public override void UpdateModule(float intensity)
         {
-            Debug.Log("Intensity"+intensity);
-
             mpb.SetColor("Color_03f1c5e416f944fba07ae6c0ab917c0f", cloudColor.Evaluate(intensity));
             mpb.SetFloat("Vector1_c2af3c63dba94c2e8ca23f9113a3e96f", emissionStrengthNight + (emissionStrengthDay - emissionStrengthNight) * (intensity));
             cloudsRenderer.SetPropertyBlock(mpb);
