@@ -17,8 +17,6 @@ namespace VRolijk.Weather
 
         void Awake()
         {
-            GeoLocalizer.GetLocation();
-
             currentWeather = WeatherType.None;
 
             for (int iWeather = 0; iWeather < weatherConditions.Length; iWeather++)
