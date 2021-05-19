@@ -7,7 +7,7 @@ namespace VRolijk.DayNight.Module
     public class SunModule : DayNightModuleBase
     {
         [SerializeField] Light sun;
-        [SerializeField] Gradient sunColor;
+        [SerializeField] UnityEngine.Gradient sunColor;
         [SerializeField] float baseIntensity, intensityVariation;
         [SerializeField] float minActiveIntensity;
         [SerializeField, Range(0f, 5f)] float atmosphereThickness;
