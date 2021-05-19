@@ -17,11 +17,11 @@ public class WalkInPlace : MonoBehaviour
     public bool isLeftLegDown = false;
     public bool isRightLegUp = false;
     public bool isRightLegDown = false;
-    private Vector3 bodyDirection;
-    private Vector3 baseLeftPosition;
-    private Vector3 baseRightPosition;
-    private Vector3 baseLeftOrientation;
-    private Vector3 baseRightOrientation;   
+    public Vector3 bodyDirection;
+    public Vector3 baseLeftPosition;
+    public Vector3 baseRightPosition;
+    public Vector3 baseLeftOrientation;
+    public Vector3 baseRightOrientation;   
 
     private float leftLegUpTime = 0f;
     private float rightLegUpTime = 0f;
@@ -64,11 +64,6 @@ public class WalkInPlace : MonoBehaviour
     // this method is called during a tracking event change. on the left and right hand.
     public void Calibrate()
     {
-        print("----");
-        print("CALIBRATING");
-
-       
-
         if (leftController.transform.localEulerAngles == Vector3.zero && rightController.transform.localEulerAngles != Vector3.zero)
         {
             //leftController.transform.position = rightController.transform.position + Vector3.left;
@@ -82,10 +77,11 @@ public class WalkInPlace : MonoBehaviour
 
         if (rightController.transform.localEulerAngles != Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
         {
+            print("-- calibrating controller positions --");
             baseLeftPosition = leftController.transform.localPosition;
             baseRightPosition = rightController.transform.localPosition;
-            baseLeftOrientation = leftController.transform.localEulerAngles;
-            baseRightOrientation = rightController.transform.localEulerAngles;
+            //baseLeftOrientation = leftController.transform.localEulerAngles;
+            //baseRightOrientation = rightController.transform.localEulerAngles;
         }
 
     }
@@ -106,21 +102,43 @@ public class WalkInPlace : MonoBehaviour
 
     void CheckLeftLeg()
     {
-        if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+        var angle = leftController.transform.localEulerAngles;
+        Vector3 simpleAngles = new Vector3(Mathf.RoundToInt(angle.x), Mathf.RoundToInt(angle.y), Mathf.RoundToInt(angle.z));
+        print(simpleAngles);
+        /*if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
         if (IsWithinRange(leftController.transform.localPosition.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true;}
+        else { isLeftLegDown = false; }*/
+        var isAngleUp = angle.x > minLeftUp + baseLeftOrientation.x;
+        var isAngleDown = IsWithinRange(angle.x, baseLeftOrientation.x, detectionPrecision);
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
+
+
+        if (isAngleUp && !heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+        else { isLeftLegUp = false; }
+
+        if (isAngleDown) { isLeftLegDown = true; }
         else { isLeftLegDown = false; }
 
     }
 
     void CheckRightLeg()
-    { 
-        if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
+    {
+        var angle = rightController.transform.localEulerAngles;
+        var isAngleUp = angle.x > minRightUp + baseRightOrientation.x;
+        var isAngleDown = IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision);
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
+        /*if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false;}
 
         if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
-        else { isRightLegDown = false;}
+        else { isRightLegDown = false;} */
+        if (isAngleUp && !heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
+        else { isRightLegUp = false; }
+
+        if (isAngleDown) { isRightLegDown = true; }
+        else { isRightLegDown = false; }
     }
 
     bool IsWithinRange(float value, float check, float range)
@@ -157,6 +175,16 @@ public class WalkInPlace : MonoBehaviour
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
         //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-        //DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+    }
+
+    public float getLeftLegUpTime()
+    {
+        return leftLegUpTime;
+    }
+
+    public float getRightLegUpTime()
+    {
+        return rightLegUpTime;
     }
 }
