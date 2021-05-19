@@ -72,15 +72,17 @@ namespace Valve.VR.Extras
                 material.mainTextureOffset = Vector2.zero;
                 material.mainTextureScale = new Vector2(1, -1);
             }
-
-            target.localScale = new Vector3(1, 1.0f / aspect, 1);
-
-            // Apply the pose that this frame was recorded at.
-            if (source.hasTracking)
+            if (target)
             {
-                SteamVR_Utils.RigidTransform rigidTransform = source.transform;
-                target.localPosition = rigidTransform.pos;
-                target.localRotation = rigidTransform.rot;
+                target.localScale = new Vector3(1, 1.0f / aspect, 1);
+
+                // Apply the pose that this frame was recorded at.
+                if (source.hasTracking)
+                {
+                    SteamVR_Utils.RigidTransform rigidTransform = source.transform;
+                    target.localPosition = rigidTransform.pos;
+                    target.localRotation = rigidTransform.rot;
+                }
             }
         }
     }
