@@ -13,7 +13,7 @@ public class SaveDataSystem : MonoBehaviour
     public UnityEvent saveGameEvent, saveDataLoadedEvent;
 
     public SaveObject loadedSaveData;
-    public string filePath;
+    public string filePath, saveFileName;
 
     void Awake()
     {
@@ -28,36 +28,17 @@ public class SaveDataSystem : MonoBehaviour
 
         saveGameEvent = new UnityEvent();
         saveDataLoadedEvent = new UnityEvent();
-
-        
     }
 
     void Start()
     {
-        filePath = Application.dataPath + "/SaveFiles/SaveData.json";
+        saveFileName = "SaveData.json";
+
+        filePath = Application.dataPath + "/SaveFiles/" + saveFileName;
 
         loadedSaveData = GetSaveFile();
 
-        Debug.Log("LOADED DATA: " + loadedSaveData.playerPosition);
-
         if (loadedSaveData != null) saveDataLoadedEvent.Invoke();
-
-
-
-
-
-
-
-        var test = File.Create(Application.dataPath + "/SaveFiles/CreationTest9.json");
-
-        test.Close();
-
-        Debug.Log(test);
-
-        SaveObject testSave = CreateNewSaveObject();
-        string testString = JsonUtility.ToJson(testSave);
-
-        File.WriteAllText(Application.dataPath + "/SaveFiles/CreationTest9.json", testString);
     }
 
     private SaveObject GetSaveFile()
@@ -72,10 +53,18 @@ public class SaveDataSystem : MonoBehaviour
 
             newSaveObject = JsonUtility.FromJson<SaveObject>(loadedSaveData);
         }
-        
-        if (!exists || newSaveObject == null)
+        else
         {
-            //TODO: Create new file and save this to path
+            var newSaveFileJSON = File.Create(filePath);
+            newSaveFileJSON.Close();
+
+            newSaveObject = CreateNewSaveObject();
+            string newSaveDataToWrite = JsonUtility.ToJson(newSaveObject);
+            File.WriteAllText(filePath, newSaveDataToWrite);
+        }
+
+        if (exists && newSaveObject == null)
+        {
             newSaveObject = CreateNewSaveObject();
         }
 
@@ -86,7 +75,7 @@ public class SaveDataSystem : MonoBehaviour
     {
         SaveObject saveObject = new SaveObject
         {
-            playerPosition = new Vector3(0, 0, 0),
+            playerPosition = new Vector3(111.16f, 13.94f, 120.61f),
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
@@ -96,29 +85,16 @@ public class SaveDataSystem : MonoBehaviour
 
     private void SaveGame()
     {
-        Debug.Log("Saving game");
         saveGameEvent.Invoke();
         
         SaveToJson();
-
-
-
-
-
     }
 
     private void SaveToJson()
     {
-        Debug.Log("saving to json");
-
         string saveFile = JsonUtility.ToJson(loadedSaveData);
 
         File.WriteAllText(filePath, saveFile);
-
-
-
-
-
     }
 
     void OnApplicationQuit()
