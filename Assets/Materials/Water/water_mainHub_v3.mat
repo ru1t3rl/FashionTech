@@ -113,7 +113,7 @@ Material:
     - Foam_Strength: 0.09
     - Normal_Strength: 2.4
     - Side_Smoothness: 1
-    - Smoothness: 0.5
+    - Smoothness: 0.2
     - Tide_Frequency: 0.5
     - Vector1_f0243ada0a7d4c93802e1b0d01633f63: 5.17
     - _AlphaClip: 0
@@ -130,7 +130,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 3.43
+    - _Metallic: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
@@ -153,7 +153,7 @@ Material:
     - Foam_Color: {r: 1, g: 1, b: 1, a: 1}
     - Foam_Tiling: {r: 12, g: 15, b: 0, a: 0}
     - Main_Normal_Tiling: {r: 20, g: 20, b: 0, a: 0}
-    - Second_Normal_Tiling: {r: 25, g: 25, b: 0, a: 0}
+    - Second_Normal_Tiling: {r: 10, g: 10, b: 0, a: 0}
     - Shallow_Water_Color: {r: 0.27990386, g: 0.3207547, b: 0.31072116, a: 0.50980395}
     - Side_Bottom_Color: {r: 0, g: 0.33844817, b: 0.7075471, a: 0}
     - Side_Top_Color: {r: 0, g: 1, b: 0.7073908, a: 0}
@@ -161,7 +161,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainWaveVelocity: {r: 20, g: 20, b: 0, a: 0}
+    - _MainWaveVelocity: {r: 60, g: -15, b: 0, a: 0}
     - _SecondWaveVelocity: {r: 25, g: 25, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _WaveVelocity: {r: 0.05, g: 0.01, b: 0, a: 0}
