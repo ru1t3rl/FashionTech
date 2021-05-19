@@ -110,11 +110,15 @@ public class WalkInPlace : MonoBehaviour
 
         if (IsWithinRange(leftController.transform.localPosition.y, minLeftUp + baseLeftPosition.y, detectionPrecision)) { isLeftLegDown = true;}
         else { isLeftLegDown = false; }*/
+        var isAngleUp = angle.x > minLeftUp + baseLeftOrientation.x;
+        var isAngleDown = IsWithinRange(angle.x, baseLeftOrientation.x, detectionPrecision);
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
 
-        if (angle.x > minLeftUp + baseLeftOrientation.x) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+
+        if (isAngleUp && !heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
-        if (IsWithinRange(angle.x, baseLeftOrientation.x, detectionPrecision)) { isLeftLegDown = true; }
+        if (isAngleDown) { isLeftLegDown = true; }
         else { isLeftLegDown = false; }
 
     }
@@ -122,16 +126,18 @@ public class WalkInPlace : MonoBehaviour
     void CheckRightLeg()
     {
         var angle = rightController.transform.localEulerAngles;
-
+        var isAngleUp = angle.x > minRightUp + baseRightOrientation.x;
+        var isAngleDown = IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision);
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
         /*if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false;}
 
         if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
         else { isRightLegDown = false;} */
-        if (angle.x > minRightUp + baseRightOrientation.x) { isRightLegUp = true; rightLegUpTime = legUptime; }
+        if (isAngleUp && !heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false; }
 
-        if (IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision)) { isRightLegDown = true; }
+        if (isAngleDown) { isRightLegDown = true; }
         else { isRightLegDown = false; }
     }
 
