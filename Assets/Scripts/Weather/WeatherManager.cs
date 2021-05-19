@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using VRolijk.Weather.Data;
+using VRolijk.Weather.Localization;
 using VRolijk.Weather.Type;
 
 namespace VRolijk.Weather
