@@ -339,6 +339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: {fileID: 144230}
   rightController: {fileID: 160596}
+  HMD: {fileID: 125964}
   walkSpeed: 1.8
   detectionPrecision: 10
   minLeftUp: 20
@@ -353,6 +354,8 @@ MonoBehaviour:
   baseRightPosition: {x: 0, y: 0, z: 0}
   baseLeftOrientation: {x: 280, y: 0, z: 0}
   baseRightOrientation: {x: 280, y: 0, z: 0}
+  headHeight: 0
+  headSize: 0.23
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +741,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 7156282071236192729}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -2363,7 +2367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &815899835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4572,6 +4576,19 @@ Transform:
   m_Father: {fileID: 476540}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 135, y: -170, z: -90}
+--- !u!114 &1580014909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7156282071682031409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ea61d6b3bd4b346a69f54cf716c8c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1001 &897998153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4793,8 +4810,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f565b441d7dfe3d439372dca6f48ac02, type: 3}
+--- !u!20 &7156282071236192729 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5413687752127886596, guid: f565b441d7dfe3d439372dca6f48ac02, type: 3}
+  m_PrefabInstance: {fileID: 2914234623115435229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7156282071236192726 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5413687752127886603, guid: f565b441d7dfe3d439372dca6f48ac02, type: 3}
+  m_PrefabInstance: {fileID: 2914234623115435229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7156282071682031409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5413687752252851180, guid: f565b441d7dfe3d439372dca6f48ac02, type: 3}
   m_PrefabInstance: {fileID: 2914234623115435229}
   m_PrefabAsset: {fileID: 0}

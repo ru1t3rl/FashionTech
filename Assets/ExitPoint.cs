@@ -6,12 +6,14 @@ public class ExitPoint : MonoBehaviour
 {
     public Animator realWorldAnimator;
     private GameObject realWorld;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         realWorld = GameObject.Find("Realworld menu");
         realWorldAnimator = realWorld.GetComponent<Animator>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,11 +24,20 @@ public class ExitPoint : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        realWorldAnimator.SetTrigger("openExit");
+        if (other.name == "HeadCollider")
+        {
+            realWorldAnimator.SetTrigger("openExit");
+            gameManager.SetGameState(GameManager.gameState.inExit);
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        realWorldAnimator.SetTrigger("closeExit");
+        if (other.name == "HeadCollider") { 
+
+            realWorldAnimator.SetTrigger("closeExit");
+            gameManager.SetGameState(GameManager.gameState.inWorld);
+
+        }
     }
 }
