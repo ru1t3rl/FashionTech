@@ -86,6 +86,7 @@ public class WalkInPlace : MonoBehaviour
 
     }
 
+    
     void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
     {
         GameObject myLine = new GameObject();
@@ -174,8 +175,8 @@ public class WalkInPlace : MonoBehaviour
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
-        //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-        DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        // DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
+        // DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
     }
 
     public float getLeftLegUpTime()
