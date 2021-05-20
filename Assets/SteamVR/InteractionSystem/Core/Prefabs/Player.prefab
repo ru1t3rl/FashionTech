@@ -313,10 +313,10 @@ MonoBehaviour:
     actionPath: /actions/default/in/Touchpad
     needsReinit: 0
   bottomOfPlayerBody: {fileID: 1580775344}
-  horsePower: 0.25
-  maxSpeed: 0.75
-  mass: 60
-  maxYSpeed: 4
+  horsePower: 1
+  maxSpeed: 2
+  mass: 10
+  maxYSpeed: 20
   useGravity: 1
   gravity: -9.81
   drag: 1.2
