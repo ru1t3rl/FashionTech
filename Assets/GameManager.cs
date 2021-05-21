@@ -79,9 +79,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(currentGameState== gameState.inExit && !isTrigger)
+        if(currentGameState== gameState.inExit )
         {
-            if (DetectBreathingStart()){
+            if (DetectBreathingStart()&&!isTrigger){
                 EnableWalking(false);
                 isTrigger = true;
 
