@@ -1,5 +1,6 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 using UnityEngine;
+using Valve.VR;
 
 namespace Valve.VR.Extras
 {
@@ -21,6 +22,8 @@ namespace Valve.VR.Extras
             // Auto-disable if no camera is present.
             if (!source.hasCamera)
                 enabled = false;
+
+            CheckTiling();
         }
 
         private void OnDisable()
@@ -32,6 +35,18 @@ namespace Valve.VR.Extras
             // order to properly disable the stream once there are no consumers.
             SteamVR_TrackedCamera.VideoStreamTexture source = SteamVR_TrackedCamera.Source(undistorted);
             source.Release();
+        }
+
+        private void CheckTiling()
+        {
+            if (SteamVR.instance.hmd_Type.ToLower() != "vive" && SteamVR.instance.hmd_Type.ToLower() != "rift")
+            {
+                material.SetVector("_tiling", new Vector4(1, 0.5f, 0, 0));
+            } else
+            {
+                material.SetVector("_tiling", new Vector4(1, 1f, 0, 0));
+
+            }
         }
 
         private void Update()
@@ -49,6 +64,7 @@ namespace Valve.VR.Extras
             // (You actually really only need to call any of the accessors which
             // internally call Update on the SteamVR_TrackedCamera.VideoStreamTexture).
             material.mainTexture = texture;
+            
 
             // Adjust the height of the quad based on the aspect to keep the texels square.
             float aspect = (float)texture.width / texture.height;

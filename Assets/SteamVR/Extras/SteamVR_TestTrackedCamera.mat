@@ -105,9 +105,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
+    - Vector2_f66213bc14b941178d8ee27a5294bb6c: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6371474948415304249
 MonoBehaviour:

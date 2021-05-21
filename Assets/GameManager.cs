@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
     {
         currentGameState = state;
         isTrigger = false;
-        Debug.Log(state);
         switch (currentGameState)
         {
             case gameState.startup: 
@@ -95,7 +94,6 @@ public class GameManager : MonoBehaviour
     {
         bool leftIsUp = leftHand.transform.localPosition.y >= HMD.transform.localPosition.y;
         bool rightIsUp = rightHand.transform.localPosition.y >= HMD.transform.localPosition.y;
-        print("aa"+leftIsUp+"bvb"+ rightIsUp + leftHand.transform.localPosition.y +"aaaaa" + HMD.transform.localPosition.y);
 
         if (leftIsUp && rightIsUp && HMD.transform.localPosition.y != 0)
         {
