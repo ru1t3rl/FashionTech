@@ -182,7 +182,6 @@ public class WalkInPlace : MonoBehaviour
         var distanceLeft = leftController.transform.localPosition.y;
         var distanceRight = rightController.transform.localPosition.y;
         var distanceToHips = getHipHeight();
-        Debug.Log(distanceLeft + " hips " + distanceToHips);
         var leftInPocket = distanceLeft < distanceToHips;
         var rightInPocket = distanceRight < distanceToHips;
         if (leftInPocket && rightInPocket) {
@@ -197,7 +196,7 @@ public class WalkInPlace : MonoBehaviour
 
     public float getHipHeight()
     {
-        return headSize * 4.5f;
+        return headSize * 5f;
     }
     bool IsWalking()
     {
