@@ -107,5 +107,25 @@ namespace VRolijk.DayNight
                 modules[iModule].UpdateModule(intensity);
             }
         }
+
+        public void MakeDay()
+        {
+            _timeOfDay = .5f;
+        }
+
+        public void MakeNight()
+        {
+            _timeOfDay = 0f;
+        }
+
+        public void PauseTime()
+        {
+            pause = true;
+        }
+
+        public void ContinueTime()
+        {
+            pause = false;
+        }
     }
 }

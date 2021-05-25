@@ -1,11 +1,13 @@
 ﻿//======= Copyright (c) Valve Corporation, All rights reserved. ===============
 using UnityEngine;
+using Valve.VR;
 
 namespace Valve.VR.Extras
 {
     public class SteamVR_TestTrackedCamera : MonoBehaviour
     {
         public Material material;
+        public Texture defaultTexture;
         public Transform target;
         public bool undistorted = true;
         public bool cropped = true;
@@ -20,17 +22,31 @@ namespace Valve.VR.Extras
             // Auto-disable if no camera is present.
             if (!source.hasCamera)
                 enabled = false;
+
+            CheckTiling();
         }
 
         private void OnDisable()
         {
             // Clear the texture when no longer active.
-            material.mainTexture = null;
+            material.mainTexture = defaultTexture;
 
             // The video stream must be symmetrically acquired and released in
             // order to properly disable the stream once there are no consumers.
             SteamVR_TrackedCamera.VideoStreamTexture source = SteamVR_TrackedCamera.Source(undistorted);
             source.Release();
+        }
+
+        private void CheckTiling()
+        {
+            if (SteamVR.instance.hmd_Type.ToLower() != "vive" && SteamVR.instance.hmd_Type.ToLower() != "rift")
+            {
+                material.SetVector("_tiling", new Vector4(1, 0.5f, 0, 0));
+            } else
+            {
+                material.SetVector("_tiling", new Vector4(1, 1f, 0, 0));
+
+            }
         }
 
         private void Update()
@@ -48,6 +64,7 @@ namespace Valve.VR.Extras
             // (You actually really only need to call any of the accessors which
             // internally call Update on the SteamVR_TrackedCamera.VideoStreamTexture).
             material.mainTexture = texture;
+            
 
             // Adjust the height of the quad based on the aspect to keep the texels square.
             float aspect = (float)texture.width / texture.height;
@@ -71,15 +88,17 @@ namespace Valve.VR.Extras
                 material.mainTextureOffset = Vector2.zero;
                 material.mainTextureScale = new Vector2(1, -1);
             }
-
-            target.localScale = new Vector3(1, 1.0f / aspect, 1);
-
-            // Apply the pose that this frame was recorded at.
-            if (source.hasTracking)
+            if (target)
             {
-                SteamVR_Utils.RigidTransform rigidTransform = source.transform;
-                target.localPosition = rigidTransform.pos;
-                target.localRotation = rigidTransform.rot;
+                target.localScale = new Vector3(1, 1.0f / aspect, 1);
+
+                // Apply the pose that this frame was recorded at.
+                if (source.hasTracking)
+                {
+                    SteamVR_Utils.RigidTransform rigidTransform = source.transform;
+                    target.localPosition = rigidTransform.pos;
+                    target.localRotation = rigidTransform.rot;
+                }
             }
         }
     }

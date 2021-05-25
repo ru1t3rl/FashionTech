@@ -18,10 +18,10 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - RealWorld
   - 
   - Trails
-  - 
+  - DeveloperUI
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: RealWorld
+    uniqueID: 3964235909
     locked: 0

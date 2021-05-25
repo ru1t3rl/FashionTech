@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2670129966916118227
+--- !u!1 &440806639778402443
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3334323584370310249}
-  - component: {fileID: 692462231171168098}
-  - component: {fileID: 8161580365501501847}
-  - component: {fileID: 2558944393727773005}
+  - component: {fileID: 8298217742815146740}
+  - component: {fileID: 7117426887873191566}
+  - component: {fileID: 6722849715824835057}
+  - component: {fileID: 994428391234275493}
   m_Layer: 0
-  m_Name: acaia_tree_red
+  m_Name: LOD_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3334323584370310249
+--- !u!4 &8298217742815146740
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670129966916118227}
-  m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
-  m_LocalPosition: {x: 78.15, y: 13.26, z: 100.63}
-  m_LocalScale: {x: 0.738792, y: 0.738792, z: 0.738792}
+  m_GameObject: {fileID: 440806639778402443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 3334323584370310249}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &692462231171168098
+--- !u!33 &7117426887873191566
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670129966916118227}
+  m_GameObject: {fileID: 440806639778402443}
   m_Mesh: {fileID: 2494185979427425891, guid: acd3610af4a9d0a4684822b5189101c1, type: 3}
---- !u!23 &8161580365501501847
+--- !u!23 &6722849715824835057
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670129966916118227}
+  m_GameObject: {fileID: 440806639778402443}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,16 +83,75 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2558944393727773005
+--- !u!65 &994428391234275493
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670129966916118227}
+  m_GameObject: {fileID: 440806639778402443}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.78715384, y: 6.5081024, z: 0.97416276}
   m_Center: {x: -0.005937939, y: 3.2373579, z: -0.0028037399}
+--- !u!1 &2670129966916118227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3334323584370310249}
+  - component: {fileID: 2285847890077568892}
+  m_Layer: 0
+  m_Name: acaia_tree_red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3334323584370310249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670129966916118227}
+  m_LocalRotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+  m_LocalPosition: {x: 78.15, y: 13.26, z: 100.63}
+  m_LocalScale: {x: 0.738792, y: 0.738792, z: 0.738792}
+  m_Children:
+  - {fileID: 8298217742815146740}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &2285847890077568892
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670129966916118227}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -1.4984899, y: 6.266347, z: 1.1824512}
+  m_Size: 16.865396
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.52039653
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6722849715824835057}
+  - screenRelativeHeight: 0.14877905
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6722849715824835057}
+  - screenRelativeHeight: 0.019408165
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 6722849715824835057}
+  m_Enabled: 1

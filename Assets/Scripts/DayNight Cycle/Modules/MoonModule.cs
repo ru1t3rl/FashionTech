@@ -7,7 +7,7 @@ namespace VRolijk.DayNight.Module
     public class MoonModule : DayNightModuleBase
     {
         [SerializeField] Light moon;
-        [SerializeField] Gradient moonColor;
+        [SerializeField] UnityEngine.Gradient moonColor;
         [SerializeField] float baseIntensity, intensityVariation;
         [SerializeField] float minActiveIntensity;
         [SerializeField, Range(0f, 5f)] float atmosphereThickness;
