@@ -17,6 +17,15 @@ public class debugUIVisuals : MonoBehaviour
     public Text rightLegY;
     public Text rightLegMax;
     public Text rightLegMin;
+    public Text rightControllerY;
+    public Text leftControllerY;
+    public Text headY;
+    public Text hipsY;
+    public Image hips;
+
+
+
+
 
 
     public WalkInPlace walkinplace;
@@ -40,9 +49,13 @@ public class debugUIVisuals : MonoBehaviour
         leftLegMin.text = "min: " + (walkinplace.minLeftUp + walkinplace.baseLeftOrientation.x);
         rightLegMax.text = "max: " + (walkinplace.getRightLegUpTime());
         rightLegMin.text = "min: " + (walkinplace.minRightUp + walkinplace.baseRightOrientation.x);
+        rightControllerY.text = "Ry: " + walkinplace.rightController.transform.localPosition.y; ;
+        leftControllerY.text = "Ly: " +walkinplace.leftController.transform.localPosition.y; ;
+        headY.text = "height: " + walkinplace.headHeight;
+        hipsY.text = "hips: " + walkinplace.getHipHeight();
 
 
-    }
+}
 
     // Update is called once per frame
     void Update()

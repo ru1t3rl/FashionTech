@@ -347,7 +347,7 @@ MonoBehaviour:
   detectionPrecision: 10
   minLeftUp: 20
   minRightUp: 20
-  legUptime: 1.8
+  legUptime: 2.1
   isLeftLegUp: 0
   isLeftLegDown: 0
   isRightLegUp: 0
@@ -2754,6 +2754,11 @@ MonoBehaviour:
   rightLegY: {fileID: 1491812343}
   rightLegMax: {fileID: 782613510}
   rightLegMin: {fileID: 395267263}
+  rightControllerY: {fileID: 1886172218}
+  leftControllerY: {fileID: 1178569498}
+  headY: {fileID: 518107013}
+  hipsY: {fileID: 1478021606}
+  hips: {fileID: 626572597}
   walkinplace: {fileID: 73825134}
 --- !u!1 &909520507
 GameObject:

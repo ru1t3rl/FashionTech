@@ -174,11 +174,13 @@ public class WalkInPlace : MonoBehaviour
 
     bool IsControllerAtWaist()
     {
-        var distanceLeft = HMD.transform.localPosition.y - leftController.transform.localPosition.y;
-        var distanceRight = HMD.transform.localPosition.y - rightController.transform.localPosition.y;
-        var distanceToHips = headSize * 2.5;
-        var leftInPocket = distanceLeft > distanceToHips;
-        if (leftInPocket && distanceRight > distanceToHips) {
+        var distanceLeft = leftController.transform.localPosition.y;
+        var distanceRight = rightController.transform.localPosition.y;
+        var distanceToHips = getHipHeight();
+        Debug.Log(distanceLeft + " hips " + distanceToHips);
+        var leftInPocket = distanceLeft < distanceToHips;
+        var rightInPocket = distanceRight < distanceToHips;
+        if (leftInPocket && rightInPocket) {
             return true;
         }
         else
@@ -186,6 +188,11 @@ public class WalkInPlace : MonoBehaviour
             return false;
 
         }
+    }
+
+    public float getHipHeight()
+    {
+        return headSize * 4.5f;
     }
     bool IsWalking()
     {
@@ -213,8 +220,11 @@ public class WalkInPlace : MonoBehaviour
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
-        //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-        //DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        if (debugMenu.active)
+        {
+            //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
+            DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        }
     }
 
     public float getLeftLegUpTime()
