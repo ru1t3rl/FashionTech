@@ -29,6 +29,7 @@ public class WalkInPlace : MonoBehaviour
     private float rightLegUpTime = 0f;
     public float headHeight;
     public float headSize = 0.23f;
+    public GameObject debugMenu;
 
 
     private float currentWalkingSpeed = 0f;
@@ -67,9 +68,17 @@ public class WalkInPlace : MonoBehaviour
 
         }
         controller.SimpleMove(bodyDirection * currentWalkingSpeed);
+        if (Input.GetKeyDown("space"))
+        {
+            ToggleDebug();
+                }
 
     }
 
+    void ToggleDebug()
+    {
+        debugMenu.SetActive(!debugMenu.active);
+    }
     // this method is called during a tracking event change. on the left and right hand.
     public void Calibrate()
     {
