@@ -38,6 +38,11 @@ public class WalkInPlace : MonoBehaviour
 
     CharacterController controller;
 
+    private void Awake()
+    {
+        SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
+        SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -235,5 +240,15 @@ public class WalkInPlace : MonoBehaviour
     public float getRightLegUpTime()
     {
         return rightLegUpTime;
+    }
+
+    private void SaveData()
+    {
+        SaveDataSystem.instance.loadedSaveData.playerPosition = transform.position;
+    }
+
+    private void LoadData()
+    {
+        transform.position = SaveDataSystem.instance.loadedSaveData.playerPosition;
     }
 }
