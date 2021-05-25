@@ -75,7 +75,7 @@ public class SaveDataSystem : MonoBehaviour
     {
         SaveObject saveObject = new SaveObject
         {
-            playerPosition = new Vector3(111.16f, 13.94f, 120.61f),
+            playerPosition = new Vector3(97.85f, 27.933f, 94.234f),
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
