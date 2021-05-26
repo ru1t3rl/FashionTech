@@ -105,7 +105,7 @@ public class WalkInPlace : MonoBehaviour
     {
         var angle = leftController.transform.localEulerAngles;
         Vector3 simpleAngles = new Vector3(Mathf.RoundToInt(angle.x), Mathf.RoundToInt(angle.y), Mathf.RoundToInt(angle.z));
-        print(simpleAngles);
+        //print(simpleAngles);
         /*if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
