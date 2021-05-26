@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.Newtonsoft.Json;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class SaveDataSystem : MonoBehaviour
 {
@@ -75,7 +77,7 @@ public class SaveDataSystem : MonoBehaviour
     {
         SaveObject saveObject = new SaveObject
         {
-            playerPosition = new Vector3(111.16f, 13.94f, 120.61f),
+            playerPosition = Player.instance.transform.position,
         };
 
         string saveFile = JsonUtility.ToJson(saveObject);
