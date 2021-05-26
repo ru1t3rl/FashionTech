@@ -29,14 +29,18 @@ public class WalkInPlace : MonoBehaviour
     private float rightLegUpTime = 0f;
     public float headHeight;
     public float headSize = 0.23f;
+    public GameObject debugMenu;
 
 
     private float currentWalkingSpeed = 0f;
 
-
-
     CharacterController controller;
 
+    private void Awake()
+    {
+        SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
+        SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -67,9 +71,17 @@ public class WalkInPlace : MonoBehaviour
 
         }
         controller.SimpleMove(bodyDirection * currentWalkingSpeed);
+        if (Input.GetKeyDown("space"))
+        {
+            ToggleDebug();
+                }
 
     }
 
+    void ToggleDebug()
+    {
+        debugMenu.SetActive(!debugMenu.active);
+    }
     // this method is called during a tracking event change. on the left and right hand.
     public void Calibrate()
     {
@@ -216,5 +228,15 @@ public class WalkInPlace : MonoBehaviour
     public float getRightLegUpTime()
     {
         return rightLegUpTime;
+    }
+
+    private void LoadData()
+    {
+        transform.position = SaveDataSystem.instance.loadedSaveData.playerPosition;
+    }
+
+    private void SaveData()
+    {
+        SaveDataSystem.instance.loadedSaveData.playerPosition = transform.position;
     }
 }

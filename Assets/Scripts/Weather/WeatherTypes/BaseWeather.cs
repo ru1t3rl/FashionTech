@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.VFX;
+using Valve.VR.InteractionSystem;
 
 namespace VRolijk.Weather.Type
 {
@@ -15,6 +16,7 @@ namespace VRolijk.Weather.Type
         public WeatherType Weather => weather;
 
         public bool IsPlaying { get; private set; }
+        public bool lockOnPlayerPosition = false;
 
         public UnityEvent OnPlay, OnStop;
 
@@ -26,12 +28,18 @@ namespace VRolijk.Weather.Type
             gameObject.SetActive(false);
         }
 
+        private void Update()
+        {
+            if (lockOnPlayerPosition)
+            {
+                transform.position = Player.instance.transform.position;
+            }
+        }
+
         public virtual void Play()
         {
             IsPlaying = true;
             OnPlay?.Invoke();
-
-            Debug.Log($"<b>[{Weather}]</b> Whoop Whoop... I have been activated");
         }
 
         public virtual void Stop()

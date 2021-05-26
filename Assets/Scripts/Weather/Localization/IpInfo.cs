@@ -54,7 +54,7 @@ namespace VRolijk.Weather.Localization
                 string result = reader.ReadToEnd();
 
                 var externalIp = ipRegex.Matches(result)[0];
-                Debug.Log($"<b>[Weather API - IpInfo]</b>  IP: {externalIp}");
+                // Debug.Log($"<b>[Weather API - IpInfo]</b>  IP: {externalIp}");
 
                 // Get the IP Information
                 string info = new WebClient().DownloadString("http://ipinfo.io/" + externalIp);
@@ -69,7 +69,7 @@ namespace VRolijk.Weather.Localization
                 Org = locationInfo.Org;
                 Postal = locationInfo.Postal;
 
-                Debug.Log($"<b>[Weather API - IpInfo]</b>  City: {City} | Cords: {Loc}");
+                // Debug.Log($"<b>[Weather API - IpInfo]</b>  City: {City} | Cords: {Loc}");
 
                 reader.Close();
                 dataStream.Close();

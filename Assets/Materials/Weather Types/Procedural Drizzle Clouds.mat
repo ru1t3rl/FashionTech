@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Procedural Clouds
+  m_Name: Procedural Drizzle Clouds
   m_Shader: {fileID: -6465566751694194690, guid: b130476232030284fba3be4db75af6f3, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -121,9 +121,10 @@ Material:
     - Vector1_1d174956690a4b3b9dc392e563d6e809: 8.24
     - Vector1_3827f19947774ae2af4627f3df4227b3: 0
     - Vector1_5cb04045760b444c9ce99cee99f3d878: 0
-    - Vector1_8b208ce85aa849d7954033d9bb1bfcd7: 0.275
+    - Vector1_8b208ce85aa849d7954033d9bb1bfcd7: 0.565
     - Vector1_a4c6d3a3de284316893df90f1c9392e6: -0.18
-    - Vector1_b40273feaee2409292ce996698d45ff0: 2.36
+    - Vector1_b40273feaee2409292ce996698d45ff0: 3
+    - Vector1_c2af3c63dba94c2e8ca23f9113a3e96f: 0.19
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -168,8 +169,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_03f1c5e416f944fba07ae6c0ab917c0f: {r: 0.8113208, g: 0.753916, b: 0.753916, a: 0}
-    - Vector2_1859df7015ea46bf971f54f25f796fbd: {r: 1, g: 1, b: 0, a: 0}
+    - Color_03f1c5e416f944fba07ae6c0ab917c0f: {r: 0.38679248, g: 0.34847814, b: 0.34847814, a: 0}
+    - Vector2_1859df7015ea46bf971f54f25f796fbd: {r: 2, g: 1.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
