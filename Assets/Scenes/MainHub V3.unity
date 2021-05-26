@@ -4710,66 +4710,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 840584555}
     m_Modifications:
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: baseIntensity
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.ctime1
-      value: 4326
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.ctime2
-      value: 5457
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.ctime3
-      value: 5457
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key1.b
-      value: 0.8392157
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key1.g
-      value: 0.91764706
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key1.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key2.b
-      value: 0.12001604
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key2.g
-      value: 0.31122434
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key2.r
-      value: 0.8207547
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key3.b
-      value: 0.12001604
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key3.g
-      value: 0.31122434
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.key3.r
-      value: 0.8207547
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: atmoshpereLerpSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5129829587572102303, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: sunColor.m_NumColorKeys
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 9018859346105951188, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: m_Color.b
       value: 0.8392157
@@ -4878,18 +4818,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: pause
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: _timeOfDay
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: _targetDayLength
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388986, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: skyColor.ctime1
       value: 1327
@@ -4913,66 +4841,6 @@ PrefabInstance:
     - target: {fileID: 9018859347197388986, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: groundColor.ctime2
       value: 8997
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: baseIntensity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.ctime0
-      value: 64550
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.ctime1
-      value: 65404
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.ctime2
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key0.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key0.g
-      value: 0.9931548
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key0.r
-      value: 0.9481132
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key1.b
-      value: 0.6179246
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key1.g
-      value: 0.83874124
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key1.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key2.b
-      value: 0.4528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key2.g
-      value: 0.4528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.key2.r
-      value: 0.4528302
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: atmoshpereLerpSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 9018859347197388987, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
-      propertyPath: moonColor.m_NumColorKeys
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388990, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: m_Name

@@ -111,7 +111,7 @@ Material:
     - Displacement: 0.06
     - Foam: -1.64
     - Foam_Strength: 0.09
-    - Normal_Strength: 2.5
+    - Normal_Strength: 1
     - Side_Smoothness: 1
     - Smoothness: 0.2
     - Tide_Frequency: 0.5
@@ -152,8 +152,8 @@ Material:
     - Deep_Water_Color: {r: 0.13923994, g: 0.1981132, b: 0.1981132, a: 0.85490197}
     - Foam_Color: {r: 1, g: 1, b: 1, a: 1}
     - Foam_Tiling: {r: 12, g: 15, b: 0, a: 0}
-    - Main_Normal_Tiling: {r: 100, g: 50, b: 0, a: 0}
-    - Second_Normal_Tiling: {r: 100, g: 100, b: 0, a: 0}
+    - Main_Normal_Tiling: {r: 75, g: 50, b: 0, a: 0}
+    - Second_Normal_Tiling: {r: 75, g: 75, b: 0, a: 0}
     - Shallow_Water_Color: {r: 0.27990386, g: 0.3207547, b: 0.31072116, a: 0.50980395}
     - Side_Bottom_Color: {r: 0, g: 0.33844817, b: 0.7075471, a: 0}
     - Side_Top_Color: {r: 0, g: 1, b: 0.7073908, a: 0}
