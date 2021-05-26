@@ -7,6 +7,8 @@ public class WalkInPlace : MonoBehaviour
 {
     public GameObject leftController;
     public GameObject rightController;
+    public GameObject HMD;
+
     public float walkSpeed = 2.0f;
     public float detectionPrecision = 0.05f;
     public float minLeftUp = -0.02f;
@@ -25,6 +27,9 @@ public class WalkInPlace : MonoBehaviour
 
     private float leftLegUpTime = 0f;
     private float rightLegUpTime = 0f;
+    public float headHeight;
+    public float headSize = 0.23f;
+
 
     private float currentWalkingSpeed = 0f;
 
@@ -45,10 +50,14 @@ public class WalkInPlace : MonoBehaviour
         {
             Calibrate();
         }
-        if(leftLegUpTime > 0) { leftLegUpTime -= Time.deltaTime; }
+        if (headHeight == 0)
+        {
+            SetHeadHeight();
+        }
+        if (leftLegUpTime > 0) { leftLegUpTime -= Time.deltaTime; }
         if (rightLegUpTime > 0) { rightLegUpTime -= Time.deltaTime; }
         OrientBody();
-        if (IsWalking())
+        if (IsControllerAtWaist() && IsWalking())
         {
             currentWalkingSpeed = Mathf.Clamp(currentWalkingSpeed+= 0.1f,0, walkSpeed) ;
 
@@ -84,6 +93,14 @@ public class WalkInPlace : MonoBehaviour
             //baseRightOrientation = rightController.transform.localEulerAngles;
         }
 
+       
+
+    }
+
+    void SetHeadHeight()
+    {
+        headHeight = HMD.transform.localPosition.y;
+        headSize = headHeight / 7.5f;
     }
 
     void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
@@ -103,8 +120,6 @@ public class WalkInPlace : MonoBehaviour
     void CheckLeftLeg()
     {
         var angle = leftController.transform.localEulerAngles;
-        Vector3 simpleAngles = new Vector3(Mathf.RoundToInt(angle.x), Mathf.RoundToInt(angle.y), Mathf.RoundToInt(angle.z));
-        print(simpleAngles);
         /*if (leftController.transform.localPosition.y > minLeftUp + baseLeftPosition.y + detectionPrecision) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
@@ -148,6 +163,21 @@ public class WalkInPlace : MonoBehaviour
     }
 
 
+    bool IsControllerAtWaist()
+    {
+        var distanceLeft = HMD.transform.localPosition.y - leftController.transform.localPosition.y;
+        var distanceRight = HMD.transform.localPosition.y - rightController.transform.localPosition.y;
+        var distanceToHips = headSize * 2.5;
+        var leftInPocket = distanceLeft > distanceToHips;
+        if (leftInPocket && distanceRight > distanceToHips) {
+            return true;
+        }
+        else
+        {
+            return false;
+
+        }
+    }
     bool IsWalking()
     {
         CheckLeftLeg();
@@ -175,7 +205,7 @@ public class WalkInPlace : MonoBehaviour
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
         //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-        DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
+        //DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
     }
 
     public float getLeftLegUpTime()
