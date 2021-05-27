@@ -33,8 +33,8 @@ namespace VRolijk.Movement
             cController = GetComponent<CharacterController>();
             walkAudioSource = GetComponent<AudioSource>();
 
-            SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
-            SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
+            //SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
+            //SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
         }
 
         void FixedUpdate()
