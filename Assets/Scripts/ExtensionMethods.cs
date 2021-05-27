@@ -17,4 +17,18 @@ public static class ExtensionMethods
 
         return totalTimeInSeconds;
     }
+
+
+}
+
+namespace UnityEngine
+{
+    public static class Random2
+    {
+        public static Vector3 Range(Vector3 minimun, Vector3 maximum) => new Vector3(
+            Random.Range(minimun.x, maximum.x),
+            Random.Range(minimun.y, maximum.y),
+            Random.Range(minimun.z, maximum.z)
+        );
+    }
 }

@@ -9,6 +9,7 @@ namespace VRolijk.Weather.Type
 {
     public class BaseWeather : MonoBehaviour
     {
+        [Header("General")]
         [SerializeField] protected VisualEffect weatherEffect;
         public VisualEffect WeatherEffect => weatherEffect;
 
@@ -28,7 +29,7 @@ namespace VRolijk.Weather.Type
             gameObject.SetActive(false);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (lockOnPlayerPosition)
             {
