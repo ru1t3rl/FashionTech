@@ -7357,31 +7357,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.600006
+      value: 22.623
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.532814
+      value: -2.972
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.6300049
+      value: -0.627
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9859491
+      value: 0.9978534
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.009381926
+      value: -0.001568054
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.059346214
+      value: -0.06006276
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15586677
+      value: 0.026050936
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7393,7 +7393,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812429599240123150, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 17.967
+      value: 2.991
+      objectReference: {fileID: 0}
+    - target: {fileID: 9070557823816751397, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9070557823816751397, guid: fc9e38d9d69c98546af9a0a0247cdef2, type: 3}
       propertyPath: m_BoundingSphereOverride.w
