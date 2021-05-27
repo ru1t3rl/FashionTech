@@ -33,6 +33,7 @@ public class WalkInPlace : MonoBehaviour
 
 
     private float currentWalkingSpeed = 0f;
+    public float heightVariation = 0.005f;
 
 
 
@@ -141,10 +142,10 @@ public class WalkInPlace : MonoBehaviour
         else { isLeftLegDown = false; }*/
         var isAngleUp = angle.x > minLeftUp + baseLeftOrientation.x;
         var isAngleDown = IsWithinRange(angle.x, baseLeftOrientation.x, detectionPrecision);
-        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
+        var heightVaries = rightController.transform.position.y < leftController.transform.position.y;
 
 
-        if (isAngleUp && !heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+        if (isAngleUp && heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
         if (isAngleDown) { isLeftLegDown = true; }
@@ -157,13 +158,13 @@ public class WalkInPlace : MonoBehaviour
         var angle = rightController.transform.localEulerAngles;
         var isAngleUp = angle.x > minRightUp + baseRightOrientation.x;
         var isAngleDown = IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision);
-        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
+        var heightVaries = rightController.transform.position.y > leftController.transform.position.y;
         /*if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false;}
 
         if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
         else { isRightLegDown = false;} */
-        if (isAngleUp && !heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
+        if (isAngleUp && heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false; }
 
         if (isAngleDown) { isRightLegDown = true; }
