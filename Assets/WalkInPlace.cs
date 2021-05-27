@@ -33,16 +33,13 @@ public class WalkInPlace : MonoBehaviour
 
 
     private float currentWalkingSpeed = 0f;
-    public float heightVariation = 0.005f;
-
-
 
     CharacterController controller;
 
     private void Awake()
     {
-        SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
         SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
+        SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
     }
 
     // Start is called before the first frame update
@@ -77,7 +74,7 @@ public class WalkInPlace : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             ToggleDebug();
-        }
+                }
 
     }
 
@@ -142,10 +139,10 @@ public class WalkInPlace : MonoBehaviour
         else { isLeftLegDown = false; }*/
         var isAngleUp = angle.x > minLeftUp + baseLeftOrientation.x;
         var isAngleDown = IsWithinRange(angle.x, baseLeftOrientation.x, detectionPrecision);
-        var heightVaries = rightController.transform.position.y < leftController.transform.position.y;
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
 
 
-        if (isAngleUp && heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+        if (isAngleUp && !heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
         else { isLeftLegUp = false; }
 
         if (isAngleDown) { isLeftLegDown = true; }
@@ -158,13 +155,13 @@ public class WalkInPlace : MonoBehaviour
         var angle = rightController.transform.localEulerAngles;
         var isAngleUp = angle.x > minRightUp + baseRightOrientation.x;
         var isAngleDown = IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision);
-        var heightVaries = rightController.transform.position.y > leftController.transform.position.y;
+        var heightVaries = IsWithinRange(rightController.transform.position.y, leftController.transform.position.y, 0.05f);
         /*if (rightController.transform.localPosition.y > minRightUp + baseRightPosition.y+ detectionPrecision) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false;}
 
         if (IsWithinRange(rightController.transform.localPosition.y, minRightUp + baseRightPosition.y, detectionPrecision)) { isRightLegDown = true;}
         else { isRightLegDown = false;} */
-        if (isAngleUp && heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
+        if (isAngleUp && !heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
         else { isRightLegUp = false; }
 
         if (isAngleDown) { isRightLegDown = true; }
@@ -180,13 +177,11 @@ public class WalkInPlace : MonoBehaviour
 
     bool IsControllerAtWaist()
     {
-        var distanceLeft = leftController.transform.localPosition.y;
-        var distanceRight = rightController.transform.localPosition.y;
-        var distanceToHips = getHipHeight();
-        Debug.Log(distanceLeft + " hips " + distanceToHips);
-        var leftInPocket = distanceLeft < distanceToHips;
-        var rightInPocket = distanceRight < distanceToHips;
-        if (leftInPocket && rightInPocket) {
+        var distanceLeft = HMD.transform.localPosition.y - leftController.transform.localPosition.y;
+        var distanceRight = HMD.transform.localPosition.y - rightController.transform.localPosition.y;
+        var distanceToHips = headSize * 2.5;
+        var leftInPocket = distanceLeft > distanceToHips;
+        if (leftInPocket && distanceRight > distanceToHips) {
             return true;
         }
         else
@@ -194,11 +189,6 @@ public class WalkInPlace : MonoBehaviour
             return false;
 
         }
-    }
-
-    public float getHipHeight()
-    {
-        return headSize * 4.5f;
     }
     bool IsWalking()
     {
@@ -226,11 +216,8 @@ public class WalkInPlace : MonoBehaviour
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
         bodyDirection = new Vector3(normalA.x, 0, normalA.y).normalized;
-        if (debugMenu.active)
-        {
-            //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
-            DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
-        }
+        //DrawLine(leftController.transform.position, rightController.transform.position, Color.red);
+        //DrawLine(this.transform.position, this.transform.position + (bodyDirection * 20), Color.red);
     }
 
     public float getLeftLegUpTime()
@@ -243,13 +230,13 @@ public class WalkInPlace : MonoBehaviour
         return rightLegUpTime;
     }
 
-    private void SaveData()
-    {
-        SaveDataSystem.instance.loadedSaveData.playerPosition = transform.position;
-    }
-
     private void LoadData()
     {
         transform.position = SaveDataSystem.instance.loadedSaveData.playerPosition;
+    }
+
+    private void SaveData()
+    {
+        SaveDataSystem.instance.loadedSaveData.playerPosition = transform.position;
     }
 }
