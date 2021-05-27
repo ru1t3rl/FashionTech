@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace VRolijk.DayNight.Module
         [SerializeField] UnityEngine.Gradient moonColor;
         [SerializeField] float baseIntensity, intensityVariation;
         [SerializeField] float minActiveIntensity;
+        [SerializeField] float atmoshpereLerpSpeed = 0.0f;
         [SerializeField, Range(0f, 5f)] float atmosphereThickness;
         [SerializeField, Range(0f, 1f)] float diskSize = 0.04f;
         [SerializeField, Range(0f, 10f)] float convergence = 5f;
@@ -22,12 +24,15 @@ namespace VRolijk.DayNight.Module
             if (1 - intensity >= minActiveIntensity)
             {
                 moon.gameObject.SetActive(true);
-
-                RenderSettings.skybox.SetFloat("_AtmosphereThickness", atmosphereThickness);
-                RenderSettings.skybox.SetFloat("_SunSize", diskSize);
-                RenderSettings.skybox.SetFloat("_SunSizeConvergence", convergence);
-
                 RenderSettings.sun = moon;
+
+                try
+                {
+                    RenderSettings.skybox.SetFloat("_AtmosphereThickness", Mathf.Lerp(RenderSettings.skybox.GetFloat("_AtmosphereThickness"), atmosphereThickness, atmoshpereLerpSpeed));
+                    RenderSettings.skybox.SetFloat("_SunSize", diskSize);
+                    RenderSettings.skybox.SetFloat("_SunSizeConvergence", convergence);
+                }
+                catch (NullReferenceException) { };
             }
             else if (moon.gameObject.activeSelf)
             {

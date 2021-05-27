@@ -17,10 +17,10 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 755
+    x: 625
     y: -190
-    width: 612
-    height: 2293
+    width: 742
+    height: 2315
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3053,7 +3053,7 @@ MonoBehaviour:
       inputSlot: {fileID: 8926484042661614623}
     - outputSlot: {fileID: 8926484042661614684}
       inputSlot: {fileID: 8926484042661614686}
-    position: {x: 791.272, y: 632.3793}
+    position: {x: 625, y: 630}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614684
@@ -3184,7 +3184,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -1
+      m_SerializableObject: -0.8
     m_Space: 2147483647
   m_Property:
     name: b
