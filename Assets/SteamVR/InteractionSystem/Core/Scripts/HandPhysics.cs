@@ -61,7 +61,7 @@ namespace Valve.VR.InteractionSystem
         const int wristBone = SteamVR_Skeleton_JointIndexes.wrist;
         const int rootBone = SteamVR_Skeleton_JointIndexes.root;
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (hand.skeleton == null) return;
             initialized = true;
