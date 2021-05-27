@@ -345,8 +345,8 @@ MonoBehaviour:
   HMD: {fileID: 125964}
   walkSpeed: 1.8
   detectionPrecision: 10
-  minLeftUp: 20
-  minRightUp: 20
+  minLeftUp: 18
+  minRightUp: 18
   legUptime: 2.1
   isLeftLegUp: 0
   isLeftLegDown: 0
@@ -360,6 +360,7 @@ MonoBehaviour:
   headHeight: 0
   headSize: 0.23
   debugMenu: {fileID: 815899831}
+  heightVariation: 0.005
 --- !u!1 &109154
 GameObject:
   m_ObjectHideFlags: 0
