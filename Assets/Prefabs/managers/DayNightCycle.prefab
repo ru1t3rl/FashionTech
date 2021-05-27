@@ -296,9 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682449f63555d0b49859155a20f449a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pause: 0
-  _targetDayLength: 0.5
-  _timeOfDay: 0
+  pause: 1
+  _targetDayLength: 10
+  _timeOfDay: 0.5
   _dayNumber: 0
   _yearNumber: 0
   _yearLength: 100
@@ -321,17 +321,17 @@ MonoBehaviour:
   moon: {fileID: 9018859347156230944}
   moonColor:
     serializedVersion: 2
-    key0: {r: 0, g: 0, b: 0, a: 1}
-    key1: {r: 0.94509804, g: 0.63330275, b: 0.36862743, a: 1}
-    key2: {r: 0.09470348, g: 0.09349413, b: 0.103773594, a: 0}
+    key0: {r: 0.9481132, g: 0.9931548, b: 1, a: 1}
+    key1: {r: 1, g: 0.83874124, b: 0.6179246, a: 1}
+    key2: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 9252
-    ctime2: 22937
+    ctime0: 64550
+    ctime1: 65404
+    ctime2: 65535
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -351,8 +351,9 @@ MonoBehaviour:
   baseIntensity: 1
   intensityVariation: 0.5
   minActiveIntensity: 1
+  atmoshpereLerpSpeed: 0.01
   atmosphereThickness: 0.26
-  diskSize: 0.055
+  diskSize: 0.027
   convergence: 10
 --- !u!114 &9018859347197388986
 MonoBehaviour:
@@ -440,17 +441,17 @@ MonoBehaviour:
   sunColor:
     serializedVersion: 2
     key0: {r: 0.0068809707, g: 0.0066749714, b: 0.09433961, a: 1}
-    key1: {r: 0.8207547, g: 0.31122434, b: 0.12001601, a: 1}
-    key2: {r: 0.990566, g: 0.95879316, b: 0.9111338, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
+    key1: {r: 1, g: 0.91764706, b: 0.8392157, a: 1}
+    key2: {r: 0.8207547, g: 0.31122434, b: 0.12001604, a: 0}
+    key3: {r: 0.8207547, g: 0.31122434, b: 0.12001604, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 386
-    ctime1: 4433
-    ctime2: 11180
-    ctime3: 0
+    ctime1: 4326
+    ctime2: 5457
+    ctime3: 5457
     ctime4: 0
     ctime5: 0
     ctime6: 0
@@ -464,11 +465,12 @@ MonoBehaviour:
     atime6: 0
     atime7: 0
     m_Mode: 0
-    m_NumColorKeys: 3
+    m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  baseIntensity: 1.75
+  baseIntensity: 1.5
   intensityVariation: 0.5
   minActiveIntensity: 0.0002
+  atmoshpereLerpSpeed: 0.01
   atmosphereThickness: 0.74
   diskSize: 0.015
   convergence: 0.31
