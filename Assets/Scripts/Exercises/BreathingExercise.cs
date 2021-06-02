@@ -84,8 +84,8 @@ public class BreathingExercise : MonoBehaviour
         {
             try
             {
-                Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.up, Player.instance.hands[iHand].transform.position) -
-                                 Vector3.Scale(Player.instance.hands[iHand].transform.up, previousHandPos[iHand]);
+                Vector3 deltaY = Vector3.Scale(Player.instance.hands[iHand].transform.right, Player.instance.hands[iHand].transform.position) -
+                                 Vector3.Scale(Player.instance.hands[iHand].transform.right, previousHandPos[iHand]);
 
                 if (Player.instance.hands[iHand].handType == SteamVR_Input_Sources.LeftHand && deltaY.sqrMagnitude * sensitivity >= minDeltaYLeft)
                 {

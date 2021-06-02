@@ -30,6 +30,14 @@ public class StareManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.IsWalking || 
+           GameManager.instance.currentGameState == GameManager.gameState.inExit || 
+           GameManager.instance.currentGameState == GameManager.gameState.startup ||
+           GameManager.instance.currentGameState == GameManager.gameState.exited)
+        {            
+            return;
+        }
+
         if (IsWithinBounds())
         {
             CountDown(Time.deltaTime);
@@ -44,20 +52,20 @@ public class StareManager : MonoBehaviour
     public event Action<Vector3> OnStartStaring;
     public void StartStaring()
     {
-        if(OnStartStaring != null)
+        if(!isStaring)
         {
             isStaring = true;
-            OnStartStaring(transform.position);
+            OnStartStaring?.Invoke(transform.position);
         }
     }
 
     public event Action<Vector3> OnStopStaring;
     public void StopStaring()
     {
-        if (OnStopStaring != null && isStaring)
+        if (isStaring)
         {
             isStaring = false;
-            OnStopStaring(transform.position);
+            OnStopStaring?.Invoke(transform.position);
         }
     }
 

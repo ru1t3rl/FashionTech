@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum gameState {startup, inWorld, inExersise, inExit, exited };
+    public enum gameState { startup, inWorld, inExersise, inExit, exited };
     public gameState currentGameState;
     public GameObject player;
     public GameObject leftHand;
@@ -16,8 +17,19 @@ public class GameManager : MonoBehaviour
     public Animator realWorldAnimator;
     private GameObject realWorld;
     private WalkInPlace walkInPlace;
-    private bool isTrigger; 
-    // Start is called before the first frame update
+    private bool isTrigger;
+
+    private Vector3 previousPlayerPosition;
+    private bool _isWalking = false;
+    public bool IsWalking => _isWalking;
+
+    public static GameManager instance { get; set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         player = GameObject.Find("Player");
@@ -29,7 +41,6 @@ public class GameManager : MonoBehaviour
         realWorldAnimator = realWorld.GetComponent<Animator>();
         walkInPlace = player.GetComponent<WalkInPlace>();
         SetGameState(gameState.startup);
-
     }
 
     public void SetGameState(gameState state)
@@ -38,7 +49,7 @@ public class GameManager : MonoBehaviour
         isTrigger = false;
         switch (currentGameState)
         {
-            case gameState.startup: 
+            case gameState.startup:
                 {
                     EnableWalking(false);
                     break;
@@ -46,6 +57,7 @@ public class GameManager : MonoBehaviour
             case gameState.inWorld:
                 {
                     EnableWalking(true);
+
                     break;
                 }
             case gameState.inExersise:
@@ -78,15 +90,22 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if(currentGameState== gameState.inExit )
+        if (currentGameState == gameState.inExit)
         {
-            if (DetectBreathingStart()&&!isTrigger){
+            if (DetectBreathingStart() && !isTrigger)
+            {
                 EnableWalking(false);
                 isTrigger = true;
 
                 realWorldAnimator.SetTrigger("leaveWorld");
             }
         }
+
+        _isWalking = player.transform.position != previousPlayerPosition;
+
+        previousPlayerPosition = new Vector3(player.transform.position.x,
+                                             player.transform.position.y,
+                                             player.transform.position.z);
     }
 
     // checks if the hands are above the head, then the player can start breathing;
