@@ -221,7 +221,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxGazeDistance: 20
+  maxGazeDistance: 10
 --- !u!114 &9107185503601671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   minDeltaYLeft: 0.04
   maxDeltaYRight: 0.007
   sensitivity: 1000
-  overallMaxTotalControllerMovement: 35
+  overallMaxTotalControllerMovement: 42
   attemptsBeforeHint: 3
   instructionSource: {fileID: 9107185503601668}
   encourageAudio: {fileID: 0}
