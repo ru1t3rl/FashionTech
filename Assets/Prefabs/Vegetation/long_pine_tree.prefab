@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8140740307372514104}
   - component: {fileID: 2746291902782197211}
   - component: {fileID: 6870427587744929013}
-  - component: {fileID: 3210071373808711641}
   m_Layer: 0
   m_Name: LOD_0
   m_TagString: Untagged
@@ -83,19 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3210071373808711641
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2545109006115575282}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7058105, y: 22.320555, z: 1.4889679}
-  m_Center: {x: 0.032684326, y: 10.164041, z: -0.035484314}
 --- !u!1 &6838184918989061541
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6173815344779945759}
   - component: {fileID: 4917724264542618286}
+  - component: {fileID: 4321156425059352752}
   m_Layer: 0
   m_Name: long_pine_tree
   m_TagString: Untagged
@@ -155,3 +142,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6870427587744929013}
   m_Enabled: 1
+--- !u!65 &4321156425059352752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838184918989061541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7058105, y: 22.320555, z: 1.4889679}
+  m_Center: {x: 0.032684326, y: 10.164041, z: -0.035484314}
