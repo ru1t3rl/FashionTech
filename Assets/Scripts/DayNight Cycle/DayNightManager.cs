@@ -127,5 +127,15 @@ namespace VRolijk.DayNight
         {
             pause = false;
         }
+
+        public void MakeSunSet()
+        {
+            _timeOfDay = .72f;
+        }
+
+        public void MakeSunRise()
+        {
+            _timeOfDay = .255f;
+        }
     }
 }

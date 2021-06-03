@@ -59,6 +59,24 @@ namespace VRolijk.Weather
             SetWeather(GetWeatherType());
         }
 
+        public void SetWeatherDev(string type)
+        {
+            WeatherType wType = type.ToLower()  switch
+            {
+                "clouds" => WeatherType.Clouds,
+                "clear" => WeatherType.Clear,
+                "snow" => WeatherType.Snow,
+                "rain" => WeatherType.Rain,
+                "drizzle" => WeatherType.Drizzle,
+                "thunderstorm" => WeatherType.Thunder,
+                "fog" => WeatherType.Fog,
+                "mist" => WeatherType.Fog,
+                _ => WeatherType.None
+            };
+
+            SetWeather(wType);
+        }
+
         /// <summary>
         /// Gets the current weather conditions
         /// </summary>
@@ -73,7 +91,7 @@ namespace VRolijk.Weather
                 "clear" => WeatherType.Clear,
                 "snow" => WeatherType.Snow,
                 "rain" => WeatherType.Rain,
-                "drizzle" => WeatherType.Rain,
+                "drizzle" => WeatherType.Drizzle,
                 "thunderstorm" => WeatherType.Thunder,
                 "fog" => WeatherType.Fog,
                 "mist" => WeatherType.Fog,
