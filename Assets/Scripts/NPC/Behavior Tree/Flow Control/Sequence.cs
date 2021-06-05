@@ -7,12 +7,12 @@ namespace VRolijk.AI.BTree.FlowControl
     [System.Serializable]
     public class Sequence : Node
     {
-        [SerializeField] Node[] children;
+        public List<Node> children = new List<Node>();
         NPCState childState;
 
         public override void Init(BehaviorTree parent)
         {
-            for (int iChild = 0; iChild < children.Length; iChild++)
+            for (int iChild = 0; iChild < children.Count; iChild++)
             {
                 children[iChild].Init(parent);
             }
@@ -25,7 +25,7 @@ namespace VRolijk.AI.BTree.FlowControl
             ///         return state
             /// return success      
 
-            for (int iChild = 0; iChild < children.Length; iChild++)
+            for (int iChild = 0; iChild < children.Count; iChild++)
             {
                 childState = children[iChild].Evaluate();
 

@@ -4,14 +4,14 @@ using VRolijk.AI.BTree.FlowControl;
 
 namespace VRolijk.AI.BTree
 {
-    //[RequireComponent(typeof(NPC))]
-    //[CreateAssetMenu(fileName = "Behavior Tree", menuName = "NPC/Behavior Tree", order = 0)]
+    [RequireComponent(typeof(NPC))]
+    [CreateAssetMenu(fileName = "Behavior Tree", menuName = "NPC/Behavior Tree", order = 0)]
     [System.Serializable]
-    public class BehaviorTree
+    public class BehaviorTree : ScriptableObject
     {
         [SerializeField] string title;
         
-        public List<Selector> children;
+        public List<Node> children = new List<Node>();
         public NPC npc { get; private set; }
         
 

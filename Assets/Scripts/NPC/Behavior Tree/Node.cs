@@ -10,6 +10,7 @@ namespace VRolijk.AI.BTree
     public abstract class Node
     {
         [SerializeField] protected string name;
+        public bool isSelected = false;
 
         public BehaviorTree parent { get; set; }
         public virtual void Init(BehaviorTree parent)
