@@ -6,11 +6,14 @@ using VRolijk.AI.BTree;
 
 namespace VRolijk.AI
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class NPC : MonoBehaviour
     {
+        [Header("General")]
+        public NavMeshAgent agent;
+
         [SerializeField]
         protected BehaviorTree behaviorTree;
-        public NavMeshAgent agent;
 
         protected virtual void Awake()
         {
