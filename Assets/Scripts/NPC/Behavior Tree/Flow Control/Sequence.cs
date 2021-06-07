@@ -1,20 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 namespace VRolijk.AI.BTree.FlowControl
 {
-    [System.Serializable]
+    [AddComponentMenu("NPC/Flow Control/Sequence")]
     public class Sequence : Node
     {
-        public List<Node> children = new List<Node>();
+        List<Node> childNodes = new List<Node>();
         NPCState childState;
+
+        private void Awake()
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                try
+                {
+                    childNodes.Add(transform.GetChild(i).GetComponent<Node>());
+                }
+                catch (System.Exception) { }
+            }
+        }
 
         public override void Init(BehaviorTree parent)
         {
-            for (int iChild = 0; iChild < children.Count; iChild++)
+            for (int iChild = 0; iChild < childNodes.Count; iChild++)
             {
-                children[iChild].Init(parent);
+                childNodes[iChild].Init(parent);
             }
         }
 
@@ -25,9 +38,9 @@ namespace VRolijk.AI.BTree.FlowControl
             ///         return state
             /// return success      
 
-            for (int iChild = 0; iChild < children.Count; iChild++)
+            for (int iChild = 0; iChild < childNodes.Count; iChild++)
             {
-                childState = children[iChild].Evaluate();
+                childState = childNodes[iChild].Evaluate();
 
                 if (childState == NPCState.Failure || childState == NPCState.Running)
                 {
@@ -35,7 +48,19 @@ namespace VRolijk.AI.BTree.FlowControl
                 }
             }
 
+            ResetNodeState();
+
             return State = NPCState.Success;
+        }
+
+        public override void ResetNodeState()
+        {
+            base.ResetNodeState();
+
+            for (int iChild = 0; iChild < childNodes.Count; iChild++)
+            {
+                childNodes[iChild].ResetNodeState();
+            }
         }
     }
 }

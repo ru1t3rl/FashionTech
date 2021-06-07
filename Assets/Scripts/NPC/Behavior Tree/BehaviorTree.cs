@@ -1,36 +1,52 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using UnityEditor;
 using UnityEngine;
 using VRolijk.AI.BTree.FlowControl;
 
 namespace VRolijk.AI.BTree
 {
-    [RequireComponent(typeof(NPC))]
-    [CreateAssetMenu(fileName = "Behavior Tree", menuName = "NPC/Behavior Tree", order = 0)]
-    [System.Serializable]
-    public class BehaviorTree : ScriptableObject
+    public class BehaviorTree : MonoBehaviour
     {
         [SerializeField] string title;
-        
-        public List<Node> children = new List<Node>();
+        List<Node> childNodes = new List<Node>();
+
         public NPC npc { get; private set; }
-        
+
+        private void Awake()
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                try
+                {
+                    childNodes.Add(transform.GetChild(i).GetComponent<Node>());
+                }
+                catch (System.Exception) { }
+            }
+        }
 
         public virtual void Init(NPC npc)
         {
             this.npc = npc;
-            
-            for (int iChild = 0; iChild < children.Count; iChild++)
+
+            for (int iChild = 0; iChild < childNodes.Count; iChild++)
             {
-                children[iChild].Init(this);
+                childNodes[iChild].Init(this);
             }
         }
 
         public virtual void Update()
         {
-            for (int iChild = 0; iChild < children.Count; iChild++)
+            for (int iChild = 0; iChild < childNodes.Count; iChild++)
             {
-                children[iChild].Evaluate();
+                childNodes[iChild].Evaluate();
             }
+        }
+
+        public virtual void SaveAsset()
+        {
+            AssetDatabase.SaveAssets();
+            Selection.activeObject = this;
         }
     }
 }

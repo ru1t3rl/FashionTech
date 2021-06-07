@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
 
 namespace VRolijk.AI.BTree
 {
     [System.Serializable]
-    public abstract class Node
+    public class Node : MonoBehaviour
     {
-        [SerializeField] protected string name;
-        public bool isSelected = false;
+        public string name;
 
         public BehaviorTree parent { get; set; }
         public virtual void Init(BehaviorTree parent)
@@ -20,7 +16,19 @@ namespace VRolijk.AI.BTree
 
         public NPCState State { get; protected set; }
 
-        public abstract NPCState Evaluate();
+        public virtual NPCState Evaluate() { throw new System.NotImplementedException(); }
+
+
+        [MenuItem("GameObject/NPC/Behavior Tree", false)]
+        public virtual void Create()
+        {
+            Instantiate(new GameObject(), Vector3.zero, Quaternion.identity).AddComponent<Node>();
+        }
+
+        public virtual void ResetNodeState()
+        {
+            State = NPCState.Idle;
+        }
     }
 
     public enum NPCState

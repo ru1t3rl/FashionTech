@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace VRolijk.AI.BTree.Actions
 {
+    [AddComponentMenu("NPC/Action/Idle")]
     public class Idle : Node
     {
         [SerializeField, Tooltip("Time in seconds")]
@@ -17,12 +18,16 @@ namespace VRolijk.AI.BTree.Actions
             {
                 stopTime = Time.time + duration;
 
+                parent.npc.agent.isStopped = true;
+
                 State = NPCState.Running;
             }
 
             if (Time.time >= stopTime)
             {
                 State = NPCState.Success;
+
+                parent.npc.agent.isStopped = false;
             }
 
             return State;
