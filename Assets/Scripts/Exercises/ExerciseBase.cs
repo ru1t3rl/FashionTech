@@ -24,7 +24,6 @@ namespace VRolijk.Excercises
         private void Start()
         {
             StareManager.current.OnStartStaring += Activate;
-            // StareManager.current.OnStopStaring += Reset;
         }
 
         private void Update()
@@ -97,7 +96,6 @@ namespace VRolijk.Excercises
         void OnDestroy()
         {
             StareManager.current.OnStartStaring -= Activate;
-            StareManager.current.OnStopStaring -= Deactivate;
         }
 
         private bool InRange(Vector3 position, float range) => Vector3.Distance(position, transform.position) < range;
