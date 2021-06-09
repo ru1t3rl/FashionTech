@@ -12125,10 +12125,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5740088024420645426, guid: bff6ee4ff4671f143ba15e2610c9aa59, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c18740bd8f444b48a57a16fc2947dd1, type: 2}
     - target: {fileID: 919132149155446097, guid: bff6ee4ff4671f143ba15e2610c9aa59, type: 3}
       propertyPath: m_Name
       value: placeholder_pavilion
       objectReference: {fileID: 0}
+    - target: {fileID: 7296009149150625298, guid: bff6ee4ff4671f143ba15e2610c9aa59, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c18740bd8f444b48a57a16fc2947dd1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff6ee4ff4671f143ba15e2610c9aa59, type: 3}
 --- !u!1 &1525371795
