@@ -42,11 +42,5 @@ namespace VRolijk.AI.BTree
                 childNodes[iChild].Evaluate();
             }
         }
-
-        public virtual void SaveAsset()
-        {
-            AssetDatabase.SaveAssets();
-            Selection.activeObject = this;
-        }
     }
 }

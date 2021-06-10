@@ -113,7 +113,7 @@ Material:
     - Foam_Strength: 0.09
     - Normal_Strength: 1
     - Side_Smoothness: 1
-    - Smoothness: 0.2
+    - Smoothness: 1
     - Tide_Frequency: 0.5
     - Vector1_f0243ada0a7d4c93802e1b0d01633f63: -24.3
     - _AlphaClip: 0
@@ -130,7 +130,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 1
+    - _Metallic: 0.5
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0

@@ -14,6 +14,9 @@ namespace VRolijk.AI.BTree.Actions
 
         public override NPCState Evaluate()
         {
+            if (!init)
+                return State;
+
             if (State != NPCState.Running)
             {
                 stopTime = Time.time + duration.random;

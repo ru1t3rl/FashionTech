@@ -27,6 +27,9 @@ namespace VRolijk.AI.BTree.Actions
 
         public override NPCState Evaluate()
         {
+            if (!init)
+                return State;
+
             if (State != NPCState.Running && State != NPCState.Success &&
                 !parent.npc.agent.pathPending)
             {

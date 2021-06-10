@@ -7,23 +7,18 @@ namespace VRolijk.AI.BTree
     public class Node : MonoBehaviour
     {
         public string name;
-
         public BehaviorTree parent { get; set; }
+        protected bool init = false;
+
         public virtual void Init(BehaviorTree parent)
         {
             this.parent = parent;
+            init = true;
         }
 
         public NPCState State { get; protected set; }
 
         public virtual NPCState Evaluate() { throw new System.NotImplementedException(); }
-
-
-        [MenuItem("GameObject/NPC/Behavior Tree", false)]
-        public virtual void Create()
-        {
-            Instantiate(new GameObject(), Vector3.zero, Quaternion.identity).AddComponent<Node>();
-        }
 
         public virtual void ResetNodeState()
         {
