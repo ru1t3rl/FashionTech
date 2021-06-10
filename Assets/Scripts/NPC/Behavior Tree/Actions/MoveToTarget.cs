@@ -30,7 +30,6 @@ namespace VRolijk.AI.BTree.Actions
             if (State != NPCState.Running && State != NPCState.Success &&
                 !parent.npc.agent.pathPending)
             {
-
                 parent.npc.agent.isStopped = false;
 
                 currentTarget = targets[Random.Range(0, targets.Length)];

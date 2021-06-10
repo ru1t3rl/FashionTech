@@ -15,7 +15,7 @@ namespace VRolijk.AI
         {
             base.Update();
 
-            animator.SetFloat("Speed", agent.speed);
+            animator.SetFloat("Speed", agent.velocity.sqrMagnitude);
         }
     }
 }

@@ -8,15 +8,15 @@ namespace VRolijk.AI.BTree.Actions
     [AddComponentMenu("NPC/Action/Idle")]
     public class Idle : Node
     {
-        [SerializeField, Tooltip("Time in seconds")]
-        float duration;
+        [SerializeField]
+        RandomNumber duration;
         float stopTime;
 
         public override NPCState Evaluate()
         {
             if (State != NPCState.Running)
             {
-                stopTime = Time.time + duration;
+                stopTime = Time.time + duration.random;
 
                 parent.npc.agent.isStopped = true;
 
@@ -31,6 +31,15 @@ namespace VRolijk.AI.BTree.Actions
             }
 
             return State;
+        }
+
+        [System.Serializable]
+        struct RandomNumber
+        {
+            public float min;
+            public float max;
+
+            public float random => Random.Range(min, max);
         }
     }
 }
