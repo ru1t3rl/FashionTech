@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4174467860243947463}
   - component: {fileID: 7476835195107895318}
+  - component: {fileID: 511247205358304564}
   m_Layer: 0
   m_Name: beech_tree 1
   m_TagString: Untagged
@@ -141,3 +142,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8430350726085666533}
   m_Enabled: 1
+--- !u!65 &511247205358304564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649429495004284285}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9498643, y: 5.523174, z: 1.9498539}
+  m_Center: {x: -0.06785257, y: 2.759138, z: 0.06784741}
