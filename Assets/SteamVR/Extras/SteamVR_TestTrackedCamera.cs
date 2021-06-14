@@ -42,7 +42,8 @@ namespace Valve.VR.Extras
             if (SteamVR.instance.hmd_Type.ToLower() != "vive" && SteamVR.instance.hmd_Type.ToLower() != "rift")
             {
                 material.SetVector("_tiling", new Vector4(1, 0.5f, 0, 0));
-            } else
+            }
+            else
             {
                 material.SetVector("_tiling", new Vector4(1, 1f, 0, 0));
 
@@ -64,7 +65,7 @@ namespace Valve.VR.Extras
             // (You actually really only need to call any of the accessors which
             // internally call Update on the SteamVR_TrackedCamera.VideoStreamTexture).
             material.mainTexture = texture;
-            
+
 
             // Adjust the height of the quad based on the aspect to keep the texels square.
             float aspect = (float)texture.width / texture.height;

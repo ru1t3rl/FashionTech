@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1408126791709186270}
   - component: {fileID: 7773546966463006136}
+  - component: {fileID: 4205958689412593018}
   m_Layer: 0
   m_Name: pavilion_tree
   m_TagString: Untagged
@@ -59,6 +60,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7684130686712834653}
   m_Enabled: 1
+--- !u!65 &4205958689412593018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783842682074366564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2133894, y: 10.160916, z: 2.2133894}
+  m_Center: {x: -0.060664676, y: 5.2478075, z: -0.3033495}
 --- !u!1 &2764662822762475376
 GameObject:
   m_ObjectHideFlags: 0
