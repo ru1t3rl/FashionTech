@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class WalkInPlace : MonoBehaviour
 {
+    [SerializeField] AudioSource feedSource;
+
     public GameObject leftController;
     public GameObject rightController;
     public GameObject HMD;
@@ -23,7 +25,7 @@ public class WalkInPlace : MonoBehaviour
     public Vector3 baseLeftPosition;
     public Vector3 baseRightPosition;
     public Vector3 baseLeftOrientation;
-    public Vector3 baseRightOrientation;   
+    public Vector3 baseRightOrientation;
 
     private float leftLegUpTime = 0f;
     private float rightLegUpTime = 0f;
@@ -51,7 +53,8 @@ public class WalkInPlace : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   if (baseLeftPosition == Vector3.zero)
+    {
+        if (baseLeftPosition == Vector3.zero)
         {
             Calibrate();
         }
@@ -64,9 +67,10 @@ public class WalkInPlace : MonoBehaviour
         OrientBody();
         if (IsControllerAtWaist() && IsWalking())
         {
-            currentWalkingSpeed = Mathf.Clamp(currentWalkingSpeed+= 0.1f,0, walkSpeed) ;
+            currentWalkingSpeed = Mathf.Clamp(currentWalkingSpeed += 0.1f, 0, walkSpeed);
 
-        } else
+        }
+        else
         {
             currentWalkingSpeed *= 0.9f;
 
@@ -77,6 +81,15 @@ public class WalkInPlace : MonoBehaviour
             ToggleDebug();
         }
 
+
+        if (controller.velocity.sqrMagnitude > 0 && !feedSource.isPlaying)
+        {
+            feedSource.Play();
+        }
+        else if (feedSource.isPlaying)
+        {
+            feedSource.Stop();
+        }
     }
 
     void ToggleDebug()
@@ -91,7 +104,8 @@ public class WalkInPlace : MonoBehaviour
             //leftController.transform.position = rightController.transform.position + Vector3.left;
             baseLeftPosition = baseRightPosition;
 
-        } else if (rightController.transform.localEulerAngles == Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
+        }
+        else if (rightController.transform.localEulerAngles == Vector3.zero && leftController.transform.localEulerAngles != Vector3.zero)
         {
             //rightController.transform.position = leftController.transform.position + Vector3.right;
             baseRightPosition = baseLeftPosition;
@@ -106,7 +120,7 @@ public class WalkInPlace : MonoBehaviour
             //baseRightOrientation = rightController.transform.localEulerAngles;
         }
 
-       
+
 
     }
 
@@ -162,7 +176,7 @@ public class WalkInPlace : MonoBehaviour
 
     bool IsWithinRange(float value, float check, float range)
     {
-        if (value > check - range && value < check + range) {return true;}
+        if (value > check - range && value < check + range) { return true; }
         else { return false; }
     }
 
@@ -173,7 +187,8 @@ public class WalkInPlace : MonoBehaviour
         var distanceRight = HMD.transform.localPosition.y - rightController.transform.localPosition.y;
         var distanceToHips = headSize * 2.5;
         var leftInPocket = distanceLeft > distanceToHips;
-        if (leftInPocket && distanceRight > distanceToHips) {
+        if (leftInPocket && distanceRight > distanceToHips)
+        {
             return true;
         }
         else
@@ -193,7 +208,7 @@ public class WalkInPlace : MonoBehaviour
         CheckLeftLeg();
         CheckRightLeg();
 
-        
+
         if (baseLeftOrientation == Vector3.zero && baseRightOrientation == Vector3.zero)
         {
             return false;
@@ -202,14 +217,16 @@ public class WalkInPlace : MonoBehaviour
         if (leftLegUpTime > 0 && rightLegUpTime > 0)
         {
             return true;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
 
     void OrientBody()
     {
-      
+
         float directionX = rightController.transform.position.x - leftController.transform.position.x;
         float directionZ = rightController.transform.position.z - leftController.transform.position.z;
         Vector2 normalA = new Vector2(-directionZ, directionX);
