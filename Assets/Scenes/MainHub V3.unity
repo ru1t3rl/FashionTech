@@ -13036,6 +13036,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
+      propertyPath: syncAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9018859347197388985, guid: c42bf4d1f70dc8f4f81911b320b77397, type: 3}
       propertyPath: _targetDayLength
       value: 10
       objectReference: {fileID: 0}
