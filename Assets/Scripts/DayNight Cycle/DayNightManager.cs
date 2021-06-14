@@ -7,6 +7,7 @@ namespace VRolijk.DayNight
     public class DayNightManager : MonoBehaviour
     {
         public bool pause = false;
+        public bool syncAtStart = false;
 
         [Header("Time")]
         [Tooltip("Day Length in Minutes")]
@@ -37,6 +38,16 @@ namespace VRolijk.DayNight
 
         [Header("Modules")]
         List<DayNightModuleBase> modules = new List<DayNightModuleBase>();
+
+        private void Start()
+        {
+            if (syncAtStart)
+            {
+                float minute = System.DateTime.Now.Minute * 1.0f / 60.0f;
+                float realTime = System.DateTime.Now.Hour + minute;
+                _timeOfDay = realTime / 24;
+            }
+        }
 
         void Update()
         {
