@@ -34,6 +34,7 @@ AudioMixerGroupController:
   - {fileID: 1085012041149460771}
   - {fileID: 833044547907274256}
   - {fileID: 6491123281501949614}
+  - {fileID: 6504738309006750292}
   m_Volume: 1ac1becdd939406468888c8a19a68136
   m_Pitch: 1efa5ed1aa3570441a9a20cb8fe4f3a2
   m_Send: 00000000000000000000000000000000
@@ -116,6 +117,7 @@ AudioMixerController:
     - de0ec91046c630f48aaaf4608b5372b0
     - b9535360979145741ab0826d3e468d39
     - 49eed39ee043b1543ad633c635e6b130
+    - 580fb85278b23d37284d4ed09de05613
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -394,6 +396,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &6504738309006750292
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Bunny
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 580fb85278b23d37284d4ed09de05613
+  m_Children: []
+  m_Volume: 8afd01b4e5a4571a6b8dc1a8a2c16139
+  m_Pitch: f7c763e5d5aea1550a759a933bbed7a1
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 8927038495871829749}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &6839888346974032600
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -493,3 +514,17 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &8927038495871829749
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 709b547f0bdef8576b2aae60ba1ff33f
+  m_EffectName: Attenuation
+  m_MixLevel: a43e8692ab960832ea08c207965929c7
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
