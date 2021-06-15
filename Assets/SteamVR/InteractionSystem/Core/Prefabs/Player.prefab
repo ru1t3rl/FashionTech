@@ -343,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd68d8dc5cfeb0d458b054f556f62f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  feedSource: {fileID: 0}
   leftController: {fileID: 144230}
   rightController: {fileID: 160596}
   HMD: {fileID: 125964}
