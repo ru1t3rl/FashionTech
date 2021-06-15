@@ -81,12 +81,12 @@ public class WalkInPlace : MonoBehaviour
             ToggleDebug();
         }
 
-
-        if (controller.velocity.sqrMagnitude > 0 && !feedSource.isPlaying)
+        float speed = controller.velocity.sqrMagnitude;
+        if ((speed > 0 || speed < 0) && !feedSource.isPlaying)
         {
             feedSource.Play();
         }
-        else if (feedSource.isPlaying)
+        else if (speed == 0 && feedSource.isPlaying)
         {
             feedSource.Stop();
         }
