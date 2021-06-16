@@ -31,6 +31,8 @@ public class SineWaveOptions : MonoBehaviour
     {
         startPosition = transform.localPosition;
         localPosition = transform.localPosition;
+
+        localScale = transform.localScale;
     }
 
     void Update()
