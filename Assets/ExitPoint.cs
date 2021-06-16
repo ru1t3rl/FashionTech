@@ -33,7 +33,7 @@ public class ExitPoint : MonoBehaviour
         {
             float lerpedDistance = Mathf.Lerp(minHeight, maxHeight, distance / maxDistance);
             var poolHeight = Mathf.Clamp(lerpedDistance, minHeight, maxHeight);
-            exitMaterial.SetFloat("height", poolHeight);
+            //exitMaterial.SetFloat("height", poolHeight);
         }
     }
 

@@ -32,6 +32,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3af3f75b268542b5bae012abcfe88a7c:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_92fe4230dc564af2b85ced7629c7b125:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,6 +84,18 @@ Material:
         m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2DLOD_60ae43f01fca40489216fbc23ac52454_Texture_1:
+        m_Texture: {fileID: 2800000, guid: e54c5d69959b9c642a7f94554be6dd62, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_43792cc459f64a9c86d7565bf91805f3_Texture_1:
+        m_Texture: {fileID: 2800000, guid: e54c5d69959b9c642a7f94554be6dd62, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_5dac94ef34a841708ef81b60ccb9d2c1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: c139ecbad662b584f98c054b05127e25, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,7 +117,7 @@ Material:
     - Vector1_08a8f74002a24ddc98d0ac0ae5ce0f08: 0.46
     - Vector1_24483d8c807a440781cba78afc0919e9: 0
     - Vector1_6c3dc7be7f51489fb743e735e871570b: 20
-    - Vector1_8a82354b502348b885c121c9695f9976: -0.14
+    - Vector1_8a82354b502348b885c121c9695f9976: -11
     - Vector1_92dacd3b65d14993844ffb1c6f69c395: 0.28
     - Vector1_94e0fe1d97444ece8a4378465f096365: 20
     - _AlphaClip: 0
@@ -126,10 +146,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - height: 7.17
+    - height: 1
     m_Colors:
-    - Color_461fed8b80cb478ba9ed96c2cad10cc4: {r: 0.1462264, g: 0.6202491, b: 1, a: 1}
-    - Color_e654e42772954826b5ba569229c53776: {r: 0, g: 0.7169812, b: 0.7169812, a: 0}
+    - Color_461fed8b80cb478ba9ed96c2cad10cc4: {r: 0.9350635, g: 0.9433962, b: 0.7164471, a: 1}
+    - Color_e654e42772954826b5ba569229c53776: {r: 0.7735849, g: 0.48015618, b: 0, a: 0}
     - _BaseColor: {r: 0.8018868, g: 0.34372863, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
