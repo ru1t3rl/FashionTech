@@ -6570,6 +6570,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 840584555}
     m_Modifications:
     - target: {fileID: 1018416128708933298, guid: d8ef64fc24c8af643ab3204d925a226d, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1018416128708933298, guid: d8ef64fc24c8af643ab3204d925a226d, type: 3}
       propertyPath: SubModule.subEmitters.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -6597,6 +6601,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 363750354}
+    - target: {fileID: 3122321142047160358, guid: d8ef64fc24c8af643ab3204d925a226d, type: 3}
+      propertyPath: yOffset
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8651960084797309396, guid: d8ef64fc24c8af643ab3204d925a226d, type: 3}
       propertyPath: m_RootOrder
       value: 2
