@@ -21621,6 +21621,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 471288828}
     m_Modifications:
+    - target: {fileID: 919132148233783166, guid: 63fba70121e567f47b247f21a629bc25, type: 3}
+      propertyPath: activationRange
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4813622486549022266, guid: 63fba70121e567f47b247f21a629bc25, type: 3}
       propertyPath: m_Name
       value: rake_japanese2
