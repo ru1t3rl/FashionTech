@@ -23,11 +23,12 @@ public class GeomitryGenerator : MonoBehaviour
         mesh = new Mesh();
         mesh.name = "Segment";
         GetComponent<MeshFilter>().sharedMesh = mesh;
+
+        GenerateMesh();
     }
 
     private void Update()
     {
-        GenerateMesh();
     }
 
     void GenerateMesh()
