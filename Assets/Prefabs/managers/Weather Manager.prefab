@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 8651960083313382841}
   - component: {fileID: 8651960083313382842}
   - component: {fileID: 8651960083313382843}
+  - component: {fileID: 4432901497861837181}
   m_Layer: 0
   m_Name: Drizzle
   m_TagString: Untagged
@@ -493,10 +494,34 @@ MonoBehaviour:
   lockOnPlayerPosition: 1
   OnPlay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4432901497861837181}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: PlayLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4432901497861837181}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!2083052967 &8651960083313382842
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -573,6 +598,22 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4432901497861837181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651960083313382837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: 532390f64c72df741a082bacc239e438, type: 2}
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
 --- !u!1 &8651960083667189871
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +1016,7 @@ GameObject:
   - component: {fileID: 8651960084612026662}
   - component: {fileID: 8651960084612026663}
   - component: {fileID: 8651960084612026656}
+  - component: {fileID: 1667887678}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -1015,10 +1057,34 @@ MonoBehaviour:
   lockOnPlayerPosition: 1
   OnPlay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1667887678}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: PlayLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1667887678}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!2083052967 &8651960084612026663
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -1095,6 +1161,22 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1667887678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651960084612026658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: 42e249e4bf74fb04a9feaf90442f5f97, type: 2}
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
 --- !u!1 &8651960084797309397
 GameObject:
   m_ObjectHideFlags: 0
