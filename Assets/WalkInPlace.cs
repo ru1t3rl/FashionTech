@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bhaptics.Tact.Unity;
+
 
 [RequireComponent(typeof(CharacterController))]
 public class WalkInPlace : MonoBehaviour
@@ -10,6 +12,9 @@ public class WalkInPlace : MonoBehaviour
     public GameObject leftController;
     public GameObject rightController;
     public GameObject HMD;
+    public VestHapticClip leftStep;
+    public VestHapticClip rightStep;
+
 
     public float walkSpeed = 2.0f;
     public float detectionPrecision = 0.05f;
@@ -21,6 +26,9 @@ public class WalkInPlace : MonoBehaviour
     public bool isLeftLegDown = false;
     public bool isRightLegUp = false;
     public bool isRightLegDown = false;
+    private bool hasLeftPlayed = false;
+    private bool hasRightPlayed = false;
+
     public Vector3 bodyDirection;
     public Vector3 baseLeftPosition;
     public Vector3 baseRightPosition;
@@ -155,10 +163,20 @@ public class WalkInPlace : MonoBehaviour
         var heightVaries = rightController.transform.position.y < leftController.transform.position.y;
 
 
-        if (isAngleUp && heightVaries) { isLeftLegUp = true; leftLegUpTime = legUptime; }
+        if (isAngleUp && heightVaries) { 
+            isLeftLegUp = true; 
+            leftLegUpTime = legUptime;
+            if (leftStep != null && leftStep.IsPlaying() == false && hasLeftPlayed == false)
+            {
+                leftStep.Play();
+                hasLeftPlayed = true;
+            }
+
+
+        }
         else { isLeftLegUp = false; }
 
-        if (isAngleDown) { isLeftLegDown = true; }
+        if (isAngleDown) { isLeftLegDown = true; hasLeftPlayed = false;}
         else { isLeftLegDown = false; }
 
     }
@@ -170,10 +188,19 @@ public class WalkInPlace : MonoBehaviour
         var isAngleDown = IsWithinRange(angle.x, baseRightOrientation.x, detectionPrecision);
         var heightVaries = rightController.transform.position.y > leftController.transform.position.y;
 
-        if (isAngleUp && heightVaries) { isRightLegUp = true; rightLegUpTime = legUptime; }
+        if (isAngleUp && heightVaries) { 
+            isRightLegUp = true; 
+            rightLegUpTime = legUptime;
+            if (rightStep != null && rightStep.IsPlaying() == false && hasRightPlayed == false)
+            {
+                rightStep.Play();
+                hasRightPlayed = true;
+
+            }
+        }
         else { isRightLegUp = false; }
 
-        if (isAngleDown) { isRightLegDown = true; }
+        if (isAngleDown) { isRightLegDown = true; hasRightPlayed = false; }
         else { isRightLegDown = false; }
     }
 

@@ -453,6 +453,7 @@ GameObject:
   - component: {fileID: 8651960083313382841}
   - component: {fileID: 8651960083313382842}
   - component: {fileID: 8651960083313382843}
+  - component: {fileID: 2623614199420437781}
   m_Layer: 0
   m_Name: Drizzle
   m_TagString: Untagged
@@ -493,10 +494,34 @@ MonoBehaviour:
   lockOnPlayerPosition: 1
   OnPlay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2623614199420437781}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: PlayLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStop:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2623614199420437781}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!2083052967 &8651960083313382842
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -573,6 +598,22 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2623614199420437781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651960083313382837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: 532390f64c72df741a082bacc239e438, type: 2}
+  playOnAwake: 0
+  loop: 1
+  loopDelaySeconds: 0
 --- !u!1 &8651960083667189871
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1017,7 @@ GameObject:
   - component: {fileID: 8651960084612026663}
   - component: {fileID: 8651960084612026656}
   - component: {fileID: 3567494421715019381}
+  - component: {fileID: 480286623003829100}
   m_Layer: 0
   m_Name: Rain
   m_TagString: Untagged
@@ -1029,11 +1071,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 480286623003829100}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: PlayLoop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnStop:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3567494421715019381}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 480286623003829100}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
         m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
@@ -1216,6 +1282,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &480286623003829100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651960084612026658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: 42e249e4bf74fb04a9feaf90442f5f97, type: 2}
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
 --- !u!1 &8651960084797309397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,6 +1503,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5323682089315062737, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323682089315062737, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: SubModule.subEmitters.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323682089315062737, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.a
       value: 0.19607843
       objectReference: {fileID: 0}
@@ -1444,6 +1534,10 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxGradient.key1.r
       value: 0.8537736
       objectReference: {fileID: 0}
+    - target: {fileID: 5777142503611075903, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7458736489921164145, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: m_Name
       value: rain
@@ -1454,7 +1548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7824747326780153157, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: yOffset
-      value: -0.1
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7824747326780153157, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: terrainLayerIndex

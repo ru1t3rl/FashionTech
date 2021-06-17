@@ -347,6 +347,8 @@ MonoBehaviour:
   leftController: {fileID: 144230}
   rightController: {fileID: 160596}
   HMD: {fileID: 125964}
+  leftStep: {fileID: 11400000, guid: 262606e76e72aed468d5e96b65c79b46, type: 2}
+  rightStep: {fileID: 11400000, guid: a40aad2046dff2245bd9996b722b980b, type: 2}
   walkSpeed: 1.8
   detectionPrecision: 10
   minLeftUp: 18
