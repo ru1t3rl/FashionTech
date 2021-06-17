@@ -38,11 +38,14 @@ public class WalkInPlace : MonoBehaviour
     public float heightVariation = 0.005f;
 
     CharacterController controller;
+    public MoveState state { get; private set; }
 
     private void Awake()
     {
         SaveDataSystem.instance.saveDataLoadedEvent.AddListener(LoadData);
         SaveDataSystem.instance.saveGameEvent.AddListener(SaveData);
+
+        state = MoveState.Idle;
     }
 
     // Start is called before the first frame update
@@ -68,12 +71,12 @@ public class WalkInPlace : MonoBehaviour
         if (IsControllerAtWaist() && IsWalking())
         {
             currentWalkingSpeed = Mathf.Clamp(currentWalkingSpeed += 0.1f, 0, walkSpeed);
-
+            state = MoveState.Walking;
         }
         else
         {
             currentWalkingSpeed *= 0.9f;
-
+            state = MoveState.Idle;
         }
         controller.SimpleMove(bodyDirection * currentWalkingSpeed);
         if (Input.GetKeyDown("space"))
@@ -254,4 +257,10 @@ public class WalkInPlace : MonoBehaviour
     {
         SaveDataSystem.instance.loadedSaveData.playerPosition = transform.position;
     }
+}
+
+public enum MoveState
+{
+    Idle,
+    Walking
 }
