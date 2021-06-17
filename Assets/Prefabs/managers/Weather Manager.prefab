@@ -1291,6 +1291,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8651960084612026657}
     m_Modifications:
+    - target: {fileID: 4458189516957909542, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 5323682089315062737, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: SubModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5323682089315062737, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: InitialModule.startColor.maxGradient.key0.a
       value: 0.19607843
@@ -1322,6 +1330,14 @@ PrefabInstance:
     - target: {fileID: 7458736489921164145, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824747326780153157, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: yOffset
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824747326780153157, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: terrainLayerIndex
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7931483578537890476, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: m_RootOrder
