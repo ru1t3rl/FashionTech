@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9107185503601670}
   - component: {fileID: 9107185503601671}
   - component: {fileID: 9107185503601668}
+  - component: {fileID: 7781667454232357504}
   m_Layer: 0
   m_Name: Breathing Exercise
   m_TagString: Untagged
@@ -85,7 +86,7 @@ MonoBehaviour:
   - name: First time breath in
     textInstruction: Breath in through your nose
     audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
-    duration: 4
+    duration: 3.5
     instructionType: 0
     onPlay:
       m_PersistentCalls:
@@ -102,10 +103,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7781667454232357504}
+          m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - name: First time breath out
     textInstruction: Breath out through your mouth with pursed lips
     audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
-    duration: 5
+    duration: 3.5
     instructionType: 0
     onPlay:
       m_PersistentCalls:
@@ -125,7 +138,7 @@ MonoBehaviour:
   - name: Breath in
     textInstruction: 'Breath in '
     audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
-    duration: 4
+    duration: 3.5
     instructionType: 2
     onPlay:
       m_PersistentCalls:
@@ -142,10 +155,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 7781667454232357504}
+          m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - name: Breath out
     textInstruction: Breath out
     audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
-    duration: 5
+    duration: 3.5
     instructionType: 2
     onPlay:
       m_PersistentCalls:
@@ -221,6 +246,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7781667454232357504}
+        m_TargetAssemblyTypeName: Bhaptics.Tact.Unity.HapticSource, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   maxGazeDistance: 10
 --- !u!114 &9107185503601671
 MonoBehaviour:
@@ -238,7 +275,7 @@ MonoBehaviour:
   minDeltaYLeft: 0.04
   maxDeltaYRight: 0.007
   sensitivity: 1000
-  overallMaxTotalControllerMovement: 42
+  overallMaxTotalControllerMovement: 80
   attemptsBeforeHint: 3
   instructionSource: {fileID: 9107185503601668}
   encourageAudio: {fileID: 0}
@@ -345,6 +382,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7781667454232357504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9107185503601669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7034e779c066b458041d65b089ff6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 11400000, guid: a802b11e31f334f4f99caee863b8cbdc, type: 2}
+  playOnAwake: 0
+  loop: 0
+  loopDelaySeconds: 0
 --- !u!1 &9107185721661101
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99d1e94e2e56e55419f27a27ef154413, type: 2}
+  - {fileID: 2100000, guid: 14a0008ee6837bf4a9de064d7c3f79e5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
