@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class WalkInPlace : MonoBehaviour
 {
+    [SerializeField] AudioSource feedSource;
+
     public GameObject leftController;
     public GameObject rightController;
     public GameObject HMD;
@@ -82,6 +84,15 @@ public class WalkInPlace : MonoBehaviour
             ToggleDebug();
         }
 
+        float speed = controller.velocity.sqrMagnitude;
+        if ((speed > 0 || speed < 0) && !feedSource.isPlaying)
+        {
+            feedSource.Play();
+        }
+        else if (speed == 0 && feedSource.isPlaying)
+        {
+            feedSource.Stop();
+        }
     }
 
     void ToggleDebug()
