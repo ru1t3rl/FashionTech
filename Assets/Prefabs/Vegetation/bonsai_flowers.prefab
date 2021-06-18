@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 1509262958749302142}
   - component: {fileID: 6717638417746311546}
   - component: {fileID: 8240919986458918902}
-  - component: {fileID: 3769216802618063050}
   m_Layer: 0
   m_Name: purple-flowers-dal_2.001
   m_TagString: Untagged
@@ -206,20 +205,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3769216802618063050
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5508299752173556058}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3836112148427410629, guid: 814e75118b34a80e88d30b4198905a02, type: 3}
 --- !u!1 &6067402935885116854
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +298,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7984743259097227910, guid: 814e75118b34a80e88d30b4198905a02, type: 3}
 --- !u!1 &7848704061227556931
@@ -327,7 +312,6 @@ GameObject:
   - component: {fileID: 2106378345304368900}
   - component: {fileID: 7423729520615204465}
   - component: {fileID: 6915983424550389684}
-  - component: {fileID: 7500711879391066347}
   m_Layer: 0
   m_Name: purple-flowers-dal_2.001
   m_TagString: Untagged
@@ -398,17 +382,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7500711879391066347
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7848704061227556931}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3836112148427410629, guid: 814e75118b34a80e88d30b4198905a02, type: 3}

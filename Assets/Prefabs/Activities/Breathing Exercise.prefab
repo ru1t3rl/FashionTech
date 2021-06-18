@@ -85,7 +85,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: First time breath in
     textInstruction: Breath in through your nose
-    audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
+    audioInstruction: {fileID: 8300000, guid: 5024a38154d53c14992e776f558503ef, type: 3}
     duration: 3.5
     instructionType: 0
     onPlay:
@@ -117,7 +117,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: First time breath out
     textInstruction: Breath out through your mouth with pursed lips
-    audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
+    audioInstruction: {fileID: 8300000, guid: 2990be118a6e2464d8b0d1c818458c48, type: 3}
     duration: 3.5
     instructionType: 0
     onPlay:
@@ -137,7 +137,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: Breath in
     textInstruction: 'Breath in '
-    audioInstruction: {fileID: 8300000, guid: f6813b069a827404b9aa1a4d4c38f9d5, type: 3}
+    audioInstruction: {fileID: 8300000, guid: 7ed36a3a5684b14459f7ebc58c6dd1d3, type: 3}
     duration: 3.5
     instructionType: 2
     onPlay:
@@ -169,7 +169,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: Breath out
     textInstruction: Breath out
-    audioInstruction: {fileID: 8300000, guid: ffbb20364ba0ab54088fc0045da67088, type: 3}
+    audioInstruction: {fileID: 8300000, guid: 2990be118a6e2464d8b0d1c818458c48, type: 3}
     duration: 3.5
     instructionType: 2
     onPlay:
