@@ -28,6 +28,7 @@ namespace VRolijk.AI.BTree
 
     public enum NPCState
     {
+        NotInitialised,
         Idle,
         Running,
         Success,

@@ -46,6 +46,10 @@ namespace VRolijk.AI.BTree.FlowControl
                 {
                     return State = childState;
                 }
+                else if (childState == NPCState.NotInitialised)
+                {
+                    return State = NPCState.NotInitialised;
+                }
             }
 
             ResetNodeState();
