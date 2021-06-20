@@ -53,7 +53,7 @@ MonoBehaviour:
   - name: Controller setup
     textInstruction: Put your left controller on your belly and your right controller
       on your chest.
-    audioInstruction: {fileID: 8300000, guid: e2e6af384c206014892710ef806aab3e, type: 3}
+    audioInstruction: {fileID: 8300000, guid: c364d30155536da43aa193a25b84c29e, type: 3}
     duration: 3
     instructionType: 1
     onPlay:
@@ -83,8 +83,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: First time breath in
-    textInstruction: Breath in through your nose
+  - name: First time breathe in
+    textInstruction: Breathe in through your nose
     audioInstruction: {fileID: 8300000, guid: 5024a38154d53c14992e776f558503ef, type: 3}
     duration: 3.5
     instructionType: 0
@@ -115,8 +115,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: First time breath out
-    textInstruction: Breath out through your mouth with pursed lips
+  - name: First time breathe out
+    textInstruction: Breathe out through your mouth with pursed lips
     audioInstruction: {fileID: 8300000, guid: 2990be118a6e2464d8b0d1c818458c48, type: 3}
     duration: 3.5
     instructionType: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: Breath in
-    textInstruction: 'Breath in '
+  - name: Breathe in
+    textInstruction: 'Breathe in '
     audioInstruction: {fileID: 8300000, guid: 7ed36a3a5684b14459f7ebc58c6dd1d3, type: 3}
     duration: 3.5
     instructionType: 2
@@ -167,8 +167,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - name: Breath out
-    textInstruction: Breath out
+  - name: Breathe out
+    textInstruction: Breathe out
     audioInstruction: {fileID: 8300000, guid: 2990be118a6e2464d8b0d1c818458c48, type: 3}
     duration: 3.5
     instructionType: 2
@@ -189,7 +189,7 @@ MonoBehaviour:
           m_CallState: 2
   - name: Reward
     textInstruction: Well done, you have earned a reward
-    audioInstruction: {fileID: 8300000, guid: 24ff93bd0822342479c3e7bf8b1ea504, type: 3}
+    audioInstruction: {fileID: 8300000, guid: 77a3419ec3526d54e80f277a66fcb7e0, type: 3}
     duration: 1
     instructionType: 3
     onPlay:
