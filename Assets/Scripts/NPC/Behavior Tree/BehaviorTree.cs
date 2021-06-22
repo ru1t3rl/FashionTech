@@ -39,7 +39,10 @@ namespace VRolijk.AI.BTree
         {
             for (int iChild = 0; iChild < childNodes.Count; iChild++)
             {
-                childNodes[iChild].Evaluate();
+                if (childNodes[iChild].Evaluate() == NPCState.NotInitialised)
+                {
+                    childNodes[iChild].Init(this);
+                }
             }
         }
     }

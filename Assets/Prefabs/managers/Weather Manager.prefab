@@ -1495,6 +1495,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8651960084612026657}
     m_Modifications:
     - target: {fileID: 4458189516957909542, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4458189516957909542, guid: e0815bc1a9b9e1340a83496b2f6e647d, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 750
       objectReference: {fileID: 0}
